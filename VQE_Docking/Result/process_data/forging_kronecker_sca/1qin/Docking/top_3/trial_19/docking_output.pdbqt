@@ -1,0 +1,846 @@
+MODEL 1
+REMARK VINA RESULT:    -3.992      0.000      0.000
+REMARK INTER + INTRA:          -8.858
+REMARK INTER:                  -7.025
+REMARK INTRA:                  -1.833
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -1.861   2.378  -3.457  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -3.423   3.094  -1.784  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -4.271   3.110  -2.679  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -2.164   2.716  -2.037  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -1.471   2.664  -1.318  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -3.776   3.520  -0.354  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -2.551   3.728   0.604  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -2.700   4.941   1.577  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -2.292   6.144   0.813  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -1.297   6.119   0.653  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -2.526   6.972   1.337  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -2.774   6.159  -0.072  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -1.866   4.721   2.875  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -1.603   3.560   3.274  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -1.470   5.723   3.519  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -1.276   0.924  -3.675  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -1.205   0.414  -4.805  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -1.030   0.278  -2.528  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -1.123   0.771  -1.662  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -0.622  -1.159  -2.503  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1       0.906  -1.239  -2.695  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1       1.327  -1.904  -3.662  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1       1.638  -0.647  -1.869  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -0.835   3.397  -3.948  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1       0.208   4.102  -2.608  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1       0.393   6.912  -2.581  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -0.380   5.833  -2.439  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -1.538   5.915  -2.072  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1       6.349   6.099  -4.620  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1       1.763   6.692  -3.077  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1       2.008   6.479  -4.443  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1       2.797   6.762  -2.153  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1       3.332   6.321  -4.859  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1       4.124   6.583  -2.575  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1       4.340   6.382  -3.903  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -0.077   8.085  -2.345  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -0.102   8.583  -3.153  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -3.906      5.341      8.639
+REMARK INTER + INTRA:          -8.707
+REMARK INTER:                  -6.750
+REMARK INTRA:                  -1.957
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -0.740  -3.941  -2.976  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -1.791  -5.313  -4.638  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -0.659  -5.543  -5.068  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -1.973  -4.535  -3.564  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -2.881  -4.363  -3.181  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -3.030  -5.895  -5.327  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -3.632  -7.177  -4.651  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -5.068  -6.978  -4.069  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -5.732  -5.968  -4.929  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -6.617  -5.709  -4.520  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -5.888  -6.357  -5.845  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -5.145  -5.153  -5.004  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -5.009  -6.567  -2.567  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -3.903  -6.384  -2.000  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -6.083  -6.431  -1.932  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -0.436  -4.395  -1.490  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1       0.727  -4.528  -1.076  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -1.536  -4.757  -0.816  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -2.432  -4.618  -1.237  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -1.461  -5.364   0.547  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1      -2.153  -4.415   1.546  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1      -2.180  -4.766   2.742  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -2.659  -3.358   1.104  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -0.922  -2.424  -2.996  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -0.087  -1.598  -4.411  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -2.033  -0.089  -5.778  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -1.441  -1.273  -5.609  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -1.837  -2.278  -6.171  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1       0.381   4.940  -2.749  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1      -1.436   1.063  -5.081  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -0.330   1.737  -5.623  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1      -2.043   1.486  -3.907  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1       0.165   2.850  -4.939  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1      -1.529   2.593  -3.214  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1      -0.460   3.235  -3.758  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -3.044   0.026  -6.565  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -3.716  -0.593  -6.307  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -3.890      1.872      2.040
+REMARK INTER + INTRA:          -8.679
+REMARK INTER:                  -6.344
+REMARK INTRA:                  -2.336
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -1.530   1.855  -3.611  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -3.660   2.621  -2.819  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -4.001   2.687  -4.002  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -2.439   2.190  -2.479  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -2.155   2.098  -1.524  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -4.614   3.047  -1.698  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -3.960   3.882  -0.541  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -3.597   5.349  -0.940  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -4.139   5.559  -2.304  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -4.802   4.830  -2.518  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -3.386   5.535  -2.973  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -4.599   6.455  -2.348  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -2.060   5.589  -0.842  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -1.263   4.619  -0.842  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -1.634   6.766  -0.755  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -1.080   0.338  -3.665  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -1.031  -0.288  -4.736  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -0.922  -0.207  -2.452  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -0.987   0.379  -1.643  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -0.651  -1.665  -2.271  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1       0.874  -1.890  -2.312  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1       1.599  -0.977  -1.869  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1       1.300  -2.964  -2.796  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -0.287   2.729  -3.459  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1       0.019   3.836  -4.895  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -0.407   6.453  -3.945  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -0.929   5.359  -4.502  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -2.126   5.245  -4.698  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1       5.889   6.722  -3.178  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1       1.059   6.495  -3.801  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1       1.879   6.836  -4.889  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1       1.586   6.242  -2.543  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1       3.259   6.903  -4.680  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1       2.975   6.291  -2.344  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1       3.751   6.628  -3.409  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -1.163   7.437  -3.609  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -1.993   7.366  -4.065  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -3.797      6.966     10.331
+REMARK INTER + INTRA:          -8.516
+REMARK INTER:                  -5.953
+REMARK INTRA:                  -2.563
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1       2.319  -4.550  -3.056  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1       2.348  -2.188  -2.643  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1       3.552  -2.226  -2.906  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1       1.597  -3.294  -2.706  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1       0.612  -3.278  -2.529  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1       1.673  -0.879  -2.220  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1       0.104  -0.914  -2.186  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -0.576  -0.228  -3.414  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -1.636   0.652  -2.868  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -2.141   1.081  -3.628  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -1.218   1.369  -2.297  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -2.272   0.105  -2.309  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -1.112  -1.291  -4.421  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -1.599  -0.935  -5.522  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -1.057  -2.505  -4.108  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1       2.081  -5.053  -4.537  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1       2.994  -5.566  -5.205  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1       0.874  -4.724  -5.017  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1       0.204  -4.306  -4.403  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1       0.500  -4.965  -6.444  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1       0.229  -3.604  -7.117  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1       1.123  -2.739  -7.037  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -0.871  -3.438  -7.691  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1       1.831  -5.629  -2.090  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1       0.569  -5.033  -0.892  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -2.173  -5.667  -1.018  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -1.036  -5.449  -1.682  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -0.951  -5.620  -2.885  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1      -2.269  -4.558   5.232  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1      -2.167  -5.381   0.427  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -2.208  -4.059   0.900  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1      -2.178  -6.465   1.295  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1      -2.245  -3.852   2.281  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1      -2.196  -6.250   2.682  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1      -2.240  -4.962   3.118  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -3.228  -6.054  -1.642  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -3.669  -5.299  -2.012  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -3.795      5.862      8.924
+REMARK INTER + INTRA:          -8.513
+REMARK INTER:                  -6.001
+REMARK INTRA:                  -2.511
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -0.590  -4.761  -1.877  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -1.000  -5.483  -4.127  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -0.196  -6.392  -3.911  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -1.312  -4.599  -3.171  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -1.987  -3.876  -3.317  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -1.660  -5.324  -5.501  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -1.780  -3.848  -6.020  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -0.941  -3.552  -7.305  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1       0.483  -3.687  -6.916  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1       1.039  -3.874  -7.736  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1       0.583  -4.447  -6.263  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1       0.796  -2.830  -6.486  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -1.293  -2.151  -7.890  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -2.491  -1.799  -8.024  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -0.360  -1.384  -8.231  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -1.501  -5.233  -0.672  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -2.638  -5.695  -0.859  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -0.983  -4.935   0.527  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -0.058  -4.558   0.577  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -1.747  -5.151   1.792  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1      -2.297  -3.793   2.273  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1      -2.904  -3.095   1.437  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -2.094  -3.461   3.463  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1       0.014  -3.401  -1.531  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -0.672  -2.013  -2.523  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1       0.460  -0.852  -4.827  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1       0.507  -1.831  -3.921  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1       1.287  -2.761  -4.017  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1      -3.597   3.871  -3.591  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1      -0.494   0.243  -4.579  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -1.815   0.167  -5.049  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1      -0.052   1.317  -3.818  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1      -2.686   1.216  -4.744  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1      -0.926   2.377  -3.532  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1      -2.203   2.281  -3.992  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1       1.261  -0.858  -5.832  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1       2.146  -0.692  -5.531  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -3.719      1.936      5.521
+REMARK INTER + INTRA:          -8.379
+REMARK INTER:                  -6.648
+REMARK INTRA:                  -1.731
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -2.640   3.040  -2.833  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -1.222   1.404  -3.865  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -0.303   2.216  -3.734  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -2.455   1.685  -3.427  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -3.205   1.027  -3.494  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -0.988   0.052  -4.549  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1       0.220  -0.780  -3.992  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1       0.105  -1.137  -2.475  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1       1.337  -0.627  -1.829  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1       1.907  -0.157  -2.515  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1       1.855  -1.397  -1.435  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1       1.090   0.020  -1.097  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -0.109  -2.669  -2.278  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -1.202  -3.204  -2.587  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1       0.826  -3.355  -1.797  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -3.476   3.059  -1.490  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -4.713   2.947  -1.493  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -2.738   3.360  -0.414  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -1.745   3.437  -0.512  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -3.354   3.583   0.929  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1      -2.264   4.102   1.889  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1      -1.849   5.263   1.708  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -1.849   3.330   2.784  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -3.368   3.888  -3.875  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -2.715   5.601  -4.021  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -2.091   6.723  -1.514  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -3.040   6.351  -2.376  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -4.222   6.381  -2.085  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1       3.861   6.676  -3.718  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1      -0.700   6.687  -1.995  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -0.008   5.470  -2.108  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1      -0.126   7.889  -2.384  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1       1.294   5.494  -2.613  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1       1.190   7.910  -2.873  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1       1.841   6.720  -2.979  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -2.407   7.144  -0.341  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -1.618   7.390   0.128  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -3.651      6.363      9.160
+REMARK INTER + INTRA:          -8.258
+REMARK INTER:                  -6.532
+REMARK INTRA:                  -1.727
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -1.551  -4.619  -0.397  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -1.951  -4.091   1.908  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -2.852  -3.348   1.511  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -1.228  -4.815   1.045  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -0.517  -5.449   1.350  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -1.618  -4.199   3.400  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -2.584  -5.110   4.238  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -2.130  -6.601   4.335  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -0.651  -6.584   4.439  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -0.378  -6.805   5.384  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -0.307  -5.669   4.196  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -0.263  -7.268   3.808  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -2.656  -7.424   3.120  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -1.932  -7.600   2.109  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -3.816  -7.902   3.166  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -2.101  -5.910  -1.128  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -1.724  -6.222  -2.269  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -3.099  -6.506  -0.462  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -3.338  -6.178   0.452  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -3.865  -7.648  -1.046  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1      -5.288  -7.162  -1.388  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1      -5.411  -6.391  -2.361  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -6.235  -7.553  -0.669  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -0.260  -4.180  -1.086  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -0.388  -2.548  -1.924  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1       1.187  -1.698  -4.100  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1       1.075  -2.493  -3.033  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1       1.911  -3.339  -2.771  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1      -3.333   2.713  -4.737  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1       0.138  -0.681  -4.288  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -0.984  -0.944  -5.091  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1       0.274   0.515  -3.597  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1      -1.968   0.042  -5.195  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1      -0.708   1.510  -3.721  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1      -1.789   1.233  -4.500  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1       2.202  -1.797  -4.882  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1       2.939  -2.152  -4.398  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -3.601      4.149      7.217
+REMARK INTER + INTRA:          -8.171
+REMARK INTER:                  -6.331
+REMARK INTRA:                  -1.839
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -2.662   1.711  -5.035  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -0.916   0.254  -4.273  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -1.208   0.612  -3.130  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -1.593   0.716  -5.331  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -1.393   0.412  -6.263  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1       0.241  -0.719  -4.523  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1       0.218  -2.025  -3.654  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1       1.273  -2.044  -2.501  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1       1.329  -0.664  -1.962  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1       1.113  -0.679  -0.977  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1       0.658  -0.087  -2.444  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1       2.255  -0.288  -2.098  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1       2.650  -2.563  -3.015  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1       2.726  -3.644  -3.649  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1       3.681  -1.889  -2.776  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -4.134   1.191  -5.296  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -4.509   0.842  -6.428  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -4.935   1.322  -4.231  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -4.543   1.618  -3.360  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -6.400   1.037  -4.306  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1      -7.162   2.378  -4.304  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1      -7.139   3.047  -3.253  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1      -7.770   2.714  -5.346  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -2.406   2.922  -5.930  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -2.012   4.459  -5.000  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -0.673   4.013  -2.562  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -0.626   3.978  -3.896  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1       0.402   3.720  -4.497  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1      -6.391   5.101  -0.030  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1      -1.982   4.290  -1.948  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1      -2.369   5.605  -1.640  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1      -2.834   3.214  -1.741  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1      -3.641   5.810  -1.100  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1      -4.103   3.424  -1.179  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1      -4.460   4.705  -0.893  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1       0.378   3.758  -1.867  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1       0.132   3.645  -0.956  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:    -3.532      2.483      3.275
+REMARK INTER + INTRA:          -8.050
+REMARK INTER:                  -5.816
+REMARK INTRA:                  -2.234
+REMARK UNBOUND:                -1.833
+REMARK  Name = 1qin_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  CA_6
+REMARK    2  A    between atoms: N_5  and  CA_6
+REMARK    3  A    between atoms: CA_6  and  CB_7
+REMARK    4  A    between atoms: CB_7  and  CG_10
+REMARK    5  A    between atoms: CB2_8  and  SG2_9
+REMARK    6  A    between atoms: CB2_8  and  CA2_14
+REMARK    7  A    between atoms: SG2_9  and  CD2_24
+REMARK    8  A    between atoms: CG_10  and  CD_11
+REMARK    9  A    between atoms: N2_13  and  CA2_14
+REMARK   10  A    between atoms: CA2_14  and  C2_15
+REMARK   11  A    between atoms: N3_17  and  CA3_18
+REMARK   12  A    between atoms: CA3_18  and  C3_19
+REMARK   13  A    between atoms: NE2_22  and  OF2_23
+REMARK   14  A    between atoms: NE2_22  and  CG2_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  CA2 GIP A   1      -1.611   0.831  -5.336  0.00  0.00    +0.264 C 
+ENDROOT
+BRANCH   1   4
+ATOM      2  CD  GIP A   1      -3.879   1.567  -5.076  0.00  0.00    +0.108 C 
+ATOM      3  OE  GIP A   1      -4.172   0.760  -5.961  0.00  0.00    -0.456 OA
+ATOM      4  N2  GIP A   1      -2.617   1.687  -4.645  0.00  0.00    -0.286 N 
+ATOM      5  H11 GIP A   1      -2.366   2.312  -3.906  0.00  0.00    +0.235 HD
+BRANCH   2   6
+ATOM      6  CG  GIP A   1      -4.946   2.472  -4.450  0.00  0.00    +0.221 C 
+BRANCH   6   7
+ATOM      7  CB  GIP A   1      -5.140   2.306  -2.902  0.00  0.00    +0.116 C 
+BRANCH   7   8
+ATOM      8  CA  GIP A   1      -4.520   3.463  -2.053  0.00  0.00    +0.147 C 
+BRANCH   8   9
+ATOM      9  N   GIP A   1      -4.233   4.569  -2.997  0.00  0.00    +0.444 N 
+ATOM     10  H1  GIP A   1      -5.069   5.115  -3.139  0.00  0.00    +0.146 HD
+ATOM     11  H2  GIP A   1      -3.928   4.188  -3.879  0.00  0.00    +0.146 HD
+ATOM     12  H3  GIP A   1      -3.509   5.157  -2.616  0.00  0.00    +0.146 HD
+ENDBRANCH   8   9
+BRANCH   8  13
+ATOM     13  C   GIP A   1      -3.261   2.971  -1.276  0.00  0.00    +0.029 C 
+ATOM     14  OT1 GIP A   1      -2.980   3.451  -0.150  0.00  0.00    -0.569 OA
+ATOM     15  OT2 GIP A   1      -2.530   2.094  -1.797  0.00  0.00    -0.569 OA
+ENDBRANCH   8  13
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   2   6
+ENDBRANCH   1   4
+BRANCH   1  16
+ATOM     16  C2  GIP A   1      -1.157  -0.442  -4.514  0.00  0.00    +0.137 C 
+ATOM     17  O2  GIP A   1      -1.097  -1.567  -5.036  0.00  0.00    -0.443 OA
+ATOM     18  N3  GIP A   1      -1.008  -0.197  -3.205  0.00  0.00    -0.299 N 
+ATOM     19  H13 GIP A   1      -1.082   0.744  -2.875  0.00  0.00    +0.230 HD
+BRANCH  18  20
+ATOM     20  CA3 GIP A   1      -0.735  -1.290  -2.224  0.00  0.00    +0.287 C 
+BRANCH  20  21
+ATOM     21  C3  GIP A   1       0.783  -1.562  -2.200  0.00  0.00    +0.037 C 
+ATOM     22  O31 GIP A   1       1.532  -0.600  -1.938  0.00  0.00    -0.573 OA
+ATOM     23  O32 GIP A   1       1.180  -2.722  -2.456  0.00  0.00    -0.573 OA
+ENDBRANCH  20  21
+ENDBRANCH  18  20
+ENDBRANCH   1  16
+BRANCH   1  24
+ATOM     24  CB2 GIP A   1      -0.387   1.706  -5.599  0.00  0.00    +0.254 C 
+BRANCH  24  25
+ATOM     25  SG2 GIP A   1      -0.285   3.183  -4.508  0.00  0.00    -0.022 S 
+BRANCH  25  27
+ATOM     26  NE2 GIP A   1      -0.525   5.811  -5.492  0.00  0.00    -0.156 N 
+ATOM     27  CD2 GIP A   1      -0.959   4.550  -5.533  0.00  0.00    +0.237 C 
+ATOM     28  OZ1 GIP A   1      -1.931   4.225  -6.191  0.00  0.00    -0.394 OA
+BRANCH  26  30
+ATOM     29  I   GIP A   1       4.781   6.814  -2.156  0.00  0.00    -0.096 I 
+ATOM     30  CG2 GIP A   1       0.688   6.075  -4.699  0.00  0.00    +0.063 A 
+ATOM     31  CL1 GIP A   1       0.610   6.281  -3.312  0.00  0.00    +0.060 A 
+ATOM     32  CL2 GIP A   1       1.906   6.052  -5.365  0.00  0.00    +0.060 A 
+ATOM     33  CM1 GIP A   1       1.799   6.482  -2.606  0.00  0.00    +0.031 A 
+ATOM     34  CM2 GIP A   1       3.095   6.273  -4.653  0.00  0.00    +0.031 A 
+ATOM     35  CZ  GIP A   1       2.998   6.467  -3.310  0.00  0.00    -0.021 A 
+ENDBRANCH  26  30
+BRANCH  26  36
+ATOM     36  OF2 GIP A   1      -1.122   6.727  -6.168  0.00  0.00    -0.318 OA
+ATOM     37  H16 GIP A   1      -1.917   6.372  -6.547  0.00  0.00    +0.347 HD
+ENDBRANCH  26  36
+ENDBRANCH  25  27
+ENDBRANCH  24  25
+ENDBRANCH   1  24
+TORSDOF 14
+ENDMDL

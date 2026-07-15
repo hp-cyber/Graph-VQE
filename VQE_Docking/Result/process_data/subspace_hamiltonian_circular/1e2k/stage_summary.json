@@ -1,0 +1,48 @@
+{
+  "strategy": "subspace_hamiltonian_circular",
+  "description": "SubspaceVQE: Hamiltonian-aware blocking (graph partitioning), circular entanglement",
+  "iterations": 21,
+  "final_shots": 8192,
+  "execution_time_s": 2984.5789518356323,
+  "strategy_type": "subspace",
+  "window_size": 2,
+  "max_epochs": 1000000,
+  "epoch_summaries": [
+    {
+      "epoch": 0,
+      "offset": null,
+      "energy_current": 55.92445617675776,
+      "energy_refined": -637.5805249023438,
+      "best_energy": -637.5805249023438
+    },
+    {
+      "epoch": 1,
+      "offset": null,
+      "energy_current": -640.2894622802735,
+      "energy_refined": -646.6838232421876,
+      "best_energy": -646.6838232421876
+    },
+    {
+      "epoch": 2,
+      "offset": null,
+      "energy_current": -640.0442059326172,
+      "energy_refined": -642.641146850586,
+      "best_energy": -646.6838232421876
+    },
+    {
+      "epoch": 3,
+      "offset": null,
+      "energy_current": -644.2065142822266,
+      "energy_refined": -642.28759765625,
+      "best_energy": -646.6838232421876
+    },
+    {
+      "epoch": 4,
+      "offset": null,
+      "energy_current": -642.9333050537109,
+      "energy_refined": -643.4985510253907,
+      "best_energy": -646.6838232421876
+    }
+  ],
+  "num_function_evaluations": 46999
+}

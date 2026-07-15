@@ -1,0 +1,48 @@
+{
+  "strategy": "subspace_hamiltonian_linear",
+  "description": "SubspaceVQE: Hamiltonian-aware blocking (graph partitioning), linear entanglement",
+  "iterations": 21,
+  "final_shots": 8192,
+  "execution_time_s": 3233.6859979629517,
+  "strategy_type": "subspace",
+  "window_size": 2,
+  "max_epochs": 1000000,
+  "epoch_summaries": [
+    {
+      "epoch": 0,
+      "offset": null,
+      "energy_current": 38.92535400390631,
+      "energy_refined": -319.3252104492187,
+      "best_energy": -319.3252104492187
+    },
+    {
+      "epoch": 1,
+      "offset": null,
+      "energy_current": -316.22775817871087,
+      "energy_refined": -324.7852011718749,
+      "best_energy": -324.7852011718749
+    },
+    {
+      "epoch": 2,
+      "offset": null,
+      "energy_current": -329.2549268798828,
+      "energy_refined": -317.91193017578127,
+      "best_energy": -324.7852011718749
+    },
+    {
+      "epoch": 3,
+      "offset": null,
+      "energy_current": -316.6384854736328,
+      "energy_refined": -319.62665344238275,
+      "best_energy": -324.7852011718749
+    },
+    {
+      "epoch": 4,
+      "offset": null,
+      "energy_current": -321.4652982177734,
+      "energy_refined": -318.1861193847656,
+      "best_energy": -324.7852011718749
+    }
+  ],
+  "num_function_evaluations": 50377
+}

@@ -1,0 +1,945 @@
+MODEL 1
+REMARK VINA RESULT:    -6.286      0.000      0.000
+REMARK INTER + INTRA:         -14.238
+REMARK INTER:                 -11.430
+REMARK INTRA:                  -2.808
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1       5.981  -1.520  -2.640  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1       7.433   0.515  -3.470  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       6.984   1.822  -4.280  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       5.075   0.604  -5.495  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1       5.900  -0.709  -5.145  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1       6.411  -0.627  -3.692  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       5.459   1.723  -4.547  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1       6.421  -1.422  -1.475  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       4.593   2.657  -3.938  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       5.009   3.579  -3.190  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       4.954  -2.658  -2.904  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1       3.739  -2.410  -2.939  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       5.488  -4.112  -3.141  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1       5.961  -4.971  -1.911  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1       7.113  -4.831  -1.486  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1       3.583  -6.741   0.802  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1       3.103  -7.886  -0.055  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1       3.538  -8.066  -1.446  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1       4.467  -7.117  -2.049  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1       4.986  -5.958  -1.265  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1       4.532  -5.802   0.136  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1       3.151  -6.568   2.169  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1       1.833  -6.980   2.697  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -0.884  -4.050   1.747  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -1.814  -4.781   0.893  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -1.559  -6.307   0.598  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -0.382  -6.969   1.195  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1       0.583  -6.243   2.072  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1       0.280  -4.715   2.333  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       3.061   2.568  -4.153  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       2.445   3.388  -4.848  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       2.323   1.386  -3.453  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       0.789   1.152  -3.696  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1      -0.031   1.664  -2.920  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1      -1.057  -0.126  -5.083  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       0.347   0.293  -4.890  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       1.352  -0.146  -5.899  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       0.951  -0.966  -7.044  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1      -0.452  -1.364  -7.203  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1      -1.520  -0.960  -6.227  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -2.883  -1.374  -6.412  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -3.304  -2.776  -6.502  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -2.541  -5.116  -5.245  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -3.047  -3.621  -5.203  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -3.278  -3.033  -3.855  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -3.051  -3.796  -2.618  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -2.547  -5.285  -2.710  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -2.312  -5.882  -4.019  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -6.018      3.389      7.079
+REMARK INTER + INTRA:         -13.751
+REMARK INTER:                  -9.059
+REMARK INTRA:                  -4.692
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1       4.889  -2.253  -3.115  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1       6.956  -2.109  -1.490  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       7.714  -0.818  -0.921  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       7.203   0.594  -3.006  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1       7.009  -0.812  -3.719  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1       6.206  -1.753  -2.798  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       7.027   0.442  -1.507  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1       4.271  -3.016  -2.343  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       6.348   1.323  -0.637  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       6.285   1.131   0.604  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       4.169  -1.876  -4.442  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1       3.973  -2.736  -5.315  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       3.683  -0.400  -4.640  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1       2.579  -0.089  -5.717  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1       2.899  -0.034  -6.910  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -1.439  -0.158  -5.658  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -1.642   0.590  -4.364  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1      -0.521   1.090  -3.558  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1       0.851   0.868  -3.998  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1       1.134   0.136  -5.267  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -0.016  -0.356  -6.061  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -2.544  -0.649  -6.447  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -3.678  -1.434  -5.914  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -2.367  -5.164  -4.802  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -2.535  -5.112  -3.353  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -3.101  -3.803  -2.686  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -3.453  -2.653  -3.542  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -3.291  -2.682  -5.025  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -2.718  -4.019  -5.641  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       5.620   2.572  -1.191  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       4.390   2.608  -1.334  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       6.511   3.799  -1.556  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       6.104   4.755  -2.733  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1       6.168   5.981  -2.567  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1       4.208   4.070  -4.437  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       5.636   4.141  -4.062  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       6.638   3.593  -5.018  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       6.212   3.003  -6.289  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1       4.787   2.947  -6.628  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1       3.719   3.480  -5.715  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1       2.332   3.404  -6.078  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1       1.286   4.241  -5.481  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -1.452   4.293  -5.105  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -0.174   3.891  -5.942  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -0.414   3.149  -7.210  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -1.769   2.802  -7.670  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -3.012   3.223  -6.801  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -2.801   3.952  -5.555  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -5.951      3.726      6.599
+REMARK INTER + INTRA:         -13.630
+REMARK INTER:                  -7.813
+REMARK INTRA:                  -5.817
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1       4.940  -2.897  -3.101  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1       6.986  -2.697  -1.455  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       7.845  -1.407  -1.053  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       7.494  -0.270  -3.330  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1       7.189  -1.743  -3.843  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1       6.292  -2.470  -2.821  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       7.281  -0.190  -1.831  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1       4.246  -3.487  -2.247  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       6.668   0.860  -1.114  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       6.569   0.855   0.140  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       4.278  -2.655  -4.488  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1       4.311  -3.535  -5.362  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       3.556  -1.290  -4.748  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1       3.506  -0.708  -6.208  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1       4.566  -0.495  -6.809  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -0.227  -1.221  -7.604  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -0.455   0.180  -8.113  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1       0.562   1.234  -8.004  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1       1.850   0.944  -7.384  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1       2.150  -0.418  -6.856  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1       1.107  -1.462  -6.981  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -1.231  -2.253  -7.712  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -1.688  -3.107  -6.595  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -5.619  -1.919  -6.490  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -5.997  -2.282  -5.128  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -4.931  -2.951  -4.181  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -3.568  -3.196  -4.691  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -3.157  -2.833  -6.079  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -4.265  -2.166  -6.986  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       6.061   2.075  -1.859  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       6.725   3.087  -2.119  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       4.562   1.963  -2.277  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       4.140   2.156  -3.777  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1       5.003   2.075  -4.664  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1       1.573   1.557  -3.649  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       2.667   2.441  -4.105  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       2.306   3.642  -4.908  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       0.907   3.931  -5.232  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1      -0.153   3.032  -4.765  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1       0.134   1.802  -3.950  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -0.929   0.941  -3.515  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -1.697   0.075  -4.416  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -3.161   1.349  -6.383  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -3.034   0.705  -4.947  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -4.256   0.724  -4.098  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -5.524   1.310  -4.562  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -5.602   1.940  -6.002  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -4.417   1.933  -6.853  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -5.927      2.126      7.965
+REMARK INTER + INTRA:         -13.585
+REMARK INTER:                 -10.530
+REMARK INTRA:                  -3.054
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1       1.296  -1.183  -6.934  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1       2.744  -3.048  -8.101  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       4.162  -3.653  -7.670  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       4.939  -1.464  -6.572  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1       3.839  -0.791  -7.500  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1       2.553  -1.642  -7.479  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       4.620  -2.934  -6.376  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1       0.276  -1.902  -6.937  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       4.727  -3.674  -5.178  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       4.474  -4.905  -5.119  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       1.143   0.239  -6.319  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1       0.945   1.220  -7.052  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       1.226   0.398  -4.764  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1      -0.059   0.826  -3.962  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1       0.072   1.444  -2.899  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -3.337  -1.284  -4.935  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -4.116  -0.171  -5.590  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1      -3.591   1.196  -5.707  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1      -2.272   1.519  -5.177  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1      -1.441   0.472  -4.514  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -1.994  -0.898  -4.412  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -3.858  -2.626  -4.822  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -3.080  -3.857  -5.075  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -2.667  -5.041  -1.164  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -2.133  -6.389  -1.322  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -1.890  -6.960  -2.769  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -2.206  -6.118  -3.939  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -2.752  -4.736  -3.803  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -2.979  -4.213  -2.329  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       5.147  -2.982  -3.858  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       5.945  -2.035  -3.835  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       4.509  -3.532  -2.545  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       5.269  -4.597  -1.677  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1       6.444  -4.381  -1.347  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1       3.784  -5.982   0.008  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       4.534  -5.880  -1.262  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       4.567  -7.074  -2.152  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       3.874  -8.307  -1.774  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1       3.140  -8.374  -0.505  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1       3.062  -7.211   0.443  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1       2.339  -7.315   1.679  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1       0.919  -7.672   1.765  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1       0.417  -4.955   1.810  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -0.050  -6.454   1.977  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -1.473  -6.670   2.353  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -2.408  -5.552   2.562  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -1.895  -4.075   2.386  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -0.505  -3.837   2.017  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -5.846      2.500      7.663
+REMARK INTER + INTRA:         -13.438
+REMARK INTER:                 -10.646
+REMARK INTRA:                  -2.791
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1      -0.910   1.975  -5.152  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1      -2.169   1.344  -7.378  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1      -2.953   0.001  -7.757  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1      -1.457  -1.476  -6.280  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1      -0.416  -0.284  -6.414  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1      -1.147   1.064  -6.248  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1      -2.861  -0.969  -6.551  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1      -1.523   3.059  -5.054  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1      -4.038  -1.309  -5.850  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1      -5.170  -0.864  -6.173  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       0.128   1.659  -4.036  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1      -0.247   1.219  -2.938  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       1.647   1.888  -4.337  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1       2.724   1.054  -3.550  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1       3.164   1.494  -2.481  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1       4.371  -2.603  -3.794  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1       4.111  -2.853  -5.258  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1       3.433  -1.873  -6.117  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1       2.982  -0.603  -5.560  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1       3.203  -0.283  -4.120  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1       3.891  -1.288  -3.278  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1       5.038  -3.570  -2.953  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1       5.176  -5.008  -3.267  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1       3.895  -8.401  -1.338  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1       3.894  -7.962   0.053  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1       4.331  -6.490   0.401  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1       4.733  -5.581  -0.690  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1       4.742  -6.006  -2.120  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1       4.296  -7.493  -2.413  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1      -3.980  -2.246  -4.618  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1      -3.839  -1.813  -3.467  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1      -4.117  -3.776  -4.894  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1      -2.846  -4.699  -4.897  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1      -2.154  -4.772  -5.922  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1      -2.778  -4.966  -2.272  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1      -2.497  -5.488  -3.626  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1      -1.850  -6.825  -3.739  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1      -1.508  -7.592  -2.540  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1      -1.800  -7.043  -1.212  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1      -2.451  -5.702  -1.019  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -2.718  -5.194   0.297  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -1.711  -4.534   1.135  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1       0.784  -5.418   1.932  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -0.792  -5.515   1.948  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -1.384  -6.598   2.780  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -0.553  -7.537   3.552  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1       1.014  -7.400   3.503  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1       1.618  -6.346   2.695  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -5.818      4.140      6.353
+REMARK INTER + INTRA:         -13.388
+REMARK INTER:                  -8.547
+REMARK INTRA:                  -4.842
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1       4.083   2.406  -3.026  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1       5.962   4.192  -3.490  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       5.939   5.463  -4.463  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       4.323   4.357  -6.127  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1       4.835   2.999  -5.480  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1       4.909   3.152  -3.947  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       4.558   5.507  -5.166  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1       4.175   2.557  -1.790  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       3.680   6.579  -4.892  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       3.978   7.512  -4.103  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1       3.037   1.366  -3.524  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1       3.248   0.151  -3.387  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1       1.714   1.886  -4.181  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1       0.378   1.086  -3.962  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1      -0.264   1.258  -2.919  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -2.028  -1.244  -6.182  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -0.989  -1.761  -7.145  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1       0.424  -1.367  -7.067  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1       0.867  -0.441  -6.032  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1      -0.102   0.115  -5.042  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -1.520  -0.301  -5.143  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -3.416  -1.635  -6.263  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -4.192  -2.229  -5.155  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -2.753  -4.690  -2.197  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -2.218  -5.801  -2.977  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -2.323  -5.766  -4.547  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -2.962  -4.606  -5.201  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -3.516  -3.458  -4.425  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -3.385  -3.545  -2.853  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       2.278   6.638  -5.548  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       2.017   7.417  -6.475  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       1.201   5.658  -4.989  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1      -0.100   5.353  -5.814  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1      -1.095   6.077  -5.665  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1      -1.307   3.336  -7.014  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1      -0.103   4.163  -6.785  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       1.138   3.810  -7.530  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       1.156   2.679  -8.459  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1      -0.057   1.879  -8.661  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1      -1.345   2.174  -7.946  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -2.511   1.366  -8.164  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -3.880   1.894  -8.167  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -6.088   0.584  -7.143  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -4.764   1.425  -6.956  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -4.382   1.765  -5.559  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -5.189   1.345  -4.401  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -6.501   0.509  -4.637  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -6.895   0.163  -5.998  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -5.644      7.606     10.848
+REMARK INTER + INTRA:         -13.071
+REMARK INTER:                  -7.183
+REMARK INTRA:                  -5.888
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1      -4.779   3.886   3.362  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1      -3.371   5.959   2.553  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1      -2.032   6.583   3.172  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1      -2.625   5.877   5.570  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1      -4.115   5.822   5.019  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1      -4.129   5.147   3.632  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1      -1.644   5.750   4.421  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1      -4.770   3.372   2.223  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1      -0.450   4.997   4.401  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       0.324   4.982   3.409  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1      -5.535   3.101   4.473  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1      -6.774   3.037   4.463  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1      -4.700   2.382   5.586  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1      -3.903   1.074   5.230  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1      -3.389   0.967   4.110  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -4.058  -2.548   6.965  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -3.519  -2.155   8.318  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1      -3.127  -0.776   8.641  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1      -3.252   0.272   7.636  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1      -3.778  -0.038   6.274  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -4.166  -1.435   5.976  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -4.441  -3.904   6.652  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -3.632  -4.846   5.850  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -4.712  -6.831   2.420  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -5.168  -5.731   1.577  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -5.132  -4.260   2.138  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -4.633  -4.023   3.507  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -4.161  -5.132   4.388  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -4.221  -6.587   3.776  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1      -0.047   4.125   5.616  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       0.655   4.562   6.537  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1      -0.577   2.658   5.631  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       0.268   1.501   4.989  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1       1.092   1.773   4.105  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1      -0.462  -1.003   4.585  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       0.049   0.061   5.476  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       0.352  -0.298   6.890  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       0.148  -1.665   7.374  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1      -0.361  -2.695   6.462  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1      -0.688  -2.409   5.024  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -1.190  -3.442   4.162  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -1.108  -3.393   2.698  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -0.804  -6.140   2.687  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -1.234  -4.790   1.990  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -1.771  -4.895   0.606  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -1.899  -6.186  -0.088  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -1.457  -7.506   0.646  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -0.929  -7.428   2.004  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -5.514      3.710     10.103
+REMARK INTER + INTRA:         -12.834
+REMARK INTER:                  -9.898
+REMARK INTRA:                  -2.937
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1      -2.594  -5.687  -0.487  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1      -3.626  -4.848   1.786  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1      -3.109  -5.078   3.284  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1      -2.058  -7.359   2.737  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1      -3.059  -7.348   1.503  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1      -3.065  -5.950   0.853  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1      -1.822  -5.941   3.223  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1      -2.617  -4.539  -0.979  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1      -0.595  -5.376   3.631  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1      -0.502  -4.195   4.056  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1      -2.040  -6.822  -1.396  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1      -1.077  -7.510  -1.023  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1      -2.734  -7.088  -2.774  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1      -1.946  -6.801  -4.105  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1      -1.064  -7.590  -4.465  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -2.994  -3.037  -5.046  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -2.934  -3.172  -6.547  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1      -2.571  -4.431  -7.212  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1      -2.250  -5.610  -6.416  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1      -2.286  -5.555  -4.926  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -2.657  -4.274  -4.282  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -3.351  -1.798  -4.397  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -3.020  -0.451  -4.909  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1       0.932  -0.112  -5.976  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1       1.469   0.660  -4.861  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1       0.511   1.103  -3.693  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -0.915   0.727  -3.749  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -1.488  -0.062  -4.878  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -0.483  -0.479  -6.024  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       0.717  -6.196   3.550  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       1.194  -6.774   4.536  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       1.415  -6.267   2.157  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       1.638  -7.651   1.450  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1       1.111  -8.666   1.927  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1       3.616  -6.761  -0.054  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       2.506  -7.708   0.184  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       2.236  -8.743  -0.853  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       3.051  -8.814  -2.067  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1       4.144  -7.857  -2.271  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1       4.476  -6.786  -1.271  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1       5.549  -5.864  -1.507  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1       5.377  -4.408  -1.556  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1       4.365  -2.380  -3.138  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1       4.906  -3.852  -2.947  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1       4.949  -4.708  -4.163  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1       4.512  -4.221  -5.482  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1       3.979  -2.746  -5.622  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1       3.928  -1.887  -4.445  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:    -5.367      4.544      7.931
+REMARK INTER + INTRA:         -12.567
+REMARK INTER:                  -6.726
+REMARK INTRA:                  -5.842
+REMARK UNBOUND:                -2.808
+REMARK  Name = 3eax_ligand
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_5  and  C7_7
+REMARK    2  A    between atoms: C7_7  and  O1_24
+REMARK    3  A    between atoms: C8_8  and  O1_24
+REMARK    4  A    between atoms: C12_12  and  C14_14
+REMARK    5  A    between atoms: C14_14  and  C15_15
+REMARK    6  A    between atoms: C15_15  and  C16_16
+REMARK    7  A    between atoms: C16_16  and  C17_17
+REMARK    8  A    between atoms: C22_28  and  C23_29
+REMARK    9  A    between atoms: C23_29  and  C24_30
+REMARK   10  A    between atoms: C24_30  and  C25_31
+REMARK   11  A    between atoms: C25_31  and  C27_33
+REMARK   12  A    between atoms: C31_37  and  O8_48
+REMARK   13  A    between atoms: C32_38  and  C34_40
+REMARK   14  A    between atoms: C32_38  and  O8_48
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C17 LZP A   1      -1.970   1.564  -5.237  0.00  0.00    +0.221 C 
+ATOM      2  C18 LZP A   1      -0.138   3.401  -4.783  0.00  0.00    +0.217 C 
+ATOM      3  C19 LZP A   1       1.458   3.270  -4.793  0.00  0.00    +0.217 C 
+ATOM      4  C20 LZP A   1       1.418   0.815  -4.036  0.00  0.00    +0.217 C 
+ATOM      5  C21 LZP A   1      -0.034   1.169  -3.495  0.00  0.00    +0.217 C 
+ATOM      6  N1  LZP A   1      -0.785   2.014  -4.544  0.00  0.00    -0.291 N 
+ATOM      7  N2  LZP A   1       1.819   1.798  -5.119  0.00  0.00    -0.291 N 
+ATOM      8  O4  LZP A   1      -2.551   2.280  -6.079  0.00  0.00    -0.397 OA
+ATOM      9  C22 LZP A   1       2.487   1.505  -6.328  0.00  0.00    +0.221 C 
+ATOM     10  O5  LZP A   1       2.813   2.397  -7.153  0.00  0.00    -0.397 OA
+ENDROOT
+BRANCH   1  11
+ATOM     11  C16 LZP A   1      -2.592   0.164  -4.967  0.00  0.00    +0.205 C 
+ATOM     12  O3  LZP A   1      -1.904  -0.862  -5.085  0.00  0.00    -0.403 OA
+BRANCH  11  13
+ATOM     13  C15 LZP A   1      -4.093   0.081  -4.525  0.00  0.00    +0.402 C 
+BRANCH  13  14
+ATOM     14  C14 LZP A   1      -5.216  -0.012  -5.622  0.00  0.00    +0.117 C 
+ATOM     15  O2  LZP A   1      -5.974   0.951  -5.791  0.00  0.00    -0.450 OA
+BRANCH  14  20
+ATOM     16  C8  LZP A   1      -6.533  -3.571  -6.943  0.00  0.00    +0.073 A 
+ATOM     17  C9  LZP A   1      -5.572  -3.736  -8.094  0.00  0.00    +0.073 A 
+ATOM     18  C10 LZP A   1      -4.548  -2.733  -8.417  0.00  0.00    +0.019 A 
+ATOM     19  C11 LZP A   1      -4.434  -1.522  -7.612  0.00  0.00    +0.036 A 
+ATOM     20  C12 LZP A   1      -5.348  -1.287  -6.457  0.00  0.00    +0.025 A 
+ATOM     21  C13 LZP A   1      -6.370  -2.315  -6.153  0.00  0.00    +0.113 A 
+BRANCH  16  22
+ATOM     22  O1  LZP A   1      -7.538  -4.560  -6.631  0.00  0.00    -0.539 OA
+BRANCH  22  23
+ATOM     23  C7  LZP A   1      -8.176  -4.726  -5.307  0.00  0.00    +0.314 C 
+BRANCH  23  28
+ATOM     24  C1  LZP A   1      -5.691  -7.440  -3.482  0.00  0.00    -0.031 C 
+ATOM     25  C2  LZP A   1      -5.607  -6.895  -2.131  0.00  0.00    -0.048 C 
+ATOM     26  C3  LZP A   1      -6.391  -5.576  -1.778  0.00  0.00    -0.046 C 
+ATOM     27  C4  LZP A   1      -7.199  -4.917  -2.822  0.00  0.00    -0.017 C 
+ATOM     28  C5  LZP A   1      -7.301  -5.455  -4.211  0.00  0.00    +0.089 C 
+ATOM     29  C6  LZP A   1      -6.493  -6.779  -4.511  0.00  0.00    +0.102 C 
+ENDBRANCH  23  28
+ENDBRANCH  22  23
+ENDBRANCH  16  22
+ENDBRANCH  14  20
+ENDBRANCH  13  14
+ENDBRANCH  11  13
+ENDBRANCH   1  11
+BRANCH   9  30
+ATOM     30  C23 LZP A   1       2.833   0.043  -6.704  0.00  0.00    +0.205 C 
+ATOM     31  O6  LZP A   1       3.626  -0.638  -6.040  0.00  0.00    -0.403 OA
+BRANCH  30  32
+ATOM     32  C24 LZP A   1       2.124  -0.542  -7.965  0.00  0.00    +0.402 C 
+BRANCH  32  33
+ATOM     33  C25 LZP A   1       0.662  -1.106  -7.864  0.00  0.00    +0.117 C 
+ATOM     34  O7  LZP A   1      -0.292  -0.315  -7.849  0.00  0.00    -0.450 OA
+BRANCH  33  36
+ATOM     35  C26 LZP A   1      -0.888  -3.232  -7.659  0.00  0.00    +0.114 A 
+ATOM     36  C27 LZP A   1       0.455  -2.626  -7.787  0.00  0.00    +0.026 A 
+ATOM     37  C28 LZP A   1       1.632  -3.538  -7.838  0.00  0.00    +0.036 A 
+ATOM     38  C29 LZP A   1       1.455  -4.990  -7.764  0.00  0.00    +0.019 A 
+ATOM     39  C30 LZP A   1       0.109  -5.557  -7.636  0.00  0.00    +0.074 A 
+ATOM     40  C31 LZP A   1      -1.125  -4.701  -7.579  0.00  0.00    +0.075 A 
+BRANCH  40  41
+ATOM     41  O8  LZP A   1      -2.427  -5.292  -7.448  0.00  0.00    -0.534 OA
+BRANCH  41  42
+ATOM     42  C32 LZP A   1      -2.810  -6.185  -6.349  0.00  0.00    +0.346 C 
+BRANCH  42  44
+ATOM     43  C33 LZP A   1      -3.572  -4.093  -4.711  0.00  0.00    -0.026 C 
+ATOM     44  C34 LZP A   1      -2.880  -5.494  -4.940  0.00  0.00    -0.054 C 
+ATOM     45  C35 LZP A   1      -2.281  -6.145  -3.743  0.00  0.00    -0.037 C 
+ATOM     46  C36 LZP A   1      -2.326  -5.525  -2.409  0.00  0.00    +0.070 C 
+ATOM     47  C37 LZP A   1      -3.026  -4.127  -2.230  0.00  0.00    +0.081 C 
+ATOM     48  C38 LZP A   1      -3.620  -3.470  -3.388  0.00  0.00    -0.027 C 
+ENDBRANCH  42  44
+ENDBRANCH  41  42
+ENDBRANCH  40  41
+ENDBRANCH  33  36
+ENDBRANCH  32  33
+ENDBRANCH  30  32
+ENDBRANCH   9  30
+TORSDOF 14
+ENDMDL

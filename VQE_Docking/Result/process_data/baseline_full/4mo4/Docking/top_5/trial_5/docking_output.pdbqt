@@ -1,0 +1,592 @@
+MODEL 1
+REMARK VINA RESULT:    -3.653      0.000      0.000
+REMARK INTER + INTRA:          -6.477
+REMARK INTER:                  -5.255
+REMARK INTRA:                  -1.222
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       1.324  -4.117   0.975  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       1.699  -3.809   2.332  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.021  -3.357   0.770  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -0.656  -3.530   2.133  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1       0.540  -3.519   3.095  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       0.722  -2.252   3.787  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       1.853  -1.462   3.827  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       1.700  -0.349   4.491  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       0.374  -0.393   4.933  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1      -0.404   0.494   5.688  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1      -1.684   0.135   5.949  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -2.132  -1.036   5.484  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -1.488  -1.952   4.755  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1      -0.217  -1.568   4.505  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       0.043   1.655   6.174  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       0.005   2.505   5.594  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       0.426   1.700   7.129  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1      -0.747  -3.904  -0.299  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1      -1.619  -4.115   0.014  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -1.358  -4.762   2.225  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -1.378  -5.047   3.131  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       2.458  -3.731   0.062  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       1.854  -3.361  -1.194  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       2.520  -2.229  -2.122  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       3.551  -1.444  -1.397  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       3.197  -2.905  -3.323  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       1.271  -1.425  -2.671  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1      -0.211  -1.831  -3.096  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1      -0.201  -3.311  -3.351  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1      -1.151  -1.398  -1.926  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1      -0.622  -0.844  -4.553  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -3.386      4.344      7.010
+REMARK INTER + INTRA:          -6.092
+REMARK INTER:                  -4.813
+REMARK INTRA:                  -1.279
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1      -1.286  -3.360   2.595  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1      -0.447  -2.636   1.674  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1      -0.686  -4.759   2.619  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -0.289  -4.952   1.152  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1       0.123  -3.533   0.736  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       1.563  -3.332   0.689  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       2.396  -2.917   1.709  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       3.658  -2.878   1.381  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       3.679  -3.295   0.047  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1       4.718  -3.472  -0.876  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1       4.384  -3.892  -2.120  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1       3.095  -4.107  -2.403  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1       2.028  -3.977  -1.608  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1       2.389  -3.563  -0.375  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       6.005  -3.238  -0.608  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       6.536  -3.895  -0.017  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       6.468  -2.402  -0.991  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1      -1.628  -5.731   3.066  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1      -1.428  -5.976   3.962  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -1.380  -5.405   0.362  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -1.573  -4.760  -0.309  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1      -1.301  -2.631   3.912  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1      -0.265  -1.631   3.828  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       0.774  -1.424   5.038  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       0.088  -1.183   6.332  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       1.629  -2.691   5.183  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       1.722  -0.269   4.511  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1       3.094   0.360   5.022  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1       3.043   1.829   4.709  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1       3.197   0.042   6.548  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       4.420  -0.520   4.166  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -3.384      4.155      6.175
+REMARK INTER + INTRA:          -6.090
+REMARK INTER:                  -4.582
+REMARK INTRA:                  -1.508
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       0.694  -4.015   1.750  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       0.254  -3.070   0.755  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.957  -5.289   0.958  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -0.186  -5.261  -0.062  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1      -0.350  -3.758  -0.327  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       0.250  -3.316  -1.577  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       1.249  -3.932  -2.302  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       1.548  -3.323  -3.417  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       0.693  -2.218  -3.444  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1       0.512  -1.180  -4.368  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1      -0.422  -0.242  -4.079  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -1.111  -0.349  -2.938  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -1.029  -1.290  -1.992  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1      -0.095  -2.214  -2.307  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       1.212  -1.054  -5.498  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       1.981  -1.708  -5.703  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       0.982  -0.304  -6.166  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1       0.923  -6.445   1.791  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1       1.684  -6.447   2.360  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -1.385  -5.807   0.470  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -1.858  -5.131   0.942  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       1.881  -3.437   2.473  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       3.047  -4.051   1.887  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       4.317  -3.160   1.463  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       4.277  -1.804   2.065  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       5.597  -3.856   1.948  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       4.305  -3.237  -0.119  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1       4.699  -2.222  -1.282  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1       3.532  -1.291  -1.462  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1       6.013  -1.507  -0.833  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       5.063  -3.221  -2.743  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -3.365      3.873      6.153
+REMARK INTER + INTRA:          -6.063
+REMARK INTER:                  -4.745
+REMARK INTRA:                  -1.318
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       0.175  -3.339   3.088  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1      -0.083  -2.666   1.840  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.692  -4.709   2.669  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -0.185  -5.012   1.450  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1      -0.378  -3.620   0.833  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       0.464  -3.373  -0.328  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       1.715  -3.891  -0.593  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       2.207  -3.526  -1.746  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       1.219  -2.703  -2.295  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1       1.132  -2.005  -3.507  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1       0.009  -1.278  -3.729  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -0.943  -1.260  -2.790  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -0.971  -1.886  -1.610  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1       0.156  -2.606  -1.415  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       2.088  -2.000  -4.438  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       2.244  -2.836  -5.020  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       2.669  -1.161  -4.577  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1       0.540  -5.671   3.709  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1       1.303  -5.648   4.275  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -1.438  -5.569   1.823  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -1.950  -5.745   1.043  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       1.126  -2.501   3.901  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       1.885  -1.723   2.954  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       3.478  -1.910   2.831  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       4.222  -1.000   3.738  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       3.841  -3.354   3.205  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       3.746  -1.740   1.279  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1       5.031  -1.904   0.350  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1       5.274  -3.379   0.199  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1       4.713  -1.176  -0.995  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       6.380  -1.025   1.169  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -3.314      2.198      3.724
+REMARK INTER + INTRA:          -5.989
+REMARK INTER:                  -4.748
+REMARK INTRA:                  -1.241
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       1.674  -4.419   0.348  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       2.058  -4.232   1.725  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.571  -3.393   0.129  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -0.174  -3.449   1.467  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1       0.962  -3.718   2.462  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       1.386  -2.537   3.199  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       2.595  -1.875   3.117  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       2.667  -0.809   3.867  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       1.423  -0.750   4.500  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1       0.868   0.150   5.420  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1      -0.394  -0.093   5.848  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -1.036  -1.170   5.383  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -0.613  -2.087   4.507  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1       0.644  -1.819   4.093  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       1.511   1.215   5.906  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       2.537   1.197   6.003  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       0.982   2.054   6.182  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1      -0.258  -3.736  -0.978  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1      -0.702  -4.556  -0.797  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -1.126  -4.505   1.500  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -1.211  -4.880   0.631  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       2.896  -4.263  -0.519  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       3.738  -3.299   0.144  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       4.444  -2.119  -0.689  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       5.463  -2.633  -1.639  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       3.375  -1.372  -1.500  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       4.959  -1.133   0.439  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1       6.170  -1.167   1.474  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1       6.011  -2.419   2.291  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1       7.486  -1.125   0.633  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       6.066   0.353   2.446  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -3.313      4.947      7.892
+REMARK INTER + INTRA:          -5.987
+REMARK INTER:                  -4.667
+REMARK INTRA:                  -1.320
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       0.785  -4.196  -2.325  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       0.455  -3.847  -3.684  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.332  -2.990  -1.513  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1       0.707  -1.832  -2.443  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1       0.465  -2.437  -3.832  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1      -0.782  -2.008  -4.448  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1      -1.854  -2.790  -4.827  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1      -2.860  -2.113  -5.309  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1      -2.437  -0.782  -5.253  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1      -3.050   0.425  -5.614  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1      -2.342   1.565  -5.429  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -1.106   1.481  -4.924  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -0.427   0.396  -4.542  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1      -1.157  -0.725  -4.732  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1      -4.274   0.515  -6.139  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1      -5.098   0.261  -5.574  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1      -4.397   0.838  -7.109  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1       0.995  -2.922  -0.254  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1       1.000  -3.782   0.148  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1       2.069  -1.453  -2.296  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1       2.390  -1.102  -3.118  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       0.117  -5.502  -1.986  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1      -0.641  -5.265  -0.782  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1      -0.419  -6.183   0.519  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1      -1.640  -6.946   0.883  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       0.702  -7.192   0.232  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       0.127  -5.161   1.599  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1      -0.563  -4.196   2.663  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1      -0.915  -2.928   1.938  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1      -1.800  -4.962   3.233  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       0.628  -3.961   4.001  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -3.275      4.774      7.879
+REMARK INTER + INTRA:          -5.932
+REMARK INTER:                  -4.246
+REMARK INTRA:                  -1.686
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       1.311  -4.345   1.086  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       2.237  -3.803   0.123  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1       0.112  -4.767   0.249  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1       0.044  -3.640  -0.787  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1       1.526  -3.298  -0.994  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1       2.088  -3.852  -2.216  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1       2.807  -5.021  -2.365  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1       3.139  -5.286  -3.599  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1       2.609  -4.222  -4.333  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1       2.615  -3.916  -5.701  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1       1.999  -2.773  -6.088  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1       1.429  -2.001  -5.156  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1       1.356  -2.193  -3.836  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1       1.974  -3.340  -3.477  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1       3.202  -4.670  -6.633  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1       2.805  -5.588  -6.878  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1       4.051  -4.333  -7.109  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1      -1.073  -4.865   1.035  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1      -1.455  -5.727   0.925  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -0.664  -2.510  -0.295  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1      -0.087  -1.755  -0.288  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       1.998  -5.446   1.850  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       2.110  -4.980   3.210  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       0.835  -5.000   4.190  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1      -0.233  -5.911   3.704  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       1.279  -5.489   5.576  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       0.455  -3.469   4.325  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1      -0.902  -2.644   4.178  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1      -1.218  -2.585   2.710  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1      -1.980  -3.391   5.026  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1      -0.609  -1.025   4.925  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -3.240      5.861      8.480
+REMARK INTER + INTRA:          -5.883
+REMARK INTER:                  -4.728
+REMARK INTRA:                  -1.155
+REMARK UNBOUND:                -1.222
+REMARK  Name = 4mo4_ligand
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  C3B_4
+REMARK    2  A    between atoms: PB_1  and  O3A_8
+REMARK    3  A    between atoms: PA_5  and  O3A_8
+REMARK    4  A    between atoms: PA_5  and  O5'_9
+REMARK    5  A    between atoms: O5'_9  and  C5'_10
+REMARK    6  A    between atoms: C5'_10  and  C4'_11
+REMARK    7  A    between atoms: C3'_13  and  O3'_14
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C6_22  and  N6_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' ACP A   1       0.755  -2.317  -2.736  0.00  0.00    +0.219 C 
+ATOM      2  O4' ACP A   1       0.695  -1.772  -4.069  0.00  0.00    -0.387 OA
+ATOM      3  C3' ACP A   1      -0.670  -2.184  -2.219  0.00  0.00    +0.205 C 
+ATOM      4  C2' ACP A   1      -1.089  -0.833  -2.806  0.00  0.00    +0.228 C 
+ATOM      5  C1' ACP A   1      -0.350  -0.819  -4.151  0.00  0.00    +0.310 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  ACP A   1      -1.202  -1.132  -5.289  0.00  0.00    -0.236 N 
+ATOM      7  C8  ACP A   1      -1.331  -2.339  -5.944  0.00  0.00    +0.272 A 
+ATOM      8  N7  ACP A   1      -2.216  -2.330  -6.904  0.00  0.00    -0.292 NA
+ATOM      9  C5  ACP A   1      -2.717  -1.025  -6.896  0.00  0.00    +0.111 A 
+ATOM     10  C6  ACP A   1      -3.687  -0.376  -7.672  0.00  0.00    +0.079 A 
+ATOM     11  N1  ACP A   1      -3.934   0.928  -7.400  0.00  0.00    -0.269 NA
+ATOM     12  C2  ACP A   1      -3.243   1.524  -6.422  0.00  0.00    +0.183 A 
+ATOM     13  N3  ACP A   1      -2.307   1.009  -5.620  0.00  0.00    -0.260 NA
+ATOM     14  C4  ACP A   1      -2.083  -0.292  -5.909  0.00  0.00    +0.116 A 
+BRANCH  10  15
+ATOM     15  N6  ACP A   1      -4.364  -0.959  -8.664  0.00  0.00    -0.329 N 
+ATOM     16  H   ACP A   1      -3.946  -1.746  -9.181  0.00  0.00    +0.208 HD
+ATOM     17  H   ACP A   1      -5.306  -0.623  -8.912  0.00  0.00    +0.208 HD
+ENDBRANCH  10  15
+ENDBRANCH   5   6
+BRANCH   3  18
+ATOM     18  O3' ACP A   1      -0.719  -2.204  -0.795  0.00  0.00    -0.431 OA
+ATOM     19  H   ACP A   1      -0.300  -1.423  -0.453  0.00  0.00    +0.242 HD
+ENDBRANCH   3  18
+BRANCH   4  20
+ATOM     20  O2' ACP A   1      -0.665   0.253  -1.993  0.00  0.00    -0.424 OA
+ATOM     21  H   ACP A   1       0.285   0.273  -1.964  0.00  0.00    +0.245 HD
+ENDBRANCH   4  20
+BRANCH   1  22
+ATOM     22  C5' ACP A   1       1.298  -3.719  -2.812  0.00  0.00    +0.337 C 
+BRANCH  22  23
+ATOM     23  O5' ACP A   1       2.522  -3.717  -2.049  0.00  0.00    -0.327 OA
+BRANCH  23  24
+ATOM     24  PA  ACP A   1       2.519  -4.138  -0.497  0.00  0.00    +0.190 P 
+ATOM     25  O1A ACP A   1       1.145  -4.315   0.036  0.00  0.00    -0.551 OA
+ATOM     26  O2A ACP A   1       3.262  -5.473  -0.341  0.00  0.00    -0.551 OA
+BRANCH  24  27
+ATOM     27  O3A ACP A   1       3.407  -3.018   0.186  0.00  0.00    -0.277 OA
+BRANCH  27  28
+ATOM     28  PB  ACP A   1       4.699  -2.199  -0.263  0.00  0.00    +0.087 P 
+ATOM     29  O1B ACP A   1       5.655  -3.189  -0.865  0.00  0.00    -0.582 OA
+ATOM     30  O2B ACP A   1       4.214  -1.101  -1.262  0.00  0.00    -0.582 OA
+ATOM     31  C3B ACP A   1       5.336  -1.382   1.218  0.00  0.00    +0.259 C 
+ENDBRANCH  27  28
+ENDBRANCH  24  27
+ENDBRANCH  23  24
+ENDBRANCH  22  23
+ENDBRANCH   1  22
+TORSDOF 9
+ENDMDL

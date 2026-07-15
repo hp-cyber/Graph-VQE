@@ -1,0 +1,48 @@
+{
+  "strategy": "subspace_hamiltonian_reverse_linear",
+  "description": "SubspaceVQE: Hamiltonian-aware blocking (graph partitioning), reverse_linear entanglement",
+  "iterations": 16,
+  "final_shots": 8192,
+  "execution_time_s": 258.97622752189636,
+  "strategy_type": "subspace",
+  "window_size": 2,
+  "max_epochs": 1000000,
+  "epoch_summaries": [
+    {
+      "epoch": 0,
+      "offset": null,
+      "energy_current": 7.0654296875,
+      "energy_refined": 2.50244140625,
+      "best_energy": 2.50244140625
+    },
+    {
+      "epoch": 1,
+      "offset": null,
+      "energy_current": 2.5006103515625,
+      "energy_refined": 2.495269775390625,
+      "best_energy": 2.495269775390625
+    },
+    {
+      "epoch": 2,
+      "offset": null,
+      "energy_current": 2.498321533203125,
+      "energy_refined": 2.499847412109375,
+      "best_energy": 2.495269775390625
+    },
+    {
+      "epoch": 3,
+      "offset": null,
+      "energy_current": 2.496795654296875,
+      "energy_refined": 2.498321533203125,
+      "best_energy": 2.495269775390625
+    },
+    {
+      "epoch": 4,
+      "offset": null,
+      "energy_current": 2.500152587890625,
+      "energy_refined": 2.501373291015625,
+      "best_energy": 2.495269775390625
+    }
+  ],
+  "num_function_evaluations": 20928
+}

@@ -1,0 +1,29 @@
+{
+  "strategy": "baseline_pairwise",
+  "description": "Baseline: Single-stage with pairwise entanglement",
+  "iterations": 1890,
+  "final_shots": 8192,
+  "execution_time_s": 234.1842589378357,
+  "strategy_type": "standard",
+  "phi_schedule": [
+    null
+  ],
+  "stage_offsets": [
+    0
+  ],
+  "stage_summaries": [
+    {
+      "stage_index": 0,
+      "phi": null,
+      "shots": 8192,
+      "reps": 4,
+      "entanglement": "pairwise",
+      "skip_unentangled_qubits": false,
+      "iterations": 1890,
+      "energy_min": -512.3194193115235,
+      "energy_final": -497.02369445800787,
+      "adaptive_iterations": true
+    }
+  ],
+  "adaptive_iterations": true
+}

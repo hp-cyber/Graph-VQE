@@ -1,0 +1,55 @@
+REMARK  Name = 3d7z_ligand
+REMARK  7 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_1  and  C4_8
+REMARK    2  A    between atoms: C18_4  and  N15_14
+REMARK    3  A    between atoms: C24_7  and  C23_26
+REMARK    4  A    between atoms: C7_11  and  C12_12
+REMARK    5  A    between atoms: C1_16  and  C2_17
+REMARK    6  A    between atoms: C14_20  and  C17_23
+REMARK    7  A    between atoms: N19_25  and  C23_26
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C9  GK5 A   1      -2.805   0.920  -2.621  0.00  0.00    +0.130 C 
+ATOM      2  C4  GK5 A   1      -2.888  -0.054  -1.449  0.00  0.00    -0.062 A 
+ATOM      3  C8  GK5 A   1      -4.027  -0.864  -1.213  0.00  0.00    +0.018 A 
+ATOM      4  C13 GK5 A   1      -4.123  -1.750  -0.137  0.00  0.00    +0.054 A 
+ATOM      5  C7  GK5 A   1      -3.054  -1.880   0.769  0.00  0.00    +0.033 A 
+ATOM      6  C3  GK5 A   1      -1.929  -1.064   0.509  0.00  0.00    +0.073 A 
+ATOM      7  C1  GK5 A   1      -1.825  -0.162  -0.576  0.00  0.00    -0.032 A 
+ENDROOT
+BRANCH   7   8
+ATOM      8  C2  GK5 A   1      -0.524   0.588  -0.626  0.00  0.00    -0.041 A 
+ATOM      9  C5  GK5 A   1       0.552   0.117  -1.354  0.00  0.00    +0.032 A 
+ATOM     10  C10 GK5 A   1       1.777   0.803  -1.336  0.00  0.00    +0.059 A 
+ATOM     11  C14 GK5 A   1       1.965   1.957  -0.560  0.00  0.00    +0.032 A 
+ATOM     12  C11 GK5 A   1       0.882   2.384   0.208  0.00  0.00    +0.059 A 
+ATOM     13  C6  GK5 A   1      -0.336   1.703   0.154  0.00  0.00    +0.032 A 
+BRANCH  11  14
+ATOM     14  C17 GK5 A   1       3.256   2.703  -0.410  0.00  0.00    +0.137 C 
+ATOM     15  O20 GK5 A   1       3.353   3.881  -0.057  0.00  0.00    -0.440 OA
+ATOM     16  N19 GK5 A   1       4.356   1.910  -0.537  0.00  0.00    -0.314 N 
+ATOM     17  H18 GK5 A   1       4.234   1.028  -0.994  0.00  0.00    +0.221 HD
+BRANCH  16  18
+ATOM     18  C23 GK5 A   1       5.709   2.240  -0.060  0.00  0.00    +0.182 C 
+BRANCH  18  21
+ATOM     19  C26 GK5 A   1       6.592   2.538  -2.409  0.00  0.00    -0.019 C 
+ATOM     20  C25 GK5 A   1       7.750   2.825  -1.519  0.00  0.00    -0.019 C 
+ATOM     21  C24 GK5 A   1       6.376   3.141  -1.079  0.00  0.00    +0.061 C 
+ENDBRANCH  18  21
+ENDBRANCH  16  18
+ENDBRANCH  11  14
+ENDBRANCH   7   8
+BRANCH   5  22
+ATOM     22  C12 GK5 A   1      -3.030  -2.804   1.962  0.00  0.00    +0.138 C 
+ATOM     23  O16 GK5 A   1      -2.149  -2.668   2.829  0.00  0.00    -0.441 OA
+ATOM     24  N15 GK5 A   1      -4.018  -3.766   2.103  0.00  0.00    -0.303 N 
+ATOM     25  H12 GK5 A   1      -4.743  -3.801   1.415  0.00  0.00    +0.226 HD
+BRANCH  24  28
+ATOM     26  C22 GK5 A   1      -5.464  -4.670   3.714  0.00  0.00    +0.019 C 
+ATOM     27  C21 GK5 A   1      -4.377  -3.984   4.453  0.00  0.00    +0.019 C 
+ATOM     28  C18 GK5 A   1      -4.062  -4.723   3.188  0.00  0.00    +0.146 C 
+ENDBRANCH  24  28
+ENDBRANCH   5  22
+TORSDOF 6

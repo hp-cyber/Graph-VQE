@@ -1,0 +1,756 @@
+MODEL 1
+REMARK VINA RESULT:    -4.105      0.000      0.000
+REMARK INTER + INTRA:          -8.103
+REMARK INTER:                  -6.384
+REMARK INTRA:                  -1.719
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       1.309   4.203  -0.176  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       0.601   4.256   0.979  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -0.902   4.514   0.960  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -1.476   3.843  -0.292  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.732   4.328  -1.542  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       0.659   4.015  -1.459  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -2.911   4.066  -0.410  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -3.853   3.182  -0.055  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -3.620   2.050   0.334  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -5.273   3.671  -0.136  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -3.215   4.942  -0.783  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       2.766   4.318  -0.240  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       3.291   4.508  -1.365  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       3.453   4.230   0.791  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -1.597   3.859   2.064  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -2.488   4.290   2.348  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -1.251   2.830   2.721  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -1.507   1.594   2.300  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -1.898   0.898   2.951  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -1.315   1.333   1.323  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -0.598   3.001   3.879  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1       0.408   2.788   3.940  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -1.101   3.347   4.710  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -1.198   3.660  -2.827  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1      -1.497   2.295  -2.531  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1      -1.484   1.788  -3.335  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -0.093   3.704  -3.892  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -0.579   4.414  -5.041  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -0.023   5.167  -5.205  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1       0.346   2.298  -4.300  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1       1.234   1.760  -3.309  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1       1.842   1.159  -3.723  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -3.682      1.028      1.757
+REMARK INTER + INTRA:          -7.445
+REMARK INTER:                  -5.747
+REMARK INTRA:                  -1.698
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       1.108   4.401  -0.027  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       0.427   4.271   1.139  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -1.074   4.532   1.198  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -1.682   4.069  -0.131  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.965   4.744  -1.306  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       0.427   4.420  -1.307  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -3.117   4.310  -0.176  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -4.056   3.384   0.061  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -3.820   2.204   0.263  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -5.474   3.882   0.092  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -3.425   5.234  -0.402  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       2.564   4.522  -0.107  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       3.176   4.929   0.912  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       3.165   4.230  -1.154  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -1.746   3.711   2.201  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -2.686   4.027   2.478  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -1.329   2.660   2.777  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -0.672   2.692   3.933  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -0.733   3.524   4.538  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -0.103   1.885   4.225  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -1.569   1.475   2.197  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -1.035   1.191   1.364  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -2.289   0.848   2.585  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -1.464   4.289  -2.668  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1      -2.748   4.876  -2.885  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1      -3.282   4.283  -3.402  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -1.605   2.762  -2.712  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -0.344   2.186  -3.088  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1       0.323   2.863  -3.093  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -2.686   2.329  -3.701  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1      -2.446   2.935  -4.979  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1      -2.981   2.507  -5.637  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -3.508      2.480      4.904
+REMARK INTER + INTRA:          -7.174
+REMARK INTER:                  -5.879
+REMARK INTRA:                  -1.295
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       1.699   4.288  -0.381  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       1.032   4.234  -1.560  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -0.334   3.563  -1.653  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -1.072   3.821  -0.335  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.217   3.361   0.852  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       1.027   4.063   0.884  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -2.382   3.185  -0.321  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -3.541   3.826  -0.118  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -3.630   5.010   0.163  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -4.785   2.997  -0.278  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -2.420   2.198  -0.474  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       3.129   4.580  -0.270  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       3.710   5.058  -1.276  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       3.739   4.358   0.789  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -1.190   4.173  -2.665  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -1.369   5.181  -2.549  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -1.744   3.629  -3.669  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -1.528   4.042  -4.915  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -2.121   4.779  -5.324  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -0.767   3.627  -5.470  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -2.573   2.595  -3.460  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -3.461   2.739  -2.960  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -2.321   1.656  -3.801  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -0.849   3.641   2.206  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1       0.060   4.444   2.959  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1       0.450   3.917   3.647  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -1.101   2.332   2.968  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -1.900   1.462   2.152  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -2.723   1.890   1.946  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -1.807   2.588   4.298  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1      -1.708   1.424   5.132  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1      -2.406   0.818   4.913  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -3.484      2.146      2.999
+REMARK INTER + INTRA:          -7.137
+REMARK INTER:                  -5.378
+REMARK INTRA:                  -1.759
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       2.099   4.562  -0.318  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       1.148   3.818   0.298  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -0.249   3.689  -0.299  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -0.106   3.688  -1.825  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1       0.671   4.927  -2.287  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       1.978   4.951  -1.710  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -1.402   3.600  -2.484  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -1.739   2.667  -3.386  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -0.971   1.828  -3.824  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -3.173   2.683  -3.839  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -2.090   4.285  -2.248  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       3.320   5.027   0.342  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       3.563   6.259   0.326  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       4.084   4.220   0.898  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -0.870   2.403   0.000  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -0.425   1.581  -0.433  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -1.884   2.159   0.723  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -1.782   1.669   1.956  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -2.564   1.138   2.366  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -0.921   1.818   2.500  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -3.102   2.416   0.224  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -3.712   1.641  -0.071  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -3.428   3.390   0.135  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1       0.915   4.971  -3.787  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1       1.393   3.688  -4.193  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1       0.654   3.123  -4.388  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1       1.974   6.026  -4.133  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1       1.536   7.305  -3.647  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1       0.660   7.482  -3.969  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1       2.216   6.101  -5.640  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1       3.212   5.139  -6.020  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1       2.815   4.474  -6.569  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -3.441      2.607      5.140
+REMARK INTER + INTRA:          -7.071
+REMARK INTER:                  -5.292
+REMARK INTRA:                  -1.779
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1      -0.468   3.384  -1.677  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1      -1.352   3.678  -2.662  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -2.819   3.281  -2.536  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -3.210   3.396  -1.059  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -2.252   2.572  -0.191  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1      -0.907   3.032  -0.340  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -4.595   3.002  -0.839  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -5.546   3.800  -0.336  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -5.345   4.930   0.077  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -6.938   3.231  -0.319  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -4.855   2.067  -1.081  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       0.984   3.401  -1.858  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       1.441   3.039  -2.971  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       1.732   3.763  -0.935  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -3.712   4.214  -3.214  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -3.741   5.167  -2.823  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -4.459   4.012  -4.221  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -4.103   4.358  -5.455  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -3.178   4.087  -5.820  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -4.751   4.895  -6.047  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -5.646   3.419  -4.027  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -6.477   3.988  -3.809  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -5.728   2.394  -4.097  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -2.530   2.683   1.300  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1      -2.804   4.053   1.596  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1      -2.118   4.399   2.155  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -1.308   2.237   2.115  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -1.639   1.041   2.838  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -0.872   0.733   3.305  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -0.860   3.324   3.090  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1       0.115   4.169   2.461  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1       0.803   3.634   2.086  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -3.440      2.497      4.735
+REMARK INTER + INTRA:          -7.070
+REMARK INTER:                  -5.466
+REMARK INTRA:                  -1.604
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       1.348   4.335  -0.310  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       0.539   4.982  -1.184  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -0.896   4.517  -1.408  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -1.431   3.990  -0.072  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.494   2.914   0.488  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       0.817   3.442   0.702  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -2.793   3.492  -0.200  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -3.888   4.142   0.220  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -3.866   5.195   0.836  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -5.203   3.505  -0.132  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -2.922   2.599  -0.631  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       2.805   4.478  -0.295  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       3.388   4.657  -1.392  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       3.434   4.422   0.775  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -1.796   5.616  -1.743  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -1.916   6.332  -1.012  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -2.450   5.810  -2.813  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -2.348   6.932  -3.520  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -2.882   7.040  -4.395  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -1.737   7.692  -3.193  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -3.268   4.839  -3.246  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -3.620   4.855  -4.214  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -3.545   4.076  -2.610  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -0.918   2.382   1.848  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1      -2.073   1.564   1.661  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1      -2.044   0.834   2.268  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -1.277   3.537   2.793  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -0.068   4.180   3.227  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1       0.024   4.078   4.167  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -2.063   3.042   4.006  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1      -1.658   1.705   4.335  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1      -2.314   1.303   4.891  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -3.417      2.804      5.140
+REMARK INTER + INTRA:          -7.033
+REMARK INTER:                  -5.681
+REMARK INTRA:                  -1.352
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       2.592   5.067   0.264  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       2.224   4.324  -0.808  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1       0.995   3.423  -0.748  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -0.051   4.118   0.132  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1       0.552   4.465   1.499  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1       1.673   5.338   1.353  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -1.254   3.310   0.273  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1      -2.504   3.766   0.111  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1      -2.787   4.934  -0.092  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1      -3.592   2.729   0.172  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -1.140   2.345   0.508  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1       3.918   5.665   0.421  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1       4.223   6.129   1.547  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       4.709   5.707  -0.536  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1       0.336   3.287  -2.042  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -0.680   3.461  -2.046  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1       0.845   2.985  -3.165  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1       1.129   3.898  -4.090  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1       2.101   4.021  -4.411  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1       0.379   4.481  -4.486  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1       1.110   1.695  -3.420  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1       0.410   1.109  -3.897  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1       2.015   1.290  -3.139  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -0.402   5.217   2.413  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1       0.303   6.329   2.966  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1       1.096   6.480   2.464  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -0.880   4.315   3.559  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -0.543   2.953   3.254  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -0.458   2.460   4.061  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -2.387   4.439   3.778  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1      -2.896   5.550   3.026  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1      -3.820   5.416   2.851  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -3.385      3.174      5.803
+REMARK INTER + INTRA:          -6.984
+REMARK INTER:                  -5.599
+REMARK INTRA:                  -1.385
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1      -2.311   2.882  -0.967  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1      -2.812   2.530  -2.176  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1      -2.228   3.108  -3.460  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1      -0.721   3.287  -3.249  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.457   4.130  -1.995  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1      -1.005   3.501  -0.835  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1      -0.081   3.868  -4.421  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1       0.704   3.196  -5.275  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1       1.043   2.034  -5.126  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1       1.152   3.958  -6.491  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1      -0.237   4.839  -4.602  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1      -3.016   2.669   0.298  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1      -2.461   1.951   1.166  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1      -4.128   3.186   0.496  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1      -2.321   2.182  -4.584  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1      -2.400   2.616  -5.515  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1      -2.316   0.912  -4.571  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1      -3.326   0.189  -5.048  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1      -3.668  -0.628  -4.521  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1      -3.765   0.446  -5.942  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1      -1.247   0.283  -4.062  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1      -1.000   0.406  -3.070  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1      -0.672  -0.326  -4.664  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1       1.019   4.303  -1.674  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1       1.728   3.210  -2.260  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1       2.646   3.439  -2.345  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1       1.250   4.285  -0.157  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1       0.631   5.444   0.423  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -0.302   5.426   0.244  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1       2.740   4.270   0.181  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1       3.500   4.711  -0.954  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1       2.972   5.301  -1.478  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:    -3.340      3.130      4.681
+REMARK INTER + INTRA:          -6.914
+REMARK INTER:                  -5.102
+REMARK INTRA:                  -1.811
+REMARK UNBOUND:                -1.719
+REMARK  Name = 3ckz_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: C4_6  and  NE_20
+REMARK    3  A    between atoms: C5_7  and  N5_8
+REMARK    4  A    between atoms: C10_9  and  C11_11
+REMARK    5  A    between atoms: C6_12  and  C7_14
+REMARK    6  A    between atoms: C7_14  and  O7_15
+REMARK    7  A    between atoms: C7_14  and  C8_16
+REMARK    8  A    between atoms: C8_16  and  O8_17
+REMARK    9  A    between atoms: C8_16  and  C9_18
+REMARK   10  A    between atoms: C9_18  and  O9_19
+REMARK   11  A    between atoms: NE_20  and  CZ_21
+REMARK   12  A    between atoms: CZ_21  and  NH1_22
+REMARK   13  A    between atoms: CZ_21  and  NH2_23
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  ZMR A   1       0.022   5.023   1.284  0.00  0.00    +0.111 C 
+ATOM      2  C3  ZMR A   1       1.282   4.838   0.819  0.00  0.00    +0.106 C 
+ATOM      3  C4  ZMR A   1       1.576   3.772  -0.231  0.00  0.00    +0.227 C 
+ATOM      4  C5  ZMR A   1       0.366   3.691  -1.167  0.00  0.00    +0.216 C 
+ATOM      5  C6  ZMR A   1      -0.915   3.451  -0.359  0.00  0.00    +0.276 C 
+ATOM      6  O6  ZMR A   1      -1.134   4.511   0.574  0.00  0.00    -0.515 OA
+ENDROOT
+BRANCH   4   7
+ATOM      7  N5  ZMR A   1       0.546   2.669  -2.189  0.00  0.00    -0.298 N 
+ATOM      8  C10 ZMR A   1       0.956   2.906  -3.443  0.00  0.00    +0.098 C 
+ATOM      9  O10 ZMR A   1       1.148   4.019  -3.903  0.00  0.00    -0.459 OA
+ATOM     10  C11 ZMR A   1       1.203   1.690  -4.292  0.00  0.00    +0.267 C 
+ATOM     11  H4  ZMR A   1       0.350   1.722  -1.937  0.00  0.00    +0.228 HD
+ENDBRANCH   4   7
+BRANCH   1  12
+ATOM     12  C1  ZMR A   1      -0.290   5.750   2.515  0.00  0.00    +0.092 C 
+ATOM     13  O1A ZMR A   1      -0.971   6.801   2.419  0.00  0.00    -0.559 OA
+ATOM     14  O1B ZMR A   1       0.112   5.333   3.614  0.00  0.00    -0.559 OA
+ENDBRANCH   1  12
+BRANCH   3  15
+ATOM     15  NE  ZMR A   1       2.681   4.142  -1.110  0.00  0.00    -0.270 NA
+ATOM     16  H16 ZMR A   1       3.116   3.365  -1.629  0.00  0.00    +0.300 HD
+BRANCH  15  17
+ATOM     17  CZ  ZMR A   1       3.178   5.290  -1.323  0.00  0.00    +0.115 C 
+BRANCH  17  18
+ATOM     18  NH1 ZMR A   1       2.698   6.116  -2.250  0.00  0.00    -0.275 NA
+ATOM     19  H17 ZMR A   1       3.114   6.129  -3.192  0.00  0.00    +0.287 HD
+ATOM     20  H18 ZMR A   1       1.912   6.741  -2.026  0.00  0.00    +0.287 HD
+ENDBRANCH  17  18
+BRANCH  17  21
+ATOM     21  NH2 ZMR A   1       4.220   5.684  -0.576  0.00  0.00    -0.275 NA
+ATOM     22  H19 ZMR A   1       4.716   5.003   0.016  0.00  0.00    +0.287 HD
+ATOM     23  H20 ZMR A   1       4.525   6.668  -0.595  0.00  0.00    +0.287 HD
+ENDBRANCH  17  21
+ENDBRANCH  15  17
+ENDBRANCH   3  15
+BRANCH   5  24
+ATOM     24  C7  ZMR A   1      -2.176   3.422  -1.208  0.00  0.00    +0.208 C 
+BRANCH  24  25
+ATOM     25  O7  ZMR A   1      -2.177   2.204  -1.954  0.00  0.00    -0.431 OA
+ATOM     26  H10 ZMR A   1      -2.673   1.546  -1.480  0.00  0.00    +0.242 HD
+ENDBRANCH  24  25
+BRANCH  24  27
+ATOM     27  C8  ZMR A   1      -2.197   4.603  -2.188  0.00  0.00    +0.180 C 
+BRANCH  27  28
+ATOM     28  O8  ZMR A   1      -2.910   5.696  -1.589  0.00  0.00    -0.436 OA
+ATOM     29  H12 ZMR A   1      -3.524   6.055  -2.219  0.00  0.00    +0.241 HD
+ENDBRANCH  27  28
+BRANCH  27  30
+ATOM     30  C9  ZMR A   1      -2.857   4.218  -3.512  0.00  0.00    +0.235 C 
+BRANCH  30  31
+ATOM     31  O9  ZMR A   1      -1.877   3.658  -4.398  0.00  0.00    -0.448 OA
+ATOM     32  H15 ZMR A   1      -1.008   3.808  -4.044  0.00  0.00    +0.236 HD
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  24  27
+ENDBRANCH   5  24
+TORSDOF 12
+ENDMDL

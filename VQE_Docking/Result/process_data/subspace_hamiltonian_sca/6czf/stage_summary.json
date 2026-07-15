@@ -1,0 +1,41 @@
+{
+  "strategy": "subspace_hamiltonian_sca",
+  "description": "SubspaceVQE: Hamiltonian-aware blocking (graph partitioning), sca entanglement",
+  "iterations": 17,
+  "final_shots": 8192,
+  "execution_time_s": 3354.425022125244,
+  "strategy_type": "subspace",
+  "window_size": 2,
+  "max_epochs": 1000000,
+  "epoch_summaries": [
+    {
+      "epoch": 0,
+      "offset": null,
+      "energy_current": 234.29691223144533,
+      "energy_refined": -645.9305340576173,
+      "best_energy": -645.9305340576173
+    },
+    {
+      "epoch": 1,
+      "offset": null,
+      "energy_current": -634.9633205566406,
+      "energy_refined": -643.6015731201171,
+      "best_energy": -645.9305340576173
+    },
+    {
+      "epoch": 2,
+      "offset": null,
+      "energy_current": -638.4370953369141,
+      "energy_refined": -645.5909145507812,
+      "best_energy": -645.9305340576173
+    },
+    {
+      "epoch": 3,
+      "offset": null,
+      "energy_current": -638.2204497070313,
+      "energy_refined": -641.3884031982423,
+      "best_energy": -645.9305340576173
+    }
+  ],
+  "num_function_evaluations": 52465
+}

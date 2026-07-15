@@ -1,0 +1,828 @@
+MODEL 1
+REMARK VINA RESULT:    -4.094      0.000      0.000
+REMARK INTER + INTRA:          -9.573
+REMARK INTER:                  -6.727
+REMARK INTRA:                  -2.846
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       2.407   3.819  -1.647  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       3.617   3.684  -2.429  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       1.228   3.599  -2.606  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       1.785   2.614  -3.622  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       3.299   2.898  -3.605  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       4.106   1.644  -3.744  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       3.916   0.586  -4.570  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       4.896  -0.326  -4.366  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       5.744   0.175  -3.426  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       6.985  -0.261  -2.745  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       7.510  -1.356  -3.023  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       7.522   0.540  -1.808  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       6.957   1.728  -1.499  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       5.826   2.192  -2.086  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       5.203   1.471  -3.027  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       8.352   0.252  -1.333  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       5.444   3.106  -1.807  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       7.555   2.510  -0.560  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       7.471   3.536  -0.614  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       8.091   2.076   0.205  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       1.202   2.818  -4.899  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       1.293   2.028  -5.418  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       2.627   2.768  -0.574  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       3.926   2.811  -0.092  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1       4.220   2.090   1.292  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       2.971   2.024   2.144  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1       5.393   2.769   1.957  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1       4.565   0.577   0.845  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1       5.538  -0.456   1.653  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1       5.242  -1.838   1.131  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1       6.933   0.018   1.293  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1       5.143  -0.248   3.114  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       0.893   4.841  -3.188  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1      -0.619   5.259  -3.561  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -0.828   4.974  -5.034  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1      -0.928   6.637  -3.079  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -1.484   4.140  -2.712  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -3.063   4.205  -2.401  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -3.732   4.823  -3.566  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1      -3.466   2.786  -2.204  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -3.111   5.024  -1.151  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -4.066      1.978      7.081
+REMARK INTER + INTRA:          -9.526
+REMARK INTER:                  -7.327
+REMARK INTRA:                  -2.199
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       2.244   3.344  -1.004  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       2.673   2.192  -1.768  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       3.418   3.743  -0.098  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       4.638   3.350  -0.917  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       4.123   2.197  -1.799  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       4.709   2.241  -3.177  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       5.801   2.906  -3.626  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       5.972   2.652  -4.946  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.998   1.783  -5.333  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       4.592   1.099  -6.583  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       5.237   1.266  -7.635  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       3.503   0.311  -6.562  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       2.797   0.127  -5.424  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       3.115   0.716  -4.245  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       4.176   1.529  -4.154  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       3.212  -0.146  -7.401  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       2.537   0.536  -3.413  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       1.716  -0.699  -5.454  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       1.836  -1.709  -5.287  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       0.780  -0.315  -5.644  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       5.710   2.960  -0.074  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       6.507   3.395  -0.354  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       1.869   4.313  -2.110  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       0.492   4.423  -2.232  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1      -0.174   3.866  -3.562  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       0.712   2.830  -4.219  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1      -0.536   5.030  -4.451  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1      -1.480   3.089  -3.014  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1      -2.965   3.741  -2.826  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1      -3.547   3.913  -4.206  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1      -3.706   2.702  -2.005  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1      -2.688   5.058  -2.103  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       3.318   3.009   1.104  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1       3.936   3.521   2.503  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1       2.808   3.582   3.512  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1       4.752   4.756   2.309  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1       4.902   2.249   2.915  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1       4.569   0.692   2.667  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1       3.114   0.501   2.854  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1       4.998   0.434   1.266  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1       5.420   0.014   3.693  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -3.895      2.170      7.623
+REMARK INTER + INTRA:          -9.245
+REMARK INTER:                  -6.862
+REMARK INTRA:                  -2.384
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       2.223   2.553  -1.279  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       3.122   2.294  -2.385  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       3.098   2.836  -0.049  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       4.336   3.487  -0.645  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       4.397   2.906  -2.070  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       4.856   3.922  -3.071  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       5.864   4.824  -2.981  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       5.931   5.540  -4.129  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.979   5.062  -4.975  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       4.504   5.356  -6.348  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       5.043   6.251  -7.026  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       3.468   4.652  -6.836  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       2.877   3.682  -6.104  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       3.264   3.356  -4.846  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       4.280   4.000  -4.258  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       3.131   4.849  -7.755  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       2.773   2.606  -4.340  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       1.848   2.984  -6.656  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       1.314   3.388  -7.440  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       1.602   2.054  -6.290  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       5.489   3.183   0.122  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       5.719   3.932   0.659  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       1.407   3.710  -1.823  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       0.924   3.428  -3.092  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1      -0.400   4.173  -3.557  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1      -0.603   4.033  -5.051  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1      -0.357   5.598  -3.064  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1      -1.566   3.315  -2.842  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1      -3.083   3.839  -2.539  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1      -3.619   4.400  -3.831  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1      -3.811   2.581  -2.102  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1      -2.887   4.885  -1.444  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       3.388   1.606   0.580  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1       3.460   1.430   2.181  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1       2.606   0.236   2.555  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1       3.177   2.720   2.876  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1       5.038   0.995   2.388  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1       5.804  -0.181   1.599  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1       4.834  -1.268   1.347  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1       6.279   0.456   0.341  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1       6.904  -0.540   2.546  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -3.870      1.179      1.554
+REMARK INTER + INTRA:          -9.205
+REMARK INTER:                  -6.666
+REMARK INTRA:                  -2.539
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       2.801   3.587  -2.114  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       3.856   3.143  -2.999  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       1.546   3.784  -2.977  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       1.707   2.737  -4.069  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       3.234   2.555  -4.169  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       3.613   1.128  -4.417  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       3.054   0.224  -5.258  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       3.725  -0.950  -5.169  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.750  -0.778  -4.289  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       5.847  -1.602  -3.730  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       5.995  -2.786  -4.088  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       6.666  -1.052  -2.818  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       6.509   0.231  -2.423  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       5.532   1.043  -2.896  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       4.654   0.596  -3.803  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       7.402  -1.601  -2.424  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       5.465   2.012  -2.556  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       7.381   0.744  -1.513  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       7.027   1.279  -0.706  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       8.393   0.599  -1.632  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       1.125   3.179  -5.284  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       0.421   3.787  -5.095  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       2.768   2.459  -1.099  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       3.136   2.909   0.160  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1       4.536   2.423   0.733  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       4.754   2.941   2.138  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1       5.621   2.799  -0.246  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1       4.344   0.823   0.846  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1       5.346  -0.202   1.626  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1       6.747   0.311   1.420  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1       4.896  -0.105   3.072  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1       5.074  -1.547   0.955  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       1.561   5.100  -3.487  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1       0.297   6.096  -3.393  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -0.190   6.359  -4.803  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1       0.610   7.282  -2.542  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -0.820   5.132  -2.655  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -2.381   5.033  -3.038  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -2.486   4.390  -4.366  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1      -2.982   4.203  -1.959  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -2.811   6.465  -3.007  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -3.857      2.617      4.024
+REMARK INTER + INTRA:          -9.183
+REMARK INTER:                  -6.304
+REMARK INTRA:                  -2.879
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       2.416   2.762  -3.611  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       2.259   2.445  -2.207  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       1.747   4.126  -3.839  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       1.954   4.841  -2.513  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       2.046   3.689  -1.494  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       3.057   3.967  -0.424  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       3.773   5.094  -0.189  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       4.565   4.906   0.894  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.320   3.658   1.378  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       4.804   2.817   2.499  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       5.655   3.254   3.297  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       4.320   1.570   2.624  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       3.399   1.089   1.760  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       2.908   1.804   0.718  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       3.327   3.056   0.494  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       4.647   0.989   3.368  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       2.207   1.381   0.094  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       2.926  -0.173   1.947  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       3.449  -0.838   2.536  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       2.046  -0.464   1.499  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       0.881   5.729  -2.243  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       0.349   5.828  -3.023  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       3.925   2.703  -3.762  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       4.448   1.589  -3.122  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1       5.826   1.764  -2.352  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       6.042   3.207  -1.950  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1       6.933   1.179  -3.195  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1       5.588   0.927  -0.992  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1       6.726   0.075  -0.188  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1       6.125  -0.321   1.136  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1       6.981  -1.116  -1.093  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1       7.890   1.057  -0.070  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       0.382   3.906  -4.125  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1      -0.420   4.714  -5.267  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -0.116   4.057  -6.598  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1      -0.179   6.182  -5.156  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -1.983   4.352  -4.881  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -2.622   4.387  -3.404  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -4.087   4.536  -3.543  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1      -2.242   3.082  -2.798  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -1.936   5.562  -2.784  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -3.854      9.218     11.312
+REMARK INTER + INTRA:          -9.178
+REMARK INTER:                  -6.104
+REMARK INTRA:                  -3.074
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1      -3.191  -2.945   1.137  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1      -2.175  -2.319   1.957  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1      -2.594  -4.259   0.612  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1      -1.655  -4.686   1.729  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1      -1.261  -3.354   2.396  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1      -1.145  -3.484   3.883  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1      -0.778  -4.557   4.627  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1      -0.803  -4.224   5.940  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1      -1.153  -2.912   6.031  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1      -1.366  -1.921   7.112  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1      -1.200  -2.239   8.305  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1      -1.758  -0.679   6.780  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1      -1.942  -0.328   5.488  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1      -1.760  -1.181   4.450  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1      -1.378  -2.446   4.666  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1      -1.917  -0.005   7.500  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1      -1.917  -0.853   3.486  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1      -2.318   0.949   5.206  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1      -1.603   1.683   5.090  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1      -3.316   1.182   5.110  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1      -0.539  -5.393   1.212  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1      -0.385  -5.126   0.313  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1      -4.341  -3.058   2.122  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1      -4.403  -1.945   2.946  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1      -5.650  -1.822   3.923  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1      -6.420  -3.124   3.983  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1      -6.475  -0.627   3.513  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1      -4.957  -1.618   5.368  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1      -5.539  -0.690   6.578  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1      -5.313   0.745   6.179  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1      -7.010  -1.057   6.630  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1      -4.721  -1.131   7.791  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1      -1.909  -3.983  -0.591  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1      -2.113  -4.844  -1.939  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -1.247  -4.227  -3.018  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1      -3.562  -5.029  -2.243  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -1.423  -6.281  -1.512  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -0.868  -7.400  -2.528  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -1.717  -7.380  -3.738  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1       0.534  -6.988  -2.813  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -0.974  -8.652  -1.717  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -3.845      2.925      4.484
+REMARK INTER + INTRA:          -9.164
+REMARK INTER:                  -6.989
+REMARK INTRA:                  -2.175
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       0.191   3.954  -3.809  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       0.775   3.329  -2.641  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       0.201   5.468  -3.557  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       1.437   5.671  -2.695  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       1.597   4.319  -1.974  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       3.036   3.928  -1.827  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       4.120   4.366  -2.514  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       5.230   3.748  -2.043  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.853   2.937  -1.017  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       5.514   2.002  -0.076  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       6.747   1.830  -0.116  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       4.755   1.333   0.808  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       3.416   1.514   0.856  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       2.747   2.356   0.031  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       3.404   3.067  -0.895  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       5.187   0.691   1.440  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       1.726   2.450   0.116  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       2.698   0.828   1.786  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       2.560   1.226   2.727  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       2.294  -0.089   1.550  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       1.259   6.754  -1.798  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       0.478   7.238  -2.038  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       1.098   3.434  -4.910  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       1.659   2.215  -4.560  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1       2.992   1.779  -5.306  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       3.770   2.990  -5.775  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1       2.642   0.801  -6.400  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1       3.857   1.092  -4.127  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1       5.093   0.047  -4.340  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1       5.864   0.518  -5.546  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1       5.888   0.173  -3.054  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1       4.394  -1.296  -4.538  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1      -0.989   5.811  -2.879  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1      -2.296   6.387  -3.628  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -1.919   6.661  -5.070  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1      -2.909   7.505  -2.854  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -3.283   5.065  -3.616  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -3.718   4.223  -2.314  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -3.438   5.050  -1.121  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1      -5.172   3.969  -2.498  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -2.872   2.995  -2.429  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -3.742      7.773     10.471
+REMARK INTER + INTRA:          -8.994
+REMARK INTER:                  -6.710
+REMARK INTRA:                  -2.284
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       0.599  -0.329   6.586  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       0.620  -1.754   6.332  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       0.552   0.368   5.219  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1      -0.223  -0.613   4.354  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       0.063  -1.976   5.012  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1      -1.137  -2.872   4.993  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1      -1.928  -3.271   6.019  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1      -2.910  -4.075   5.544  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1      -2.765  -4.156   4.193  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1      -3.456  -4.830   3.068  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1      -4.464  -5.532   3.274  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1      -2.962  -4.683   1.828  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1      -1.868  -3.924   1.597  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1      -1.191  -3.275   2.576  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1      -1.590  -3.360   3.852  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1      -3.412  -5.141   1.062  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1      -0.362  -2.712   2.337  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1      -1.423  -3.791   0.318  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1      -0.425  -3.610   0.136  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1      -2.085  -3.869  -0.466  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       0.210  -0.553   3.005  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       1.133  -0.774   2.959  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1      -0.632  -0.202   7.466  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1      -1.093   1.106   7.493  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1      -2.580   1.370   7.001  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1      -2.591   1.972   5.613  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1      -3.300   2.191   8.043  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1      -3.188  -0.121   6.873  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1      -4.573  -0.520   6.107  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1      -5.487   0.674   6.202  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1      -4.124  -0.799   4.685  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1      -5.069  -1.741   6.880  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       1.878   0.551   4.770  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1       2.537   2.003   4.535  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1       3.808   2.073   5.355  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1       1.531   3.087   4.734  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1       2.976   1.906   2.948  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1       3.786   0.693   2.265  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1       2.812  -0.358   1.901  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1       4.436   1.299   1.071  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1       4.747   0.301   3.341  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:    -3.700      1.953      3.151
+REMARK INTER + INTRA:          -8.925
+REMARK INTER:                  -6.724
+REMARK INTRA:                  -2.201
+REMARK UNBOUND:                -2.846
+REMARK  Name = 6czf_ligand
+REMARK  12 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PB_1  and  O3A_5
+REMARK    2  A    between atoms: O3A_5  and  PA_6
+REMARK    3  A    between atoms: PA_6  and  O5'_9
+REMARK    4  A    between atoms: O5'_9  and  C5'_10
+REMARK    5  A    between atoms: C5'_10  and  C4'_11
+REMARK    6  A    between atoms: C3'_13  and  O3'_14
+REMARK    7  A    between atoms: O3'_14  and  PC_29
+REMARK    8  A    between atoms: C2'_15  and  O2'_16
+REMARK    9  A    between atoms: C1'_17  and  N9_18
+REMARK   10  A    between atoms: C2_25  and  N2_26
+REMARK   11  A    between atoms: PC_29  and  O3C_32
+REMARK   12  A    between atoms: O3C_32  and  PD_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' G4P A   1       3.912   4.288  -3.373  0.00  0.00    +0.238 C 
+ATOM      2  O4' G4P A   1       4.396   3.482  -4.474  0.00  0.00    -0.375 OA
+ATOM      3  C3' G4P A   1       2.422   3.960  -3.200  0.00  0.00    +0.283 C 
+ATOM      4  C2' G4P A   1       2.334   2.503  -3.627  0.00  0.00    +0.254 C 
+ATOM      5  C1' G4P A   1       3.505   2.348  -4.617  0.00  0.00    +0.354 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  G4P A   1       4.177   1.016  -4.486  0.00  0.00    -0.164 N 
+ATOM      7  C8  G4P A   1       5.387   0.712  -3.956  0.00  0.00    +0.419 A 
+ATOM      8  N7  G4P A   1       5.591  -0.625  -4.037  0.00  0.00    -0.192 NA
+ATOM      9  C5  G4P A   1       4.479  -1.184  -4.589  0.00  0.00    +0.249 A 
+ATOM     10  C6  G4P A   1       4.020  -2.544  -4.957  0.00  0.00    +0.241 C 
+ATOM     11  O6  G4P A   1       4.743  -3.535  -4.746  0.00  0.00    -0.396 OA
+ATOM     12  N1  G4P A   1       2.817  -2.682  -5.539  0.00  0.00    -0.228 N 
+ATOM     13  C2  G4P A   1       2.027  -1.610  -5.773  0.00  0.00    +0.114 C 
+ATOM     14  N3  G4P A   1       2.381  -0.340  -5.457  0.00  0.00    -0.201 N 
+ATOM     15  C4  G4P A   1       3.563  -0.085  -4.881  0.00  0.00    +0.233 A 
+ATOM     16  H9  G4P A   1       2.500  -3.592  -5.803  0.00  0.00    +0.247 HD
+ATOM     17  H12 G4P A   1       1.735   0.436  -5.661  0.00  0.00    +0.321 HD
+BRANCH  13  18
+ATOM     18  N2  G4P A   1       0.809  -1.809  -6.344  0.00  0.00    -0.321 NA
+ATOM     19  H10 G4P A   1       0.208  -1.003  -6.570  0.00  0.00    +0.202 HD
+ATOM     20  H11 G4P A   1       0.487  -2.766  -6.549  0.00  0.00    +0.202 HD
+ENDBRANCH  13  18
+ENDBRANCH   5   6
+BRANCH   4  21
+ATOM     21  O2' G4P A   1       1.075   2.222  -4.217  0.00  0.00    -0.420 OA
+ATOM     22  H6  G4P A   1       1.154   2.259  -5.163  0.00  0.00    +0.246 HD
+ENDBRANCH   4  21
+BRANCH   1  23
+ATOM     23  C5' G4P A   1       4.845   3.858  -2.256  0.00  0.00    +0.344 C 
+BRANCH  23  24
+ATOM     24  O5' G4P A   1       4.296   4.133  -1.013  0.00  0.00    -0.318 OA
+BRANCH  24  25
+ATOM     25  PA  G4P A   1       4.162   2.928   0.014  0.00  0.00    +0.232 P 
+ATOM     26  O1A G4P A   1       2.797   2.281  -0.086  0.00  0.00    -0.506 OA
+ATOM     27  O2A G4P A   1       4.518   3.421   1.395  0.00  0.00    -0.506 OA
+BRANCH  25  28
+ATOM     28  O3A G4P A   1       5.233   1.857  -0.546  0.00  0.00    -0.247 OA
+BRANCH  28  29
+ATOM     29  PB  G4P A   1       5.951   0.682   0.332  0.00  0.00    +0.164 P 
+ATOM     30  O1B G4P A   1       4.914   0.153   1.288  0.00  0.00    -0.551 OA
+ATOM     31  O2B G4P A   1       6.358  -0.341  -0.712  0.00  0.00    -0.551 OA
+ATOM     32  O3B G4P A   1       7.110   1.405   1.014  0.00  0.00    -0.551 OA
+ENDBRANCH  28  29
+ENDBRANCH  25  28
+ENDBRANCH  24  25
+ENDBRANCH  23  24
+ENDBRANCH   1  23
+BRANCH   3  33
+ATOM     33  O3' G4P A   1       1.680   4.814  -4.045  0.00  0.00    -0.301 OA
+BRANCH  33  34
+ATOM     34  PC  G4P A   1       0.353   5.594  -3.564  0.00  0.00    +0.235 P 
+ATOM     35  O1C G4P A   1      -0.245   6.280  -4.775  0.00  0.00    -0.506 OA
+ATOM     36  O2C G4P A   1       0.632   6.437  -2.365  0.00  0.00    -0.506 OA
+BRANCH  34  37
+ATOM     37  O3C G4P A   1      -0.637   4.335  -3.168  0.00  0.00    -0.247 OA
+BRANCH  37  38
+ATOM     38  PD  G4P A   1      -2.246   4.344  -3.231  0.00  0.00    +0.164 P 
+ATOM     39  O1D G4P A   1      -2.648   4.219  -4.648  0.00  0.00    -0.551 OA
+ATOM     40  O2D G4P A   1      -2.661   3.166  -2.420  0.00  0.00    -0.551 OA
+ATOM     41  O3D G4P A   1      -2.585   5.658  -2.603  0.00  0.00    -0.551 OA
+ENDBRANCH  37  38
+ENDBRANCH  34  37
+ENDBRANCH  33  34
+ENDBRANCH   3  33
+TORSDOF 12
+ENDMDL

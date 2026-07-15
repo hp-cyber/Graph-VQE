@@ -1,0 +1,1 @@
+cuda_major=12

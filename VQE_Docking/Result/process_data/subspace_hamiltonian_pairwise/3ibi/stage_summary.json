@@ -1,0 +1,41 @@
+{
+  "strategy": "subspace_hamiltonian_pairwise",
+  "description": "SubspaceVQE: Hamiltonian-aware blocking (graph partitioning), pairwise entanglement",
+  "iterations": 17,
+  "final_shots": 8192,
+  "execution_time_s": 2291.166557073593,
+  "strategy_type": "subspace",
+  "window_size": 2,
+  "max_epochs": 1000000,
+  "epoch_summaries": [
+    {
+      "epoch": 0,
+      "offset": null,
+      "energy_current": -115.09981970214841,
+      "energy_refined": -644.9590661621094,
+      "best_energy": -644.9590661621094
+    },
+    {
+      "epoch": 1,
+      "offset": null,
+      "energy_current": -643.7355256347655,
+      "energy_refined": -644.646645751953,
+      "best_energy": -644.9590661621094
+    },
+    {
+      "epoch": 2,
+      "offset": null,
+      "energy_current": -643.2531840820311,
+      "energy_refined": -644.3222607421874,
+      "best_energy": -644.9590661621094
+    },
+    {
+      "epoch": 3,
+      "offset": null,
+      "energy_current": -643.4950897216795,
+      "energy_refined": -643.2464388427734,
+      "best_energy": -644.9590661621094
+    }
+  ],
+  "num_function_evaluations": 36773
+}
