@@ -1,0 +1,40 @@
+\begin{wrapfigure}{R}{0.64\textwidth}
+    \vspace{-10pt}
+  \centering
+  \includegraphics[width=\linewidth]{figure/cudaq.jpg}
+  \caption {Transformation framework from Qiskit to CUDA-Q}
+    \vspace{-10pt}
+\end{wrapfigure}
+
+We propose a Qiskit-to-CUDA-Q transformation workflow for GPU-accelerated quantum algorithm verification prior to hardware deployment. State-vector simulation requires $2^N \times 16$ bytes, limiting Qiskit simulators to $\sim$30 qubits per node. CUDA-Q overcomes this through JIT-compiled quantum kernels, multi-GPU memory pooling ($>$40 qubits), and multi-QPU backends for parallel execution. We have validated this workflow on VQE algorithms for protein structure prediction~\cite{feng2026csvqe, feng2026graphvqe} and will extend it to broader quantum algorithm domains.
+
+\underline{\textit{Preliminary Results:}}
+We implemented two parallel strategies on the CUDA-Q multi-QPU backend: (1) Hamiltonian batching, distributing $M$ Pauli term evaluations across $G$ GPUs; and (2) parallel block optimization, partitioning weakly coupled qubit blocks for concurrent execution on separate emulated QPUs. As shown in Figure~\ref{fig:gpu_scaling}, average iteration time decreases from 170.57s (1 GPU) to 48.63s (4 GPUs), a $3.5\times$ speedup approaching the theoretical $S = \min(G, T)$ limit, with solution quality preserved ($-389.1$ to $-388.6$)~\cite{feng2026graphvqe}.
+
+\begin{wrapfigure}{R}{0.4\textwidth}
+    \vspace{-10pt}
+  \centering
+  \includegraphics[width=\linewidth]{figure/gpu_scaling_graph.png}
+  \caption {Multi-QPU Scaling}
+    \vspace{-10pt}
+  \label{fig:gpu_scaling}
+\end{wrapfigure}
+
+\underline{\textit{Operator and Circuit Translation:}}
+A Qiskit Pauli operator $O = \sum_{k=1}^{M} c_k P_k$, $P_k \in \{I, X, Y, Z\}^{\otimes N}$, is translated to CUDA-Q spin operators with index remapping $q_{\text{CUDA-Q}} = (N-1) - q_{\text{Qiskit}}$ (little-endian to big-endian), preserving $\langle \psi | O | \psi \rangle$. Parameterized circuits $U(\boldsymbol{\theta})|0\rangle^{\otimes N}$, $\boldsymbol{\theta} \in \mathbb{R}^P$, are reconstructed as CUDA-Q kernels compiled to Quantum Intermediate Representation (QIR) via JIT, enabling parameter updates $\boldsymbol{\theta}^{(t)} \to \boldsymbol{\theta}^{(t+1)}$ without kernel reconstruction. For a hardware-efficient ansatz with $(R_y, R_z)$ gates and $r$ layers, $P = 2N(r+1)$. Gate-level semantic matching ensures $U_{\text{Qiskit}}(\boldsymbol{\theta}) = U_{\text{CUDA-Q}}(\boldsymbol{\theta})\ \forall\ \boldsymbol{\theta}$. We will expand translation coverage to additional circuit families (UCCSD, QAOA mixers, Trotterized evolution), noise models, and execution primitives.
+
+\underline{\textit{Execution Backend Configuration:}}
+CUDA-Q provides three execution targets: (1) \textit{Single-GPU}: state-vector simulation, $\sim$32 qubits per 80\,GB GPU. (2) \textit{Memory pooling}: aggregates $G$ GPUs via MPI, $N_{\max} \approx \log_2(G \cdot M_{\text{GPU}} / 16)$ qubits. (3) \textit{Multi-QPU}: emulates $G$ independent processors, speedup $S = \min(G, T)$ over $T$ independent tasks. We have implemented Hamiltonian term batching (distributing $M$ Pauli evaluations across GPUs) and concurrent subspace optimization (partitioning weakly coupled qubit blocks across emulated QPUs). We will extend the multi-QPU parallelism to distributed parameter-shift gradient evaluation (distributing $2P$ shifted circuits across $G$ processors), circuit batching over multiple parameter sets, and parallel candidate solution screening.
+
+\underline{\textit{Hybrid Quantum-Classical Integration:}}
+Variational algorithms iteratively compute $\langle O \rangle_{\boldsymbol{\theta}} = \langle \psi(\boldsymbol{\theta}) | O | \psi(\boldsymbol{\theta}) \rangle$ and sample measurement outcomes via CUDA-Q's observation and sampling interfaces. Gradient-based optimization uses the parameter-shift rule:
+\begin{equation}
+\frac{\partial \langle O \rangle}{\partial \theta_i} = \frac{1}{2} \left[ \langle O \rangle_{\boldsymbol{\theta} + \frac{\pi}{2}\mathbf{e}_i} - \langle O \rangle_{\boldsymbol{\theta} - \frac{\pi}{2}\mathbf{e}_i} \right]
+\end{equation}
+requiring $2P$ circuit evaluations for $\nabla_{\boldsymbol{\theta}} \langle O \rangle \in \mathbb{R}^P$. On the multi-QPU backend, these evaluations are distributed across $G$ processors, reducing wall-clock time by a factor approaching $G$. Qiskit execution primitives (estimators, samplers) are mapped to CUDA-Q counterparts, enabling hardware-independent algorithm verification that isolates algorithmic errors from hardware noise.
+
+\underline{\textit{Verification and Hardware Transition:}}
+The transformation follows a three-stage protocol: (1) \textit{Cross-framework equivalence}: verify $\left| \langle O \rangle^{\text{Qiskit}}_{\boldsymbol{\theta}} - \langle O \rangle^{\text{CUDA-Q}}_{\boldsymbol{\theta}} \right| < \epsilon$ for test vectors $\boldsymbol{\theta}$, tracing discrepancies to qubit ordering or gate decomposition errors. (2) \textit{GPU-scale validation}: execute at system sizes exceeding near-term hardware ($>$40 qubits) using exact state-vector simulation without hardware noise. (3) \textit{Hardware deployment}: transition verified algorithms via CUDA-Q's unified backend interface supporting IonQ, Quantinuum, IQM, and Amazon Braket.
+
+\underline{\textit{Evaluation Plan:}}
+Translation correctness is assessed via expectation value agreement ($<\epsilon$) and unitary equivalence. Scalability is measured by wall-clock time, memory utilization, and speedup efficiency $S/G$ under increasing $N$ and $M$. Convergence quality is compared between GPU simulation and hardware execution. Success criteria: verified translation accuracy, near-linear scaling ($S/G > 0.8$), and reduced hardware-dependent development overhead.

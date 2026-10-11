@@ -1,0 +1,50 @@
+--- a/simulator_mps_dist.cu
++++ b/simulator_mps_dist.cu
+@@ -193,6 +193,7 @@
+   std::condition_variable hbatchWorkDone;
+   HBatchJob hbatchJob;
+   std::vector<std::exception_ptr> hbatchFailures;
++  std::vector<int> hbatchWorkerGpuIds;
+   std::size_t hbatchGeneration = 0;
+   std::size_t hbatchCircuitGeneration = 0;
+   std::atomic<std::size_t> hbatchNextTerm{0};
+@@ -939,6 +940,12 @@
+     hbatchReadyWorkers = 0;
+     hbatchCompleted = 0;
+     hbatchWorkerQubits = 0;
++    hbatchWorkerGpuIds.clear();
++    // New workers must not consume the previous job's dangling pointers.
++    // Its vectors and source MPS have already been destroyed after observe.
++    hbatchGeneration = 0;
++    hbatchCircuitGeneration = 0;
++    hbatchJob = HBatchJob{};
+     hbatchGateQueue.clear();
+     hbatchStopping = false;
+     if (hbatchPrimaryReady) {
+@@ -949,13 +956,13 @@
+   }
+ 
+   void ensureHbatchWorkers() {
++    if (!hbatchWorkers.empty()) {
++      if (hbatchWorkerQubits == allocated && hbatchWorkerGpuIds == hbatchGpuIds)
++        return;
++      shutdownHbatchWorkers();
++    }
+     if (hbatchGpuIds.size() <= 1)
+       return;
+-    if (!hbatchWorkers.empty()) {
+-      if (hbatchWorkerQubits == allocated)
+-        return;
+-      shutdownHbatchWorkers();
+-    }
+ 
+     if (const char *requestedMode = std::getenv("CUDAQ_MPS_HBATCH_MODE")) {
+       const std::string mode(requestedMode);
+@@ -969,6 +976,7 @@
+     }
+ 
+     hbatchWorkerQubits = allocated;
++    hbatchWorkerGpuIds = hbatchGpuIds;
+     hbatchFailures.assign(hbatchGpuIds.size(), nullptr);
+     hbatchReadyWorkers = 0;
+     CUDA_CHECK(cudaSetDevice(hbatchGpuIds.front()));
