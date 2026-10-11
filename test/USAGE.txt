@@ -1,0 +1,134 @@
+Graph independent VQE matched benchmark
+
+55 proteins x 2 shot settings x 3 optimizers x 2 entanglement patterns = 660 jobs.
+Each job runs one protein and only IndependentSubspaceVQE. The two original
+Graph-VQE strategy directories are unchanged. Their common graph/circuit code
+is snapshotted under sources/independent-vqe, with campaign adapters in tools.
+The copied base modules include utilities; they do not schedule other strategies.
+
+Settings
+  shots=-1: analytic MPS expectation, no sampling or dense-state readout.
+  shots=1000: 1000 samples for energy estimation and 1000 final readout samples.
+    Includes sampling fluctuations; no additional gate or measurement-error model.
+  Optimizers: COBYLA, L-BFGS-B (lbfgs), SPSA.
+  Entanglement: linear / reverse_linear within each partition, four repetitions.
+  Hamiltonian coefficient graph -> local partitions of at most 12 qubits.
+  Optimize each partition once; combine its best parameters as a product state.
+  Then optimize the composed global circuit once, including every Hamiltonian
+    term and trainable R_ZY/R_YZ rotations on cross-partition interaction edges.
+    These cross gates start at zero. No alternating local/global outer loop.
+  Stop at the first consecutive energy change |delta E| < 1, no patience/window.
+    This is the matched benchmark stopping rule. COBYLA/L-BFGS compare objective
+    calls (excluding derivative probes); SPSA compares successive updates.
+    Optimizer convergence or the numerical budget can also end a solve.
+  Default numerical budget: 1,000,000 (COBYLA objective calls; L-BFGS iteration/
+    function limits; SPSA updates). --max-iter is mainly useful for smoke tests.
+
+Acceleration and exactness
+  Backend: tensornet-mps-mqpu-shots. Analytic mode uses shared Pauli-prefix
+  contractions; diagonal sampled energies reuse a shared measurement stream.
+  Absolute and relative SVD cutoffs are zero. Full-register rank bounds are used
+  for the nonlocal global circuit, up to the backend's signed-int rank capacity.
+  Actual ranks, numerical roundoff, GPU memory and runtime still limit execution.
+  There is no artificial total-qubit cutoff, and the catalog includes 97 qubits.
+
+  L-BFGS differentiates the recorded circuit in reverse using CUDA PyTorch:
+  nearest-neighbor MPS for local circuits, general tensor contractions for the
+  nonlocal composed global circuit. No parameter-shift loop or finite-difference
+  fallback is used for campaign L-BFGS. For 1000 shots this is a HYBRID estimator:
+  analytic gradients, sampled objective values and sampled final readout.
+  SPSA uses two perturbation evaluations per update plus its objective evaluation,
+  five calibration pairs, and the same accelerated backend for every evaluation.
+
+  Cross-partition gates can create much higher entanglement than a simple linear
+  ansatz. Exact 97-qubit global simulations/gradients are not guaranteed to fit or
+  finish quickly. The tensor-gradient workspace check reports excessive plans;
+  it never substitutes a truncated gradient. Failed cases remain retryable.
+  Shape planning on 3d7z (97 qubits) found 754 cross edges and 2478 parameters.
+  Current greedy plans require an intermediate of about 295 exabytes (linear)
+  or 18 petabytes (reverse_linear), even for one term. These particular exact
+  global-gradient plans do not fit current GPUs; no 97-qubit run was completed.
+
+Run on this server (full campaign is not started by installation)
+  cd /home/fengy46/Graph-VQE/test
+  ./run.sh --dry-run
+  ./run.sh
+
+Default scheduling: GPUs 2,3,4,5,6; five independent protein jobs per GPU (25 total).
+One common queue, refill a GPU slot as soon as its previous job exits. A job uses
+one GPU for its sequential local solves and global solve. Configure available
+GPUs/concurrency explicitly when sharing a server or using a different machine:
+  ./run.sh --gpus 0,1 --jobs-per-gpu 1
+
+Filters (comma separated, combinable)
+  ./run.sh --proteins 3ckz,1e2k --optimizers cobyla,lbfgs,spsa
+  ./run.sh --shots=-1,1000 --entanglements linear,reverse_linear
+  ./run.sh --proteins 3ckz --max-iter 3 --output validation/my_smoke
+
+The immutable job templates are in jobs/shots_*/optimizer/pattern/protein/job.json.
+campaign.json is the scheduling source; use --proteins to select proteins.
+Results default to runs/ with the same hierarchy. Validation uses a separate
+validation/ directory, so the full campaign starts clean.
+
+Ctrl+C terminates this scheduler's children. Rerunning skips completed cases and
+resumes unfinished solves from the latest persisted objective parameters.
+Completed local solves are reused, with their best parameters. Pending global
+solves restore global candidates and the latest global parameters. SciPy rebuilds
+its internal optimizer state; SPSA additionally restores saved RNG/gain/update
+state. This is a warm restart, not a promise of an identical uninterrupted path.
+Changing shot/optimizer/pattern settings requires a different output directory.
+Each case and campaign directory is locked to prevent duplicate concurrent runs.
+
+Recorded per case
+  protocol.json: protein, mode, optimizer, settings, target, stopping, GPU,
+    backend manifest/checksums and strategy source checksum.
+  partition.json: partition/crossing structure and local/global parameter counts,
+    written before optimization so it is available even if the job fails.
+  optimization_trace.jsonl: objective/probe parameters and counts, energy, timing,
+    optimizer starts/restarts, accepted iterations with energy and duration.
+    iteration_tail is explicitly incomplete when stopping before a callback.
+  *_evaluations.jsonl: optimizer-specific counters/timings, gradients/calibration.
+  backend_evaluations.jsonl: CUDA-Q call durations, parameters, shots.
+  System_Energy/*.csv: local/product/global energy calls; appended on resume.
+    The common journal is authoritative for optimizer iteration timing.
+  solves/*.json and optimizer_states/*.json: latest/best parameters, solve state.
+  state.json, final_parameters.npy, energy_summary.json: final best state and
+    partition metadata, parameter count, local/global summaries.
+  readout.json and Structures/*.xyz: only for shots=1000.
+  job_status.json: complete only after all required exports succeed.
+  run.log: optimizer progress and failures.
+
+Install on another server
+  Copy this entire test directory (runs/validation/build outputs are optional).
+  Activate a suitable Python 3.11 environment with CUDA/cuQuantum/MPI and the
+    source-build tools described at the top of setup_local_cudaq.sh.
+  python -m pip install -r requirements.txt
+  Install CUDA-enabled PyTorch compatible with that server.
+  ./setup_local_cudaq.sh
+  source ./activate_local_cudaq.sh
+  ./run.sh --dry-run
+  ./run.sh --gpus 0,1 --jobs-per-gpu 1
+
+The installer is identical to the updated
+/home/fengy46/VQE_Docking_cudaq_tensornet-mps/setup_local_cudaq.sh. Either copy
+builds relative to its own directory, bundles all four backend sources, checks
+gradient dependencies, installs a manifest with library checksums, and tests
+changing local/global register widths. It does not need the old server's paths.
+CUDAQ_LOCAL and GRAPH_VQE_PYTHON override discovery. The application's gradients
+live in tools/, not in the backend library. An existing custom backend install
+can be shared by sourcing its activate_local_cudaq.sh before this runner.
+
+Validation
+  source environment.sh
+  "$GRAPH_VQE_PYTHON" -m unittest discover -s tests -v
+  "$GRAPH_VQE_PYTHON" tools/validate_graph_gradients.py --gpu 0
+  "$GRAPH_VQE_PYTHON" tools/validate_resume.py --gpu 0 --shots -1
+  "$GRAPH_VQE_PYTHON" tools/validate_resume.py --gpu 0 --shots 1000
+  "$GRAPH_VQE_PYTHON" tools/check_largest_graph.py
+
+Resume validation expects fresh validation/resume/ case directories. Gradient
+checks use real seven-qubit local/global circuits with nonzero cross-gate angles,
+independent dense references and native parameter-shift energy differences.
+check_largest_graph only plans shapes; it does not evolve a 97-qubit state.
+Installer tests verify shell/Python syntax and deterministic extraction/migration;
+they do not build CUDA-Q. A clean-server build must be tested on that server.
