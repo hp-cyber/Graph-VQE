@@ -33,13 +33,8 @@ def stop_workers(pending):
     for p in running:
         try:os.killpg(p.pid,signal.SIGTERM)
         except ProcessLookupError:pass
-    deadline=time.monotonic()+10
     for p in running:
-        try:p.wait(timeout=max(0,deadline-time.monotonic()))
-        except subprocess.TimeoutExpired:
-            try:os.killpg(p.pid,signal.SIGKILL)
-            except ProcessLookupError:pass
-            p.wait()
+        p.wait()
 
 
 def run(jobs,gpus,per_gpu,output):

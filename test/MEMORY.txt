@@ -46,3 +46,8 @@ Deploy the modified test directory to the other server. Its installed CUDA-Q
 plugin also needs the preceding stable-SVD repair; use the updated
 test/setup_local_cudaq.sh there. Changing this local checkout cannot update
 another server's installed binary automatically.
+
+No elapsed-time limits are imposed on GPU queries, worker completion/cleanup,
+or validation subprocesses. Failed monitoring commands leave existing workers
+running and pause new launches until a successful query. Ctrl+C still signals
+workers to stop; it does not use a timed force-kill deadline.

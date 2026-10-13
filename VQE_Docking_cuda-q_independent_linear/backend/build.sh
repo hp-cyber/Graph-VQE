@@ -166,7 +166,7 @@ def select_host_compiler(lines):
             rejected.append(f'{candidate}: not executable')
             continue
         result = subprocess.run([str(candidate), '-dumpfullversion', '-dumpversion'],
-                                capture_output=True, text=True, timeout=10)
+                                capture_output=True, text=True)
         version = result.stdout.strip()
         if result.returncode or not re.fullmatch(r'11(?:\.\d+)*', version):
             rejected.append(f'{candidate}: expected GCC 11, got {version!r}')

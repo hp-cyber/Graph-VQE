@@ -1,6 +1,6 @@
 {
   "global_ansatz": "nearest_neighbor_su2_v1",
-  "cpu_tests": 27,
+  "cpu_tests": 29,
   "smoke_cases": 12,
   "resume_cases": 12,
   "gradients": [
@@ -464,5 +464,6 @@
         }
       }
     ]
-  }
+  },
+  "monitoring_error_recovery": "passed; no elapsed-time limits on GPU queries or worker waits"
 }

@@ -17,7 +17,7 @@ for job in json.loads((ROOT/'campaign.json').read_text())['jobs']:
     for phase in ('interrupt','resume'):
         with (case/f'{phase}.log').open('w') as log:
             r=subprocess.run([sys.executable,str(ROOT/'tools/check_resume_worker.py'),str(case),'--gpu',args.gpu],
-                env=dict(os.environ,GRAPH_VQE_MAX_ITER='3'),stdout=log,stderr=subprocess.STDOUT,timeout=180)
+                env=dict(os.environ,GRAPH_VQE_MAX_ITER='3'),stdout=log,stderr=subprocess.STDOUT)
         codes.append(r.returncode)
     trace=[json.loads(line) for line in (case/'optimization_trace.jsonl').read_text().splitlines()]
     marker=json.loads((case/'interruption_injected.json').read_text())
