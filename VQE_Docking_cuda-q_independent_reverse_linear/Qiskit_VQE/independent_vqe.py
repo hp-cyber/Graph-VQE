@@ -1,7 +1,8 @@
 """Hamiltonian graph communities, independent local VQEs, then full-H refinement.
 
 The partition is a warm-start heuristic whenever Hamiltonian terms cross blocks.
-No crossing term is discarded from the global objective.
+No crossing term is discarded from the global objective. The global ansatz is
+a single nearest-neighbor chain; local rotation parameters initialize it.
 """
 from concurrent.futures import ThreadPoolExecutor
 from itertools import combinations
@@ -32,14 +33,15 @@ class IndependentSubspaceVQE(SubspaceVQE):
         kwargs["immediate_early_stopping"] = True
         kwargs["use_hamiltonian_blocking"] = True
         kwargs.setdefault("use_gradient_optimizer", False)
+        kwargs.setdefault("entanglement", "linear")
         super().__init__(energy_tol=energy_tol, shots=shots, **kwargs)
         self.window_size = None  # No geometric sliding window in this strategy.
         if self.reps < 0 or min(self.max_epochs, self.block_maxiter, self.global_maxiter) < 0:
             raise ValueError("Circuit depth and iteration limits must be nonnegative")
         if not np.isfinite(energy_tol) or energy_tol <= 0:
             raise ValueError("energy_tol must be positive")
-        if self.entanglement not in ("linear", "reverse_linear", "circular", "sca"):
-            raise ValueError("Expected linear, reverse_linear, circular, or sca")
+        if self.entanglement not in ("linear", "reverse_linear"):
+            raise ValueError("Expected linear or reverse_linear")
         if any(g not in ("rx", "ry", "rz") for g in self.su2_gates):
             raise ValueError("Parameter-shift requires rx, ry, or rz rotations")
         if max_block_qubits is not None and max_block_qubits < 1:
@@ -88,28 +90,27 @@ class IndependentSubspaceVQE(SubspaceVQE):
             terms = self.local_terms[index] or [("I" * width, 0.0)]
             pauli = SparsePauliOp.from_list(terms)
             count = len(block) * (self.reps + 1) * len(self.su2_gates)
-            kernel = self._build_kernel([list(range(len(block)))], width, [])
+            kernel = self._build_kernel([list(range(len(block)))], width)
             self.local_models.append(dict(kernel=kernel, hamiltonian=self._spin(pauli),
                 pauli=pauli, qubits=block, width=width, count=count,
                 constant=all(set(label) <= {"I"} for label, _ in terms),
-                start=offset, stop=offset + count))
+                start=offset, stop=offset + count,
+                parameter_indices=[(layer*self.num_qubits+q)*len(self.su2_gates)+gate
+                    for layer in range(self.reps+1) for q in block
+                    for gate in range(len(self.su2_gates))]))
             offset += count
         self.local_parameter_count = offset
-        self.num_params = offset + 2 * len(self.cross_edges)
-        self.kernel = self._build_kernel(self.blocks, max(2, self.num_qubits), self.cross_edges)
+        self.num_params = offset
+        # Global parameter order is layer, physical qubit, rotation gate.
+        # Partitions affect the initialization, never the global CX topology.
+        self.kernel = self._build_kernel([list(range(self.num_qubits))], max(2, self.num_qubits))
         self.param_bounds = [(-np.pi, np.pi)] * self.num_params
         self.param_order = [(gate, q, layer, gate_index)
-            for block in self.blocks for layer in range(self.reps + 1)
-            for q in block for gate_index, gate in enumerate(self.su2_gates)]
+            for layer in range(self.reps + 1) for q in range(self.num_qubits)
+            for gate_index, gate in enumerate(self.su2_gates)]
         self.qubit_to_params = {q: [] for q in range(self.num_qubits)}
         for index, (_, q, _, _) in enumerate(self.param_order):
             self.qubit_to_params[q].append(index)
-        for a, b in self.cross_edges:
-            for gate_index, name in enumerate(("rzy", "ryz")):
-                index = len(self.param_order)
-                self.param_order.append((f"{name}_{a}_{b}", a, self.reps + 1, gate_index))
-                self.qubit_to_params[a].append(index)
-                self.qubit_to_params[b].append(index)
         self.local_results = []
         self.global_results = []
         self.partition_summary = dict(
@@ -118,10 +119,12 @@ class IndependentSubspaceVQE(SubspaceVQE):
             crossing_term_count=len(self.cross_terms),
             crossing_coefficient_l1=sum(abs(c) for _, c in self.cross_terms),
             cross_edges=[list(e) for e in self.cross_edges],
-            local_parameter_count=offset, cross_parameter_count=2 * len(self.cross_edges),
+            local_parameter_count=offset, cross_parameter_count=0, global_parameter_count=self.num_params,
             max_block_qubits=max_block_qubits,
             independent_objectives_exactly_separable=not self.cross_terms,
-            cross_gates="R_ZY and R_YZ, initialized to zero",
+            cross_gates="none", global_ansatz="nearest_neighbor_su2_v1",
+            global_entanglement=self.entanglement, reps=self.reps,
+            initialization="local best rotations mapped by qubit/layer/gate; not a product-state embedding",
         )
 
     @staticmethod
@@ -131,7 +134,7 @@ class IndependentSubspaceVQE(SubspaceVQE):
         return qiskit_sparsepauliop_to_cudaq_spin(pauli) + 0.0 * cudaq.spin.i(0)
 
     def _get_block_param_indices(self, qubits):
-        # Cross-block rotations belong to both endpoints, but occur only once.
+        # Every rotation belongs to exactly one physical qubit.
         return sorted({i for q in qubits for i in self.qubit_to_params[q]})
 
     def _partition(self):
@@ -154,9 +157,8 @@ class IndependentSubspaceVQE(SubspaceVQE):
                 pending.extend((left, right))
         return sorted(result, key=lambda block: block[0])
 
-    def _build_kernel(self, blocks, width, cross_edges):
+    def _build_kernel(self, blocks, width):
         count = sum(len(b) for b in blocks) * (self.reps + 1) * len(self.su2_gates)
-        count += 2 * len(cross_edges)
         kernel, *params = cudaq.make_kernel(*([float] * count))
         register = kernel.qalloc(width)
         index = 0
@@ -169,17 +171,6 @@ class IndependentSubspaceVQE(SubspaceVQE):
                 if layer < self.reps and len(block) > 1:
                     for a, b in pairs_for_pattern(len(block), layer, self.entanglement):
                         kernel.cx(register[block[a]], register[block[b]])
-        for a, b in cross_edges:
-            # Two Pauli rotations allow population changes for diagonal protein H.
-            # RX conjugates Z to Y. Each generator squares to identity, so the
-            # usual +/- pi/2 parameter-shift derivative applies to these too.
-            for y_qubit in (b, a):
-                kernel.rx(np.pi / 2, register[y_qubit])
-                kernel.cx(register[a], register[b])
-                kernel.rz(params[index], register[b])
-                kernel.cx(register[a], register[b])
-                kernel.rx(-np.pi / 2, register[y_qubit])
-                index += 1
         return kernel
 
     def _minimize_model(self, params, model, phase, maxiter, qpu_id=0):
@@ -271,8 +262,6 @@ class IndependentSubspaceVQE(SubspaceVQE):
         theta = rng.uniform(-np.pi, np.pi, self.num_params) if init_params is None else np.asarray(init_params, dtype=float).copy()
         if theta.shape != (self.num_params,) or not np.all(np.isfinite(theta)):
             raise ValueError(f"Expected {self.num_params} finite initial parameters")
-        # This phase always starts from independent states, including on reruns.
-        theta[self.local_parameter_count:] = 0
         workers = min(self.num_parallel_workers, len(self.blocks))
         self.partition_summary["local_workers"] = workers
         print(f"Independent VQE: blocks={self.blocks}, crossing terms={len(self.cross_terms)}, workers={workers}")
@@ -280,13 +269,14 @@ class IndependentSubspaceVQE(SubspaceVQE):
         # after all workers have joined; use one safe rank bound for every local.
         configure_gpu_groups(self.num_gpus_detected, workers)
         local_width = max(m["width"] for m in self.local_models)
-        self.partition_summary["local_mps_max_bond"] = configure_full_bond(local_width)
+        self.partition_summary["local_mps_max_bond"] = configure_full_bond(
+            local_width, stages=[dict(entanglement=self.entanglement, reps=self.reps)])
         results = [None] * len(self.blocks)
 
         def work(worker):
             for index in range(worker, len(self.blocks), workers):
                 model = self.local_models[index]
-                results[index] = self._minimize_model(theta[model["start"]:model["stop"]],
+                results[index] = self._minimize_model(theta[model["parameter_indices"]],
                     model, "local", self.block_maxiter, worker)
 
         try:
@@ -300,19 +290,18 @@ class IndependentSubspaceVQE(SubspaceVQE):
                 work(0)
         finally:
             configure_gpu_groups(self.num_gpus_detected)
-            # The composed nonlocal circuit needs its own bound. The shallow
-            # nearest-neighbor linear cap is not valid for this global circuit.
-            self.partition_summary["global_mps_max_bond"] = configure_full_bond(max(2, self.num_qubits))
+            self.partition_summary["global_mps_max_bond"] = configure_full_bond(
+                max(2, self.num_qubits), stages=[dict(entanglement=self.entanglement, reps=self.reps)])
         self.local_results = [{k: (v.tolist() if isinstance(v, np.ndarray) else v)
                                for k, v in result.items()} for result in results]
         for model, result in zip(self.local_models, results):
-            theta[model["start"]:model["stop"]] = result["params"]
-        self.product_params = theta.copy()
+            theta[model["parameter_indices"]] = result["params"]
+        self.warm_start_params = theta.copy()
         global_model = dict(kernel=self.kernel, hamiltonian=self.hamiltonian,
                             qubits=list(range(self.num_qubits)), width=max(2, self.num_qubits))
-        with self._timed_optimizer("product", global_model["qubits"], 0):
+        with self._timed_optimizer("warm_start", global_model["qubits"], 0):
             energy = self._evaluate_energy(theta)
-        self.product_energy = energy
+        self.warm_start_energy = energy
         self._remember_global(energy, theta)
         if self.global_refinement and self.max_epochs > 0:
             # All local solves have joined and their best parameters are assembled.
@@ -322,7 +311,7 @@ class IndependentSubspaceVQE(SubspaceVQE):
             before = energy
             result = self._minimize_model(theta, global_model, "global", self.global_maxiter)
             self.global_results.append({k: v for k, v in result.items() if k != "params"})
-            # Keep the product state as a candidate under noisy optimization.
+            # Keep the initial global state as a candidate under noisy optimization.
             energy, theta = self.iteration_results[0]
             self.epoch_summaries.append(dict(epoch=0, offset=None,
                 energy_current=before, energy_refined=result["energy"], best_energy=energy,
@@ -330,5 +319,5 @@ class IndependentSubspaceVQE(SubspaceVQE):
                 energy_evaluation_count=self.nfev - count,
                 energy_evaluation_time_s=self._evaluation_seconds - seconds))
         best_energy, best_params = self.iteration_results[0]
-        print(f"Product full-H energy: {self.product_energy:.6f}; best global energy: {best_energy:.6f}")
+        print(f"Warm-start full-H energy: {self.warm_start_energy:.6f}; best global energy: {best_energy:.6f}")
         return self.energy_history, best_params.copy(), self.kernel, list(self.iteration_results)

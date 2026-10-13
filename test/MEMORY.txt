@@ -1,0 +1,48 @@
+GPU memory policy (2026-10-13)
+
+run.sh retains five slots per GPU, GPUs 2,3,4,5,6. Slots are refilled only
+when free GPU memory and host RAM meet the admission check. Each job runs in
+its own process/session. On exit, its parent is reaped and any remaining
+process-group descendants are killed before the slot is reused. Exiting the
+process releases its CUDA context, CUDA-Q allocations, PyTorch cache and RAM.
+No server-wide GPU reset or OS cache flush is performed.
+
+Default GPU budget per job = 80% of total VRAM / jobs-per-GPU. Launch admission
+also leaves 10% of total VRAM free. RAM budget = 80% of host/cgroup capacity /
+total slots. CAMPAIGN_JOB_GPU_GIB and CAMPAIGN_JOB_RAM_GIB override these budgets.
+The launcher polls process-group RAM/VRAM once per scheduling cycle, kills a
+worker exceeding its budget, and records resource_failure.json. memory_usage.json
+records sampled peak usage and process-group cleanup after normal termination.
+Sampling cannot prevent every OOM: a single allocation or another GPU user can
+exhaust memory between polls. This is not a hardware-enforced memory quota.
+
+Independent graph strategy (updated global ansatz)
+Both local and global circuits now use four-layer nearest-neighbor linear or
+reverse_linear SU2. The cap is min(2**4, 2**floor(width/2)): at most 16, or 8
+at width 7. No additional graph-edge gates or noncontiguous block circuits
+are appended to the global ansatz. All Hamiltonian terms remain in its energy.
+The local best parameters initialize global rotations by qubit/layer/gate.
+
+resource_preflight.json predicts allocations for the actual nearest-neighbor
+circuit and its zero-cutoff SVD cap before optimization. Reverse gradients now
+use the bounded reverse-MPS path. The previous 2,147,483,647 global cap and
+oversized 97-qubit graph-circuit estimates no longer describe this ansatz.
+Global accuracy here means exact simulation of this new ansatz (within floating
+point precision), not preservation of the former graph-gate variational family.
+
+All local campaign results were cleared for a fresh run, including completed
+cases and old validation outputs. New validation uses separate directories;
+production runs/ remains empty. The full campaign has not been restarted.
+
+Fresh incomplete cases on another server
+Stop that campaign, then run from the Graph-VQE repository:
+  python3 test/tools/clean_unfinished.py test/runs --apply
+Without --apply, it reports what would be removed. Completed and locked/running
+cases are preserved. Inputs and lock files remain; all incomplete checkpoints,
+logs and outputs are removed. Use a new output directory when switching from the old graph-gate ansatz;
+its checkpoints are incompatible with the new global parameter layout.
+
+Deploy the modified test directory to the other server. Its installed CUDA-Q
+plugin also needs the preceding stable-SVD repair; use the updated
+test/setup_local_cudaq.sh there. Changing this local checkout cannot update
+another server's installed binary automatically.

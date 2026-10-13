@@ -251,7 +251,7 @@ def predict_protein_structure(
             vqe_instance = CUDAQVQE(**vqe_kwargs)
 
         bond_stages = getattr(vqe_instance, "stage_plan", None)
-        if bond_stages is None and not isinstance(vqe_instance, IndependentSubspaceVQE):
+        if bond_stages is None:
             bond_stages = [{"entanglement": vqe_instance.entanglement,
                             "reps": vqe_instance.reps}]
         full_bond = configure_full_bond(qubit_count, bond_stages)
@@ -297,7 +297,7 @@ def predict_protein_structure(
                 "partition": vqe_instance.partition_summary,
                 "local_results": vqe_instance.local_results,
                 "global_results": vqe_instance.global_results,
-                "product_state_energy": vqe_instance.product_energy,
+                "warm_start_energy": vqe_instance.warm_start_energy,
                 "entanglement": vqe_instance.entanglement,
                 "energy_tol": vqe_instance.energy_tol,
                 "early_stopping": "immediate_energy_improvement",

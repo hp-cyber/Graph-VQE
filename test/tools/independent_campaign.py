@@ -19,7 +19,10 @@ class CampaignVQE(IndependentSubspaceVQE):
         self.checkpoint_manager=SimpleNamespace(checkpoint_path=str(path))
         state=json.loads(path.read_text()) if path.exists() else dict(
             phase=phase,qubits=model['qubits'],complete=False,best_energy=None,
-            best_parameters=np.asarray(params).tolist(),global_candidates=[])
+            best_parameters=np.asarray(params).tolist(),global_candidates=[],
+            global_ansatz='nearest_neighbor_su2_v1')
+        if state.get('global_ansatz')!='nearest_neighbor_su2_v1':
+            raise ValueError('Checkpoint predates the nearest-neighbor global ansatz; start a fresh case')
         if state['phase']!=phase or state['qubits']!=model['qubits']:
             raise ValueError('Checkpoint does not match partition')
         if phase=='global':

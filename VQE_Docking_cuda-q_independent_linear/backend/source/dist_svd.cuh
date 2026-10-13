@@ -16,6 +16,8 @@
 #include <random>
 #include <vector>
 #include <algorithm>
+#include <stdexcept>
+#include <string>
 
 #ifndef CUDA_CHECK
 #define CUDA_CHECK(x) do { cudaError_t e=(x); if(e){fprintf(stderr,"CUDA %s:%d %s\n",__FILE__,__LINE__,cudaGetErrorString(e));exit(1);} }while(0)
@@ -178,82 +180,105 @@ __global__ static void normalizeColumnsFromEigenvalues(
   matrix[index].y *= inverse;
 }
 
-// Randomized truncated SVD specialized for one GPU. This performs the same
-// projection/eigendecomposition as distSvd(), but returns U and S*Vh directly
-// on the GPU. Only the l singular values (a few hundred doubles) cross to the
-// host to choose the truncation rank.
+// Direct SVD avoids squaring the condition number with M^H M and avoids
+// dividing by tiny singular values when constructing U. This is essential for
+// reverse-order sweeps through nearly rank-deficient MPS tensors.
+__global__ static void conjugateTransposeSvdInput(
+    const cdouble *input, cdouble *output, int m, int n) {
+  size_t i = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
+  if (i >= (size_t)m * n) return;
+  int row = i % m, col = i / m;
+  output[col + (size_t)row * n] = cuConj(input[i]);
+}
+
+__global__ static void selectDirectSvdRank(const double *singular, int *rank,
+    int count, int maxBond, double absCut, double relCut) {
+  if (blockIdx.x || threadIdx.x) return;
+  int selected = 0;
+  double threshold = fmax(absCut, relCut * singular[0]);
+  for (int i = 0; i < count; ++i) {
+    if (!isfinite(singular[i]) || singular[i] < 0.0) { *rank = -1; return; }
+    // Zero cutoffs retain every available singular direction, including zeros.
+    if ((absCut == 0.0 && relCut == 0.0) || singular[i] > threshold) ++selected;
+  }
+  // In zero-cutoff mode a cap must not silently discard a resolved singular
+  // direction. Ignore only the backward-error scale of double-precision SVD.
+  // This also detects stale caps when an adaptive circuit grows.
+  if (absCut == 0.0 && relCut == 0.0 && maxBond < count &&
+      singular[maxBond] > 64.0 * 2.2204460492503131e-16 * count * singular[0]) {
+    *rank = -2; return;
+  }
+  *rank = max(1, min(maxBond, selected));
+}
+
+__global__ static void packDirectSvdFactors(const cdouble *u, const cdouble *vh,
+    const double *singular, cdouble *left, cdouble *right,
+    int m, int n, int k, bool adjoint) {
+  size_t i = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
+  int r = min(m, n);
+  if (i < (size_t)m * k) {
+    int row = i % m, col = i / m;
+    left[i] = adjoint ? cuConj(vh[col + (size_t)row * r])
+                      : u[row + (size_t)col * m];
+  }
+  if (i < (size_t)k * n) {
+    int row = i % k, col = i / k;
+    cdouble value = adjoint ? cuConj(u[col + (size_t)row * n])
+                           : vh[row + (size_t)col * r];
+    right[i] = make_cuDoubleComplex(singular[row] * value.x,
+                                    singular[row] * value.y);
+  }
+}
+
 static inline DeviceSvdFactors singleGpuSvdFactors(
     GpuCtx &g, cdouble *matrix, int m, int n, int maxBond,
     double absCut, double relCut, int oversample, unsigned seed) {
   CUDA_CHECK(cudaSetDevice(g.dev));
-  (void)oversample;
-  (void)seed;
-
-  // For the two-site matrices produced by MPS gates, an exact covariance SVD
-  // is substantially cheaper than the previous randomized QR projection. The
-  // old routine performed several allocations, QR, five GEMMs, and an
-  // eigensolve for every entangler. Here the Gram matrix has dimension
-  // min(m,n), and one eigensolve yields the exact truncated factors.
-  const bool useLeftGram = m <= n;
-  const int gramDimension = useLeftGram ? m : n;
-  cdouble *covariance = nullptr;
-  CUDA_CHECK(cudaMalloc(
-      &covariance,
-      sizeof(cdouble) * (size_t)gramDimension * gramDimension));
-  if (useLeftGram) {
-    CUBLAS_CHECK(cublasZgemm(
-        g.blas, CUBLAS_OP_N, CUBLAS_OP_C, m, m, n, &C_ONE, matrix, m,
-        matrix, m, &C_ZERO, covariance, m));
-  } else {
-    CUBLAS_CHECK(cublasZgemm(
-        g.blas, CUBLAS_OP_C, CUBLAS_OP_N, n, n, m, &C_ONE, matrix, m,
-        matrix, m, &C_ZERO, covariance, n));
-  }
-
-  double *eigenvalues = heigDevice(g, gramDimension, covariance);
-  int *deviceRank = nullptr;
-  CUDA_CHECK(cudaMalloc(&deviceRank, sizeof(int)));
-  selectTruncationRank<<<1, 1, 0, g.stream>>>(
-      eigenvalues, deviceRank, gramDimension, maxBond, absCut, relCut);
-  int k = 1;
-  CUDA_CHECK(cudaMemcpyAsync(&k, deviceRank, sizeof(int),
-                             cudaMemcpyDeviceToHost, g.stream));
+  (void)oversample; (void)seed;
+  // cuSOLVER gesvd requires rows >= columns; factor M^H for wide M.
+  const bool adjoint = m < n;
+  const int rows = std::max(m, n), r = std::min(m, n);
+  cdouble *input = nullptr, *u = nullptr, *vh = nullptr, *work = nullptr;
+  double *singular = nullptr;
+  int *info = nullptr, *rank = nullptr;
+  CUDA_CHECK(cudaMalloc(&input, sizeof(cdouble) * (size_t)m * n));
+  CUDA_CHECK(cudaMalloc(&u, sizeof(cdouble) * (size_t)rows * r));
+  CUDA_CHECK(cudaMalloc(&vh, sizeof(cdouble) * (size_t)r * r));
+  CUDA_CHECK(cudaMalloc(&singular, sizeof(double) * r));
+  CUDA_CHECK(cudaMalloc(&info, sizeof(int)));
+  CUDA_CHECK(cudaMalloc(&rank, sizeof(int)));
+  if (adjoint)
+    conjugateTransposeSvdInput<<<((size_t)m*n+255)/256,256,0,g.stream>>>(matrix,input,m,n);
+  else
+    CUDA_CHECK(cudaMemcpyAsync(input,matrix,sizeof(cdouble)*(size_t)m*n,
+                               cudaMemcpyDeviceToDevice,g.stream));
+  int lwork = 0;
+  CUSOLVER_CHECK(cusolverDnZgesvd_bufferSize(g.solver, rows, r, &lwork));
+  CUDA_CHECK(cudaMalloc(&work, sizeof(cdouble) * lwork));
+  CUSOLVER_CHECK(cusolverDnZgesvd(g.solver, 'S', 'S', rows, r, input, rows,
+      singular, u, rows, vh, r, work, lwork, nullptr, info));
+  selectDirectSvdRank<<<1,1,0,g.stream>>>(singular,rank,r,maxBond,absCut,relCut);
+  int status = 0, k = 0;
+  CUDA_CHECK(cudaMemcpyAsync(&status,info,sizeof(int),cudaMemcpyDeviceToHost,g.stream));
+  CUDA_CHECK(cudaMemcpyAsync(&k,rank,sizeof(int),cudaMemcpyDeviceToHost,g.stream));
   CUDA_CHECK(cudaStreamSynchronize(g.stream));
-  CUDA_CHECK(cudaFree(deviceRank));
-
-  cdouble *basis = nullptr, *left = nullptr, *right = nullptr;
-  CUDA_CHECK(cudaMalloc(
-      &basis, sizeof(cdouble) * (size_t)gramDimension * k));
-  int threads = 256;
-  selectDescendingEigenvectors<<<
-      (gramDimension * k + threads - 1) / threads, threads, 0, g.stream>>>(
-      covariance, basis, gramDimension, k);
-
-  if (useLeftGram) {
-    // The selected covariance eigenvectors are U directly.
-    left = basis;
-    basis = nullptr;
-  } else {
-    // V comes from M^H M. Form U = M V S^-1.
-    CUDA_CHECK(cudaMalloc(&left, sizeof(cdouble) * (size_t)m * k));
-    CUBLAS_CHECK(cublasZgemm(
-        g.blas, CUBLAS_OP_N, CUBLAS_OP_N, m, k, n, &C_ONE, matrix, m,
-        basis, n, &C_ZERO, left, m));
-    normalizeColumnsFromEigenvalues<<<
-        (m * k + threads - 1) / threads, threads, 0, g.stream>>>(
-        left, m, k, eigenvalues, gramDimension);
+  cdouble *left = nullptr, *right = nullptr;
+  if (status == 0 && k > 0) {
+    CUDA_CHECK(cudaMalloc(&left,sizeof(cdouble)*(size_t)m*k));
+    CUDA_CHECK(cudaMalloc(&right,sizeof(cdouble)*(size_t)k*n));
+    size_t count = std::max((size_t)m*k,(size_t)k*n);
+    packDirectSvdFactors<<<(count+255)/256,256,0,g.stream>>>(
+        u,vh,singular,left,right,m,n,k,adjoint);
+    CUDA_CHECK(cudaStreamSynchronize(g.stream));
   }
-
-  // U^H M is S*Vh directly.
-  CUDA_CHECK(cudaMalloc(&right, sizeof(cdouble) * (size_t)k * n));
-  CUBLAS_CHECK(cublasZgemm(
-      g.blas, CUBLAS_OP_C, CUBLAS_OP_N, k, n, m, &C_ONE, left, m,
-      matrix, m, &C_ZERO, right, k));
-  CUDA_CHECK(cudaStreamSynchronize(g.stream));
-
-  if (basis) CUDA_CHECK(cudaFree(basis));
-  CUDA_CHECK(cudaFree(covariance));
-  CUDA_CHECK(cudaFree(eigenvalues));
+  CUDA_CHECK(cudaFree(input)); CUDA_CHECK(cudaFree(u)); CUDA_CHECK(cudaFree(vh));
+  CUDA_CHECK(cudaFree(work)); CUDA_CHECK(cudaFree(singular));
+  CUDA_CHECK(cudaFree(info)); CUDA_CHECK(cudaFree(rank));
+  if (k == -2)
+    throw std::runtime_error("CUDAQ_MPS_MAX_BOND=" + std::to_string(maxBond) +
+        " is insufficient for zero-cutoff simulation: resolved singular values would be discarded");
+  if (status != 0 || k < 1)
+    throw std::runtime_error("Direct MPS SVD failed or produced nonfinite singular values; devInfo=" + std::to_string(status));
   return {left, right, k};
 }
 

@@ -1,9 +1,9 @@
 Graph independent VQE matched benchmark
 
 55 proteins x 2 shot settings x 3 optimizers x 2 entanglement patterns = 660 jobs.
-Each job runs one protein and only IndependentSubspaceVQE. The two original
-Graph-VQE strategy directories are unchanged. Their common graph/circuit code
-is snapshotted under sources/independent-vqe, with campaign adapters in tools.
+Each job runs one protein and only IndependentSubspaceVQE. The two standalone
+Graph-VQE strategy directories use the same nearest-neighbor global ansatz.
+Their common strategy code is in sources/independent-vqe, with campaign adapters in tools.
 The copied base modules include utilities; they do not schedule other strategies.
 
 Settings
@@ -11,12 +11,14 @@ Settings
   shots=1000: 1000 samples for energy estimation and 1000 final readout samples.
     Includes sampling fluctuations; no additional gate or measurement-error model.
   Optimizers: COBYLA, L-BFGS-B (lbfgs), SPSA.
-  Entanglement: linear / reverse_linear within each partition, four repetitions.
+  Entanglement: linear / reverse_linear, four repetitions, in both stages.
   Hamiltonian coefficient graph -> local partitions of at most 12 qubits.
-  Optimize each partition once; combine its best parameters as a product state.
-  Then optimize the composed global circuit once, including every Hamiltonian
-    term and trainable R_ZY/R_YZ rotations on cross-partition interaction edges.
-    These cross gates start at zero. No alternating local/global outer loop.
+  Optimize each partition once. Map its best rotation parameters into the full
+    circuit by layer, physical qubit and rotation gate. This transfers parameters;
+    it does not embed the exact tensor product of the optimized local states.
+  Then optimize one full-register nearest-neighbor SU2 circuit once, against
+    every term of the original Hamiltonian. There are no extra graph-edge gates.
+    The global parameter count is n*(reps+1)*2, or 970 for 97 qubits at reps=4.
   Stop at the first consecutive energy change |delta E| < 1, no patience/window.
     This is the matched benchmark stopping rule. COBYLA/L-BFGS compare objective
     calls (excluding derivative probes); SPSA compares successive updates.
@@ -27,27 +29,23 @@ Settings
 Acceleration and exactness
   Backend: tensornet-mps-mqpu-shots. Analytic mode uses shared Pauli-prefix
   contractions; diagonal sampled energies reuse a shared measurement stream.
-  Absolute and relative SVD cutoffs are zero. Full-register rank bounds are used
-  for the nonlocal global circuit, up to the backend's signed-int rank capacity.
-  Actual ranks, numerical roundoff, GPU memory and runtime still limit execution.
-  There is no artificial total-qubit cutoff, and the catalog includes 97 qubits.
+  Absolute and relative SVD cutoffs are zero. Each local/global circuit uses
+  min(2**reps, 2**floor(width/2)): bond 16 at 97 qubits, bond 8 at 7 qubits.
+  The cap covers every intermediate state of these nearest-neighbor circuits;
+  floating-point roundoff remains. The backend rejects resolved truncation.
 
-  L-BFGS differentiates the recorded circuit in reverse using CUDA PyTorch:
-  nearest-neighbor MPS for local circuits, general tensor contractions for the
-  nonlocal composed global circuit. No parameter-shift loop or finite-difference
-  fallback is used for campaign L-BFGS. For 1000 shots this is a HYBRID estimator:
-  analytic gradients, sampled objective values and sampled final readout.
+  L-BFGS differentiates both stages with reverse-mode MPS contractions in CUDA
+  PyTorch. No parameter-shift loop or finite-difference fallback is used for
+  campaign L-BFGS. For 1000 shots this is a HYBRID estimator: analytic gradients,
+  sampled objective values and sampled final readout.
   SPSA uses two perturbation evaluations per update plus its objective evaluation,
   five calibration pairs, and the same accelerated backend for every evaluation.
 
-  Cross-partition gates can create much higher entanglement than a simple linear
-  ansatz. Exact 97-qubit global simulations/gradients are not guaranteed to fit or
-  finish quickly. The tensor-gradient workspace check reports excessive plans;
-  it never substitutes a truncated gradient. Failed cases remain retryable.
-  Shape planning on 3d7z (97 qubits) found 754 cross edges and 2478 parameters.
-  Current greedy plans require an intermediate of about 295 exabytes (linear)
-  or 18 petabytes (reverse_linear), even for one term. These particular exact
-  global-gradient plans do not fit current GPUs; no 97-qubit run was completed.
+  The previous global ansatz added R_ZY/R_YZ gates on Hamiltonian graph edges.
+  That ansatz and its memory estimates are obsolete. Existing checkpoints from
+  it cannot resume into the new nearest_neighbor_su2_v1 parameter layout.
+  The Hamiltonian still determines partitions; no Hamiltonian term is discarded.
+  See MEMORY.txt for per-job budgets, process cleanup and allocation checks.
 
 Run on this server (full campaign is not started by installation)
   cd /home/fengy46/Graph-VQE/test
@@ -89,7 +87,7 @@ Recorded per case
     iteration_tail is explicitly incomplete when stopping before a callback.
   *_evaluations.jsonl: optimizer-specific counters/timings, gradients/calibration.
   backend_evaluations.jsonl: CUDA-Q call durations, parameters, shots.
-  System_Energy/*.csv: local/product/global energy calls; appended on resume.
+  System_Energy/*.csv: local/warm_start/global energy calls; appended on resume.
     The common journal is authoritative for optimizer iteration timing.
   solves/*.json and optimizer_states/*.json: latest/best parameters, solve state.
   state.json, final_parameters.npy, energy_summary.json: final best state and
@@ -127,8 +125,9 @@ Validation
   "$GRAPH_VQE_PYTHON" tools/check_largest_graph.py
 
 Resume validation expects fresh validation/resume/ case directories. Gradient
-checks use real seven-qubit local/global circuits with nonzero cross-gate angles,
+checks use real seven-qubit local/global circuits with generic rotation angles,
 independent dense references and native parameter-shift energy differences.
-check_largest_graph only plans shapes; it does not evolve a 97-qubit state.
+check_largest_graph evaluates the 97-qubit circuit, checks all reverse gradients
+are finite and three against parameter-shift, and performs 1000-shot readout.
 Installer tests verify shell/Python syntax and deterministic extraction/migration;
 they do not build CUDA-Q. A clean-server build must be tested on that server.

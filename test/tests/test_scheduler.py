@@ -12,6 +12,13 @@ from optimization_trace import atomic
 
 
 class SchedulerTests(unittest.TestCase):
+    def setUp(self):
+        guard=patch.object(run_campaign, 'MemoryGuard').start()
+        guard.return_value.can_launch.return_value=True
+        guard.return_value.environment.return_value={}
+        patch.object(run_campaign, 'cleanup_group').start()
+        self.addCleanup(patch.stopall)
+
     def test_refill_limits_skip_complete_and_continue_after_failure(self):
         with tempfile.TemporaryDirectory() as d:
             output=Path(d)

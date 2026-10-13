@@ -1,7 +1,7 @@
-"""Compare derivatives of real local and composed global circuits to CUDA-Q.
+"""Compare derivatives of real local and nearest-neighbor global circuits to CUDA-Q.
 
 Run after sourcing environment.sh, with an otherwise unused physical GPU.
-This is a derivative check at nonzero cross-block angles, not an optimization.
+Checks both entanglement orders at generic nonzero rotation angles.
 """
 import argparse
 import json
@@ -41,7 +41,7 @@ def main():
         models=[('local',model),('global',dict(kernel=solver.kernel,hamiltonian=solver.hamiltonian,
                                             width=solver.num_qubits,count=solver.num_params))]
         for phase,model in models:
-            configure_full_bond(model['width'])
+            configure_full_bond(model['width'],stages=[dict(entanglement=pattern,reps=4)])
             x=rng.uniform(-.4,.4,model['count'])
             def energy(v):return float(cudaq.observe(model['kernel'],model['hamiltonian'],*v.tolist(),shots_count=-1).expectation())
             reverse=make_problem(model['kernel'],model['hamiltonian'])

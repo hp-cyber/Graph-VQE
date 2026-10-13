@@ -1,0 +1,127 @@
+"""Process isolation, memory admission and cleanup for GPU campaign workers.
+
+Limits contain individual failures; they do not guarantee an allocation will
+fit (other GPU users and allocations between polls can still cause OOM).
+"""
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess
+import time
+
+GIB = 1024**3
+
+
+def process_groups():
+    groups = {}
+    for path in Path('/proc').glob('[0-9]*/stat'):
+        try:
+            fields = path.read_text().rsplit(')', 1)[1].split()
+            # Fields after comm: state, ppid, pgrp, ... rss (pages).
+            group = int(fields[2])
+            groups.setdefault(group, []).append((int(path.parent.name), int(fields[21])*os.sysconf('SC_PAGE_SIZE')))
+        except (OSError, ValueError, IndexError):
+            continue
+    return groups
+
+
+def cleanup_group(process):
+    """Parent has exited/reaped; remove any surviving same-session children."""
+    try:
+        os.killpg(process.pid, signal.SIGKILL)
+    except ProcessLookupError:
+        pass
+    deadline = time.monotonic()+5
+    while any(rss for _, rss in process_groups().get(process.pid, [])):
+        if time.monotonic() >= deadline:
+            raise RuntimeError(f'Worker group {process.pid} did not release memory; refusing to refill its slot')
+        time.sleep(.05)
+
+
+def gpu_memory():
+    output = subprocess.check_output(['nvidia-smi', '--query-gpu=index,memory.total,memory.free',
+        '--format=csv,noheader,nounits'], text=True, timeout=10)
+    return {int(i): (int(total)*1024**2, int(free)*1024**2)
+            for i, total, free in (line.split(',') for line in output.splitlines())}
+
+
+def host_memory():
+    fields = {line.split(':')[0]: int(line.split()[1])*1024
+              for line in Path('/proc/meminfo').read_text().splitlines() if ':' in line}
+    total, available = fields['MemTotal'], fields['MemAvailable']
+    # Respect cgroup v2 limits as well as host-wide MemAvailable.
+    try:
+        relative = next(line[3:] for line in Path('/proc/self/cgroup').read_text().splitlines() if line.startswith('0::'))
+        group = Path('/sys/fs/cgroup')/relative.lstrip('/')
+        while True:
+            limit = (group/'memory.max').read_text().strip()
+            if limit != 'max':
+                limit = int(limit); current = int((group/'memory.current').read_text())
+                total, available = min(total, limit), min(available, max(0, limit-current))
+            if group == Path('/sys/fs/cgroup'): break
+            group = group.parent
+    except (OSError, ValueError, StopIteration):
+        pass
+    return total, available
+
+
+class MemoryGuard:
+    def __init__(self, gpus, slots):
+        self.slots = slots
+        self.refresh()
+        total, _ = host_memory()
+        self.reserve = min(8*GIB, total*.1)
+        self.ram_limit = int(float(os.environ.get('CAMPAIGN_JOB_RAM_GIB', total*.8/(len(gpus)*slots)/GIB))*GIB)
+        self.budgets = {g: int(float(os.environ.get('CAMPAIGN_JOB_GPU_GIB', self.gpus[g][0]*.8/slots/GIB))*GIB) for g in gpus}
+        if self.ram_limit <= 0 or min(self.budgets.values()) <= 0:
+            raise ValueError('Memory budgets must be positive')
+        self.last_notice = 0
+        self.peaks = {}
+        print(f'[memory] Per-job GPU budgets: { {g: round(n/GIB,2) for g,n in self.budgets.items()} } GiB; RAM {self.ram_limit/GIB:.2f} GiB',flush=True)
+
+    def refresh(self):
+        self.gpus = gpu_memory()
+
+    def environment(self, gpu):
+        return dict(CAMPAIGN_JOB_GPU_BYTES=str(self.budgets[gpu]), CAMPAIGN_JOB_RAM_BYTES=str(self.ram_limit))
+
+    def can_launch(self, gpu):
+        _, available = host_memory()
+        total, free = self.gpus[gpu]
+        allowed = free >= self.budgets[gpu]+total*.1 and available >= self.reserve+self.ram_limit
+        if not allowed and time.monotonic()-self.last_notice > 30:
+            print(f'[memory] Waiting for free memory on GPU {gpu}: {free/GIB:.2f} GiB GPU, {available/GIB:.2f} GiB RAM', flush=True)
+            self.last_notice = time.monotonic()
+        return allowed
+
+    def monitor(self, pending):
+        groups = process_groups()
+        usage = {}
+        if pending:
+            output = subprocess.check_output(['nvidia-smi', '--query-compute-apps=pid,used_gpu_memory',
+                '--format=csv,noheader,nounits'], text=True, timeout=10)
+            for line in output.splitlines():
+                try:
+                    pid, mb = line.split(','); usage[int(pid)] = usage.get(int(pid), 0)+int(mb)*1024**2
+                except ValueError:
+                    continue
+        for pid, (process, case, gpu) in pending.items():
+            members = groups.get(pid, [])
+            ram = sum(rss for _, rss in members)
+            vram = sum(usage.get(p, 0) for p, _ in members)
+            old = self.peaks.get(pid, (0,0))
+            self.peaks[pid] = (max(old[0],ram),max(old[1],vram))
+            if ram <= self.ram_limit and vram <= self.budgets[gpu]: continue
+            record = dict(reason='worker memory budget exceeded',ram_bytes=ram,gpu_bytes=vram,
+                          ram_budget_bytes=self.ram_limit,gpu_budget_bytes=self.budgets[gpu],time=time.time())
+            (case/'resource_failure.json').write_text(json.dumps(record,indent=2)+'\n')
+            print(f'[memory] Terminating {case}: {record}',flush=True)
+            try: os.killpg(pid, signal.SIGKILL)
+            except ProcessLookupError: pass
+
+    def finished(self, process, case):
+        ram,vram=self.peaks.pop(process.pid,(0,0))
+        record=dict(peak_sampled_ram_bytes=ram,peak_sampled_gpu_bytes=vram,
+                    process_group_cleaned=True,finished=time.time())
+        (case/'memory_usage.json').write_text(json.dumps(record,indent=2)+'\n')

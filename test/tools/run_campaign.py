@@ -10,6 +10,7 @@ import signal
 import subprocess
 import sys
 import time
+from worker_resources import MemoryGuard, cleanup_group
 from job_state import reserve_case, is_complete
 from optimization_trace import atomic
 
@@ -54,20 +55,25 @@ def run(jobs,gpus,per_gpu,output):
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         for sig in (signal.SIGINT,signal.SIGTERM):
             previous=signal.signal(sig,stop);stack.callback(signal.signal,sig,previous)
+        memory=MemoryGuard(gpus,per_gpu)
         try:
             status()
             while pending or queue:
+                memory.refresh();memory.monitor(pending)
                 changed=False
                 for pid,(process,case,gpu) in list(pending.items()):
                     code=process.poll()
                     if code is None:continue
+                    cleanup_group(process)
+                    memory.finished(process,case)
                     if code==0 and not is_complete(case):code=1
                     done.append(dict(case=str(case),gpu=gpu,exit_code=code))
                     del pending[pid];active[gpu]-=1;changed=True
                     print(f'Finished GPU {gpu}: {case.relative_to(output)}; status={code}',flush=True)
                 while queue and any(active[g]<per_gpu for g in gpus):
+                    admitted=False
                     for gpu in gpus:
-                        if active[gpu]>=per_gpu:continue
+                        if active[gpu]>=per_gpu or not memory.can_launch(gpu):continue
                         while queue:
                             job=queue.popleft();case=output/job['key'];case.mkdir(parents=True,exist_ok=True)
                             lock,reason=reserve_case(case);changed=True
@@ -79,16 +85,21 @@ def run(jobs,gpus,per_gpu,output):
                                 atomic(path,job)
                                 with (case/'run.log').open('a') as log:
                                     p=subprocess.Popen([sys.executable,str(ROOT/'tools/run_case.py'),str(case),'--gpu',str(gpu),'--lock-fd',str(lock.fileno())],
-                                        cwd=case,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,pass_fds=(lock.fileno(),))
+                                        cwd=case,env=dict(os.environ,**memory.environment(gpu)),stdout=log,stderr=subprocess.STDOUT,start_new_session=True,pass_fds=(lock.fileno(),))
                             finally:lock.close()
+                            admitted=True
                             pending[p.pid]=(p,case,gpu);active[gpu]+=1
                             launched.append(dict(job,pid=p.pid,gpu=gpu,log=str(case/'run.log'),started=time.time()))
                             print(f'Started GPU {gpu} ({active[gpu]}/{per_gpu}): {job["key"]}',flush=True)
                             break
+                    if not admitted:break
                 if changed:atomic(output/'launched_jobs.json',launched);status()
-                if pending:time.sleep(1)
+                if pending or queue:time.sleep(1)
         except BaseException:stopped=True;raise
-        finally:stop_workers(pending);pending.clear();active.clear();status()
+        finally:
+            stop_workers(pending)
+            for process,_,_ in pending.values():cleanup_group(process)
+            pending.clear();active.clear();status()
     return int(any(r['exit_code'] for r in done))
 
 

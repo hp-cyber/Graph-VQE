@@ -75,7 +75,8 @@ class TensorCircuit:
             path, info = self.oe.contract_path(equation, *shapes, shapes=True, optimize='greedy')
             if str(self.device).startswith('cuda'):
                 free, _ = self.torch.cuda.mem_get_info(self.device)
-                if int(info.largest_intermediate)*16*4 > free:
+                budget=int(os.environ.get('CAMPAIGN_JOB_GPU_BYTES',str(free)))
+                if int(info.largest_intermediate)*16*4 > min(free,budget):
                     raise MemoryError('Exact reverse contraction exceeds available GPU workspace; no truncation or finite-difference fallback was applied')
             self.plans[count] = self.oe.contract_expression(equation, *shapes, optimize=path)
         return self.plans[count]

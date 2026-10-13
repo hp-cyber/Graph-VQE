@@ -52,23 +52,8 @@ def reference_block(n, theta, reps, pattern):
     return circuit
 
 
-def reference_state(solver, theta, include_cross=True):
-    circuit = QuantumCircuit(solver.num_qubits)
-    for model in solver.local_models:
-        circuit.compose(reference_block(len(model["qubits"]),
-            theta[model["start"]:model["stop"]], solver.reps, solver.entanglement),
-            qubits=model["qubits"], inplace=True)
-    if include_cross:
-        index = solver.local_parameter_count
-        for a, b in solver.cross_edges:
-            for y in (b, a):
-                label = ["I"] * solver.num_qubits
-                label[a] = label[b] = "Z"
-                label[y] = "Y"
-                circuit.append(PauliEvolutionGate(SparsePauliOp("".join(label[::-1])),
-                    time=float(theta[index] / 2)), range(solver.num_qubits))
-                index += 1
-    return Statevector.from_instruction(circuit)
+def reference_state(solver, theta):
+    return Statevector.from_instruction(reference_block(solver.num_qubits,theta,solver.reps,solver.entanglement))
 
 
 def reconstruct(solver):
@@ -154,7 +139,7 @@ def main():
     h = SparsePauliOp.from_list([("IIIII", 2.3), ("IIZIZ", -3), ("IZIZI", -4),
         ("IIYIX", .7), ("XIIII", .2), ("IIIZZ", .8), ("IXXIY", .4)])
     report = []
-    for pattern in ("linear", "reverse_linear", "circular", "sca"):
+    for pattern in ("linear", "reverse_linear"):
         solver = solver_for(h, blocks=[[0, 2], [1, 3], [4]], reps=3,
                             entanglement=pattern, max_epochs=1, block_maxiter=1, global_maxiter=1)
         assert len(solver.param_order) == solver.num_params
@@ -162,32 +147,17 @@ def main():
         np.testing.assert_allclose(reconstruct(solver).to_matrix(), h.to_matrix(), atol=1e-12)
         configure_full_bond(h.num_qubits)
         theta = rng.uniform(-1, 1, solver.num_params)
-        theta[solver.local_parameter_count:] = 0
-        expected = reference_state(solver, theta, include_cross=False)
-        np.testing.assert_allclose(reference_state(solver, theta).data, expected.data, atol=1e-12)
-        # This backend cannot export statevectors. Unit expectation of each
-        # pure local-state projector proves that the whole state is their product.
-        solver.shots = -1
-        for model in solver.local_models:
-            vec = Statevector.from_instruction(reference_block(len(model["qubits"]),
-                theta[model["start"]:model["stop"]], solver.reps, pattern)).data
-            projector = SparsePauliOp.from_operator(np.outer(vec, vec.conj()))
-            embedded = []
-            for label, coeff in projector.to_list():
-                full = ["I"] * solver.num_qubits
-                for i, q in enumerate(model["qubits"]):
-                    full[q] = label[-1 - i]
-                embedded.append(("".join(full[::-1]), coeff))
-            probability = solver._evaluate_energy(theta,
-                hamiltonian=solver._spin(SparsePauliOp.from_list(embedded)))
-            np.testing.assert_allclose(probability, 1.0, atol=1e-7)
-        theta[solver.local_parameter_count:] = rng.uniform(-1, 1, solver.num_params - solver.local_parameter_count)
+        # Mapping local rotations initializes a different, full-register chain.
+        assert solver.num_params == h.num_qubits*(solver.reps+1)*2
+        assert solver.partition_summary['cross_parameter_count'] == 0
+        mapped=sorted(i for model in solver.local_models for i in model['parameter_indices'])
+        assert mapped==list(range(solver.num_params))
         solver.shots = -1
         expected = reference_state(solver, theta)
         exact_energy = solver._evaluate_energy(theta)
         np.testing.assert_allclose(exact_energy, expected.expectation_value(h).real, atol=1e-6)
         errors = []
-        for index in (0, solver.local_models[-1]["start"], solver.local_parameter_count, solver.num_params - 1):
+        for index in (0, solver.num_params//2, solver.num_params - 1):
             plus, minus = theta.copy(), theta.copy()
             plus[index] += np.pi / 2; minus[index] -= np.pi / 2
             gradient = (solver._evaluate_energy(plus) - solver._evaluate_energy(minus)) / 2
@@ -198,7 +168,7 @@ def main():
             errors.append(abs(gradient - difference))
         assert max(errors) < 1e-6, errors
         for model in solver.local_models:
-            local_theta = theta[model["start"]:model["stop"]]
+            local_theta = theta[model["parameter_indices"]]
             local_state = Statevector.from_instruction(reference_block(len(model["qubits"]),
                 local_theta, solver.reps, pattern))
             if model["width"] > len(model["qubits"]):
@@ -215,7 +185,7 @@ def main():
             iterations = list(csv.DictReader((Path(directory) / "iteration_timings.csv").open()))
             assert len(evaluations) == solver.nfev
             assert all(r["status"] == "ok" and int(r["shots"]) == 1000 for r in evaluations)
-            assert {r["phase"] for r in evaluations} == {"local", "product", "global"}
+            assert {r["phase"] for r in evaluations} == {"local", "warm_start", "global"}
             assert sum(int(r["energy_evaluation_count"]) for r in iterations) == solver.nfev
             np.testing.assert_allclose(sum(float(r["energy_evaluation_time_s"]) for r in iterations),
                                        solver._evaluation_seconds, atol=1e-9)
@@ -223,14 +193,15 @@ def main():
             if Main.num_gpus > 1:
                 assert len({r["qpu_id"] for r in evaluations if r["phase"] == "local"}) > 1
             assert len(solver.local_results) == 3
-            assert trace[0] == solver.product_energy and top[0][0] <= solver.product_energy
+            assert trace[0] == solver.warm_start_energy and top[0][0] <= solver.warm_start_energy
             np.testing.assert_array_equal(best, top[0][1])
-            assert np.all(solver.product_params[solver.local_parameter_count:] == 0)
+            for model,result in zip(solver.local_models,solver.local_results):
+                np.testing.assert_array_equal(solver.warm_start_params[model["parameter_indices"]],result["params"])
             probabilities = CudaqStateCalculator(kernel, shots=1000).get_probability_distribution(best)
             np.testing.assert_allclose(sum(probabilities.values()), 1, atol=1e-12)
             assert os.environ["CUDAQ_MPS_HBATCH_GROUPS"] == ",".join(map(str, range(Main.num_gpus)))
             report.append(dict(pattern=pattern, evaluations=solver.nfev,
-                               maximum_gradient_error=max(errors), product_energy=solver.product_energy,
+                               maximum_gradient_error=max(errors), warm_start_energy=solver.warm_start_energy,
                                best_sampled_energy=top[0][0], partition=solver.partition_summary))
         print("PASS circuit, gradients, parallel locals, timing and readout:", pattern)
 
@@ -255,7 +226,7 @@ def main():
             os.chdir(directory)
             Main.predict_protein_structure("VKDRS", "independent_smoke", "cudaq", None, max_iter=1)
             summaries = list(Path("Result/process_data").glob("*/independent_smoke/stage_summary.json"))
-            assert len(summaries) == 4
+            assert len(summaries) == 1
             for path in summaries:
                 data = json.loads(path.read_text())
                 assert data["strategy_type"] == "independent_hamiltonian_subspace"
@@ -269,7 +240,7 @@ def main():
         finally:
             os.chdir(original)
     Path("validation_independent_vqe.json").write_text(json.dumps(report, indent=2) + "\n")
-    print("PASS all four real-protein pipelines; report: validation_independent_vqe.json")
+    print("PASS real-protein pipeline; report: validation_independent_vqe.json")
 
 
 if __name__ == "__main__":
