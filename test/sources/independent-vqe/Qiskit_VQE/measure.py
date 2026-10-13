@@ -203,7 +203,11 @@ class CudaqStateCalculator:
             elif hasattr(result, "to_dict") and callable(getattr(result, "to_dict")):
                 counts = dict(result.to_dict())
 
-            # case D: last resort – build from bitstrings using result.count(bstr) if available
+            # CUDA-Q SampleResult.items() includes every observed bitstring.
+            elif hasattr(result, "items") and callable(getattr(result, "items")):
+                counts = dict(result.items())
+
+            # Legacy compatibility for result types without a histogram API.
             elif hasattr(result, "count") and callable(getattr(result, "count")):
                 # Try to infer bit-width from the kernel argument (best effort: probe a few strings)
                 # We'll gather all bitstrings that have nonzero counts up to a reasonable width guess.

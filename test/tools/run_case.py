@@ -9,6 +9,7 @@ import time
 import traceback
 from job_state import reserve_case
 from optimization_trace import atomic
+from readout import protein_probabilities
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -93,9 +94,12 @@ def main():
             counts=cudaq.sample(kernel,*params.tolist(),shots_count=1000)
             counts={str(k):int(v) for k,v in counts.items()}
             if sum(counts.values())!=1000:raise RuntimeError('Incorrect final readout shot count')
-            atomic(case/'readout.json',dict(shots=1000,counts=counts))
+            probabilities=protein_probabilities(counts)
+            atomic(case/'readout.json',dict(shots=1000,counts=counts,
+                counts_bit_order='q0_left',protein_probabilities=probabilities,
+                protein_bit_order='q0_right'))
             structures=case/'Structures';structures.mkdir(exist_ok=True)
-            problem.interpret({k:v/1000 for k,v in counts.items()}).save_xyz_file(name=job['protein_id'],path=str(structures))
+            problem.interpret(probabilities).save_xyz_file(name=job['protein_id'],path=str(structures))
         atomic(case/'job_status.json',dict(status='complete',finished=time.time(),seconds=time.perf_counter()-started))
         print(f'Completed {job["key"]}: best energy={top[0][0]}',flush=True)
     except BaseException:

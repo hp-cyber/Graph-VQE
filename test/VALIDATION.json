@@ -465,5 +465,117 @@
       }
     ]
   },
-  "monitoring_error_recovery": "passed; no elapsed-time limits on GPU queries or worker waits"
+  "monitoring_error_recovery": "passed; no elapsed-time limits on GPU queries or worker waits",
+  "readout_20261013": {
+    "cpu_tests": 33,
+    "bounded_end_to_end_cases": [
+      {
+        "key": "shots_-1/cobyla/linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_-1/cobyla/reverse_linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_-1/lbfgs/linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_-1/lbfgs/reverse_linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_-1/spsa/linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_-1/spsa/reverse_linear/3ckz",
+        "passed": true,
+        "readout": false,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/cobyla/linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/cobyla/reverse_linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/lbfgs/linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/lbfgs/reverse_linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/spsa/linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      },
+      {
+        "key": "shots_1000/spsa/reverse_linear/3ckz",
+        "passed": true,
+        "readout": true,
+        "completed_case_skipped": true
+      }
+    ],
+    "basis_state": {
+      "passed": true,
+      "cudaq_counts": {
+        "10": 1000
+      },
+      "protein_probabilities": {
+        "01": 1.0
+      }
+    },
+    "standalone_histograms": [
+      {
+        "source": "test/sources/independent-vqe",
+        "passed": true,
+        "probabilities": {
+          "1111": 0.515,
+          "1000": 0.485
+        }
+      },
+      {
+        "source": "VQE_Docking_cuda-q_independent_linear",
+        "passed": true,
+        "probabilities": {
+          "1000": 0.506,
+          "1111": 0.494
+        }
+      },
+      {
+        "source": "VQE_Docking_cuda-q_independent_reverse_linear",
+        "passed": true,
+        "probabilities": {
+          "1111": 0.469,
+          "1000": 0.531
+        }
+      }
+    ]
+  }
 }

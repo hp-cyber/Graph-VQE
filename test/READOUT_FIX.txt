@@ -1,0 +1,24 @@
+Readout correction (2026-10-13)
+
+The campaign now reverses CUDA-Q measurement keys (q0 on the left) before
+passing probabilities to the Qiskit-based protein decoder (q0 on the right).
+readout.json keeps the original counts and now records their bit order plus
+the converted protein_probabilities and protein_bit_order.
+
+Standalone measurement readers now consume every SampleResult.items() entry.
+Previously their fallback inspected only the most frequent key and one-bit
+neighbors, discarding more distant outcomes before renormalizing probabilities.
+The two standalone copies and the test source copy have been corrected.
+
+Neither correction changes optimized parameters, measured energies, circuit
+connectivity, bond dimensions or shot counts. Existing completed structures
+are not rewritten automatically. For old campaign outputs, structures can be
+regenerated from readout.json counts without optimization or new measurements.
+Old standalone probability files can have missing outcomes and need resampling
+from saved parameters before structure regeneration.
+
+Validation: 33 CPU tests; 12 bounded real-protein end-to-end cases spanning
+three optimizers, two shot modes and both entanglement orders; actual GPU basis
+state bit-order test; three GPU reader checks with widely separated outcomes.
+All completed validation cases were invoked again and skipped without changing
+their result files. These are bounded checks, not full convergence benchmarks.
