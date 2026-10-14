@@ -21,6 +21,14 @@ no added disk quota, log-size cap or free-space reserve. Both filesystems need
 available space. Use `test/tools/clean_unfinished.py --apply` for cleanup so that
 the selected case's external logs are removed too.
 
+Whole `test/runs` and `test/validation` directories can also live on the data
+disk behind links at their original paths. Move them only while workers are
+stopped and verify copied files before removing the originals. Workers retain
+the logical case path recorded in `record_storage.json`, including when invoked
+through the new physical path, so absolute checkpoint namespaces still resume
+the same saved parameters. New checkpoints, final results, and status files
+then reside on the data disk as well. Output-directory links are ignored by Git.
+
 An interrupted final JSONL write is archived before another worker appends;
 earlier complete records and checkpoints are retained. Memory-summary writes are
 atomic, and a shutdown-reporting failure does not replace the original error.

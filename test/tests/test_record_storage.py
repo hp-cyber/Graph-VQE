@@ -98,6 +98,39 @@ class RecordStorageTests(unittest.TestCase):
             self.assertEqual(json.loads(p.read_text()),{'state':'committed'})
             self.assertEqual(list(Path(d).glob('*.tmp')),[])
 
+    def test_atomic_status_write_preserves_data_disk_link(self):
+        with tempfile.TemporaryDirectory() as d:
+            target=Path(d)/'data'/'status.json';link=Path(d)/'status.json'
+            storage.atomic_json(target,{'running':1});link.symlink_to(target)
+            storage.atomic_json(link,{'running':2})
+            self.assertTrue(link.is_symlink())
+            self.assertEqual(json.loads(target.read_text()),{'running':2})
+            with patch.object(storage.os,'replace',side_effect=OSError(errno.ENOSPC,'full')):
+                with self.assertRaises(OSError):storage.atomic_json(link,{'running':3})
+            self.assertEqual(json.loads(target.read_text()),{'running':2})
+
+    def test_relocated_case_retains_logical_path_and_existing_records(self):
+        with tempfile.TemporaryDirectory() as d:
+            case=Path(d)/'home'/'case';case.mkdir(parents=True)
+            record=storage.prepare_record_storage(case,Path(d)/'logs')
+            (case/'checkpoint.json').write_text('{"parameters":[0.3]}')
+            moved=Path(d)/'data'/'case';moved.parent.mkdir()
+            case.rename(moved);case.symlink_to(moved,target_is_directory=True)
+            self.assertEqual(storage.logical_case_path(case),case)
+            self.assertEqual(storage.logical_case_path(moved),case)
+            self.assertEqual(storage.prepare_record_storage(moved),record)
+            storage.atomic_json(case/'checkpoint.json',{'parameters':[0.4]})
+            self.assertEqual(json.loads((moved/'checkpoint.json').read_text()),{'parameters':[0.4]})
+            storage.remove_record_storage(moved)
+            self.assertFalse(Path(record['directory']).exists())
+
+    def test_copied_manifest_cannot_redirect_an_unrelated_case(self):
+        with tempfile.TemporaryDirectory() as d:
+            case=Path(d)/'one';case.mkdir();other=Path(d)/'two';other.mkdir()
+            storage.prepare_record_storage(case,Path(d)/'logs')
+            (other/'record_storage.json').write_bytes((case/'record_storage.json').read_bytes())
+            with self.assertRaisesRegex(ValueError,'different case'):storage.logical_case_path(other)
+
     def test_shutdown_reporting_preserves_primary_exception(self):
         primary=OSError(errno.ENOSPC,'primary disk error')
         def failed():raise OSError(errno.ENOSPC,'secondary status error')

@@ -748,5 +748,34 @@
     "time_limit_added": false,
     "core_algorithm_changed": false,
     "scope": "Bounded seven-qubit three-iteration storage/resume validation; existing numerical validation is retained above."
+  },
+  "whole_output_relocation_20261014": {
+    "passed": true,
+    "cpu_tests": 51,
+    "relocated_resume_cases": 6,
+    "optimizers": [
+      "cobyla",
+      "lbfgs",
+      "spsa"
+    ],
+    "profiles": [
+      {
+        "shots": -1,
+        "entanglement": "linear",
+        "interrupted_stage": "local"
+      },
+      {
+        "shots": 1000,
+        "entanglement": "reverse_linear",
+        "interrupted_stage": "global"
+      }
+    ],
+    "exact_parameters_and_absolute_checkpoint_namespaces_preserved": true,
+    "completed_case_skips": 18,
+    "original_and_physical_output_paths_supported": true,
+    "all_generated_case_files_on_data_disk": true,
+    "gpu": 6,
+    "core_algorithm_changed": false,
+    "scope": "Bounded seven-qubit, three-iteration tests; files moved between interruption and resume."
   }
 }

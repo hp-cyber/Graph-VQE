@@ -1,4 +1,4 @@
-"""Keep growing records on optional data storage without moving checkpoints."""
+"""Store records on a data disk while preserving logical checkpoint paths."""
 import errno
 import hashlib
 import json
@@ -18,6 +18,7 @@ RECORD_FILES = ('work_events.jsonl', 'optimization_trace.jsonl',
 def atomic_json(path, data):
     """A failed write leaves the previous committed JSON untouched."""
     path = Path(path)
+    if path.is_symlink(): path = path.resolve()
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(data, allow_nan=False) + '\n'
     temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
@@ -42,6 +43,23 @@ def best_effort(label, operation, *args):
 def configured_root():
     value = os.environ.get('CAMPAIGN_RECORDS_ROOT')
     return Path(value).expanduser().resolve() if value else None
+
+
+def logical_case_path(path):
+    """Keep resume identities stable when output directories move behind links.
+
+    A recorded logical path is accepted only if it refers to the same directory
+    as the requested path; a copied manifest cannot redirect another case.
+    """
+    case = Path(os.path.abspath(path))
+    manifest = case/'record_storage.json'
+    if manifest.exists():
+        owner = Path(json.loads(manifest.read_text())['case'])
+        if owner != case:
+            if not owner.is_absolute() or not owner.exists() or not owner.samefile(case):
+                raise ValueError('Record storage belongs to a different case')
+            case = owner
+    return case
 
 
 def checksum(path):
@@ -97,7 +115,7 @@ def prepare_record_storage(case, root=None):
     Copy and verify each existing log before atomically replacing its directory
     entry with a link. The case directory and all checkpoint paths stay put.
     """
-    case = Path(case).resolve()
+    case = logical_case_path(case)
     manifest = case/'record_storage.json'
     saved = json.loads(manifest.read_text()) if manifest.exists() else None
     root = Path(root).expanduser().resolve() if root is not None else configured_root()
@@ -151,7 +169,7 @@ def prepare_record_storage(case, root=None):
 
 def remove_record_storage(case):
     """Remove only this case's explicitly owned external records during cleanup."""
-    case = Path(case).resolve(); manifest = case/'record_storage.json'
+    case = logical_case_path(case); manifest = case/'record_storage.json'
     if not manifest.exists(): return
     record = json.loads(manifest.read_text());directory = Path(record['directory'])
     if record['case'] != str(case) or directory.name != hashlib.sha256(str(case).encode()).hexdigest():

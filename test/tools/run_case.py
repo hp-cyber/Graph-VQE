@@ -10,7 +10,7 @@ import traceback
 from job_state import reserve_case
 from optimization_trace import atomic
 from readout import protein_probabilities
-from record_storage import prepare_record_storage, repair_append_logs, best_effort
+from record_storage import prepare_record_storage, repair_append_logs, logical_case_path, best_effort
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -34,7 +34,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('case',type=Path);parser.add_argument('--gpu',type=int,required=True)
     parser.add_argument('--lock-fd',type=int)
-    args=parser.parse_args();case=args.case.resolve();job=json.loads((case/'job.json').read_text())
+    args=parser.parse_args();case=logical_case_path(args.case);job=json.loads((case/'job.json').read_text())
     lock,reason=reserve_case(case,args.lock_fd)
     if reason:print(f'Skipping {case}: {reason}',flush=True);return
     prepare_record_storage(case)
