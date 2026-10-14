@@ -11,6 +11,20 @@ and `--entanglements` select resources or cases. GPU validation tools default to
 GPU 2; GPUs 0 and 1 are not used by the default campaign. For isolated timing
 measurements, explicitly use `--jobs-per-gpu 1` and otherwise idle GPUs.
 
+To keep growing logs on a larger disk, export `CAMPAIGN_RECORDS_ROOT` to a
+writable directory, or copy `test/campaign_storage.env.example` to the ignored
+`test/campaign_storage.env` and edit it. The launcher sources that optional file.
+Checkpoints stay at their original case paths; JSONL/CSV logs and `run.log` are
+linked to the data disk after existing contents are copied and SHA256-verified.
+Each case's `record_storage.json` remembers its destination on restart. There is
+no added disk quota, log-size cap or free-space reserve. Both filesystems need
+available space. Use `test/tools/clean_unfinished.py --apply` for cleanup so that
+the selected case's external logs are removed too.
+
+An interrupted final JSONL write is archived before another worker appends;
+earlier complete records and checkpoints are retained. Memory-summary writes are
+atomic, and a shutdown-reporting failure does not replace the original error.
+
 Each partition is optimized once, its best rotation parameters initialize the
 global nearest-neighbor circuit, and the full Hamiltonian is optimized once.
 Early stopping uses consecutive energy change below 1, without patience or a

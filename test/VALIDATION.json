@@ -712,5 +712,41 @@
     "validation_timing": "Shared with the active VQE campaign; these are correctness checks, not isolated timing benchmarks.",
     "scope": "Bounded 3-iteration seven-qubit matrix and local/global interruption tests. 97-qubit energy, three gradient components, and 1000-shot readout checked in both orders. The full 660-case optimization campaign was not run.",
     "production_result_files": []
+  },
+  "storage_recovery_20261014": {
+    "passed": true,
+    "cpu_tests": 48,
+    "matrix_cases": 12,
+    "completed_skips": 12,
+    "resume_cases": 12,
+    "resume_profiles": [
+      "analytic local interruption",
+      "1000-shot global interruption"
+    ],
+    "optimizers": [
+      "cobyla",
+      "lbfgs",
+      "spsa"
+    ],
+    "entanglements": [
+      "linear",
+      "reverse_linear"
+    ],
+    "validation_gpus": [
+      6
+    ],
+    "jobs_per_gpu": 5,
+    "growing_logs_on_external_disk": true,
+    "checkpoint_paths_preserved": true,
+    "verified_existing_log_copy": true,
+    "partial_jsonl_tail_archived": true,
+    "atomic_memory_summary": true,
+    "primary_failure_preserved": true,
+    "worker_process_groups_cleaned": true,
+    "disk_quota_added": false,
+    "free_space_reserve_added": false,
+    "time_limit_added": false,
+    "core_algorithm_changed": false,
+    "scope": "Bounded seven-qubit three-iteration storage/resume validation; existing numerical validation is retained above."
   }
 }

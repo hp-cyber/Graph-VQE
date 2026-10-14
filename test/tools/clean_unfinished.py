@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 from job_state import reserve_case
+from record_storage import remove_record_storage
 
 
 def clean(roots, apply=False):
@@ -29,6 +30,7 @@ def clean(roots, apply=False):
                     paths=[p for p in case.iterdir() if p.name not in ('job.json','protein_manifest.json','.run.lock')]
                     if not paths: continue
                     if apply:
+                        remove_record_storage(case)
                         for path in paths:
                             if path.is_dir() and not path.is_symlink(): shutil.rmtree(path)
                             else: path.unlink()

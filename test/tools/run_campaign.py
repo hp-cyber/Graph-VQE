@@ -13,6 +13,7 @@ import time
 from worker_resources import MemoryGuard, cleanup_group
 from job_state import reserve_case, is_complete
 from optimization_trace import atomic
+from record_storage import prepare_record_storage, best_effort
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -78,6 +79,7 @@ def run(jobs,gpus,per_gpu,output):
                                 path=case/'job.json'
                                 if path.exists() and json.loads(path.read_text())!=job:raise RuntimeError(f'Changed job: {case}')
                                 atomic(path,job)
+                                prepare_record_storage(case)
                                 with (case/'run.log').open('a') as log:
                                     p=subprocess.Popen([sys.executable,str(ROOT/'tools/run_case.py'),str(case),'--gpu',str(gpu),'--lock-fd',str(lock.fileno())],
                                         cwd=case,env=dict(os.environ,**memory.environment(gpu)),stdout=log,stderr=subprocess.STDOUT,start_new_session=True,pass_fds=(lock.fileno(),))
@@ -94,7 +96,7 @@ def run(jobs,gpus,per_gpu,output):
         finally:
             stop_workers(pending)
             for process,_,_ in pending.values():cleanup_group(process)
-            pending.clear();active.clear();status()
+            pending.clear();active.clear();best_effort('final campaign status', status)
     return int(any(r['exit_code'] for r in done))
 
 

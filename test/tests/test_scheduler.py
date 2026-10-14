@@ -1,4 +1,5 @@
 import json
+import errno
 from pathlib import Path
 import sys
 import tempfile
@@ -18,6 +19,19 @@ class SchedulerTests(unittest.TestCase):
         guard.return_value.environment.return_value={}
         patch.object(run_campaign, 'cleanup_group').start()
         self.addCleanup(patch.stopall)
+
+    def test_finished_record_error_survives_failed_shutdown_status(self):
+        primary=OSError(errno.ENOSPC,'finished record is full')
+        run_campaign.MemoryGuard.return_value.finished.side_effect=primary
+        original=run_campaign.atomic
+        def save(path,data):
+            if isinstance(data,dict) and data.get('stopped'):raise OSError(errno.ENOSPC,'final status is full')
+            return original(path,data)
+        worker=unittest.mock.Mock(pid=543210);worker.poll.return_value=0
+        with tempfile.TemporaryDirectory() as d, patch.object(run_campaign,'atomic',side_effect=save), patch.object(run_campaign.subprocess,'Popen',return_value=worker):
+            with self.assertRaises(OSError) as caught:run_campaign.run([dict(key='case0')],(2,),5,Path(d))
+            self.assertIs(caught.exception,primary)
+            self.assertTrue(run_campaign.cleanup_group.called)
 
     def test_refill_limits_skip_complete_and_continue_after_failure(self):
         with tempfile.TemporaryDirectory() as d:

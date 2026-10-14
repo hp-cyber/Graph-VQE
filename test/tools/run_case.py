@@ -10,6 +10,7 @@ import traceback
 from job_state import reserve_case
 from optimization_trace import atomic
 from readout import protein_probabilities
+from record_storage import prepare_record_storage, repair_append_logs, best_effort
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -36,6 +37,8 @@ def main():
     args=parser.parse_args();case=args.case.resolve();job=json.loads((case/'job.json').read_text())
     lock,reason=reserve_case(case,args.lock_fd)
     if reason:print(f'Skipping {case}: {reason}',flush=True);return
+    prepare_record_storage(case)
+    repair_append_logs(case)
     if job['shots'] not in (-1,1000) or job['optimizer'] not in ('cobyla','lbfgs','spsa') or job['entanglement'] not in ('linear','reverse_linear'):
         raise ValueError('Invalid matched case')
     env=case_environment(job,case,args.gpu);os.environ.clear();os.environ.update(env)
@@ -119,11 +122,11 @@ def main():
         print(f'Completed {job["key"]}: best energy={top[0][0]}',flush=True)
     except BaseException:
         failure=traceback.format_exc()
-        work.stop('interrupted_or_failed')
+        best_effort('interrupted work marker', work.stop, 'interrupted_or_failed')
         from work_report import write_report
         try:write_report(case)
         except Exception as report_error:print(f'Could not summarize work ledger: {report_error}',file=sys.stderr)
-        atomic(case/'job_status.json',dict(status='failed',finished=time.time(),traceback=failure))
+        best_effort('failed job status', atomic, case/'job_status.json',dict(status='failed',finished=time.time(),traceback=failure))
         raise
     finally:lock.close()
 

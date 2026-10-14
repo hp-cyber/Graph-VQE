@@ -9,6 +9,7 @@ from pathlib import Path
 import signal
 import subprocess
 import time
+from record_storage import atomic_json
 
 GIB = 1024**3
 
@@ -153,4 +154,4 @@ class MemoryGuard:
         ram,vram=self.peaks.pop(process.pid,(0,0))
         record=dict(peak_sampled_ram_bytes=ram,peak_sampled_gpu_bytes=vram,
                     process_group_cleaned=True,finished=time.time())
-        (case/'memory_usage.json').write_text(json.dumps(record,indent=2)+'\n')
+        atomic_json(case/'memory_usage.json', record)
