@@ -106,7 +106,8 @@ def minimize(fun,x0,args=(),method=None,jac=None,hess=None,hessp=None,
     def evaluate(point,kind='objective'):
         t=time.perf_counter()
         if kind!='objective':
-            with gradient_probe():value=float(fun(point,*args))
+            import work_trace as work
+            with work.scope(probe_kind=kind), gradient_probe():value=float(fun(point,*args))
         else:value=float(fun(point,*args))
         if not np.isfinite(value):raise ValueError(f'Nonfinite SPSA {kind}: {value}')
         counts[kind]+=1
@@ -144,7 +145,11 @@ def minimize(fun,x0,args=(),method=None,jac=None,hess=None,hessp=None,
             ak=a/(k+config['stability'])**config['alpha']
             ck=c/k**config['gamma']
             t=time.perf_counter()
-            g=perturbation_gradient(lambda p:evaluate(p,'gradient_probe'),x,ck,rng)
+            import work_trace as work
+            with work.scope(role='gradient'):
+                with work.Span('gradient_evaluation', parameters=x.tolist(), parameter_count=x.size) as event:
+                    g=perturbation_gradient(lambda p:evaluate(p,'gradient_probe'),x,ck,rng)
+                    event.result['gradient']=g.tolist()
             counts['gradient']+=1
             _log(dict(header,event='gradient',index=k,norm=float(np.linalg.norm(g)),seconds=time.perf_counter()-t,learning_rate=ak,perturbation=ck))
             candidate=np.clip(x-ak*g,lower,upper)

@@ -8,7 +8,7 @@ import time
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--gpu',type=int,default=0);args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--gpu',type=int,default=2);args=p.parse_args()
 os.environ.update(CUDA_VISIBLE_DEVICES=str(args.gpu),CUDAQ_MQPU_NGPUS='1',CUDAQ_MPS_HBATCH_NGPUS='1',
                   CUDAQ_MPS_ANALYTIC_MODE='shared',ANALYTIC_MPS_OPTIMIZER='lbfgs',ANALYTIC_MPS_LBFGS_REVERSE_MODE='required')
 out=ROOT/'validation/global_chain_97';out.mkdir(parents=True,exist_ok=True)

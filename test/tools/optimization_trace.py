@@ -14,6 +14,7 @@ import threading
 import time
 import uuid
 import numpy as np
+import work_trace as work
 from scipy.optimize import OptimizeResult
 
 active = ContextVar('optimization_journal', default=None)
@@ -63,11 +64,12 @@ class Journal:
                 self.resumed = True
         self.iteration = int(self.state.get('iteration', 0))
         self.tick = time.perf_counter()
+        self.tick_ns = time.perf_counter_ns()
         self.cache = {}
 
     def log(self, event, **data):
         row = dict(event=event, optimizer_call=self.call, optimizer=self.optimizer,
-                   objective=self.name, solve_key=self.path.stem, **data)
+                   objective=self.name, solve_key=self.path.stem, context=work.context(), monotonic_ns=time.perf_counter_ns(), **data)
         path = self.root/'optimization_trace.jsonl'
         path.parent.mkdir(parents=True, exist_ok=True)
         with _lock, path.open('a') as f: f.write(json.dumps(row, allow_nan=False)+'\n')
@@ -83,6 +85,12 @@ class Journal:
         self.log('iteration', iteration=self.iteration, seconds=now-self.tick,
                  parameters=x.tolist(), parameter_count=x.size,
                  energy=self.cache.get(x.tobytes()), complete=True)
+        end_ns = time.perf_counter_ns()
+        work.interval('optimizer_iteration', self.tick_ns, end_ns,
+                      optimizer_call=self.call, solve_key=self.path.stem,
+                      iteration=self.iteration, parameters=x.tolist(), parameter_count=x.size,
+                      energy=self.cache.get(x.tobytes()), complete=True)
+        self.tick_ns = end_ns
         self.tick = now
         self.save(iteration=self.iteration, accepted_parameters=x.tolist())
 
@@ -103,7 +111,11 @@ def minimize(backend, fun, x0, *args, **kwargs):
         nonlocal previous
         start = time.perf_counter()
         try:
-            value = float(fun(x, *fargs))
+            kind = work.context().get('probe_kind', 'gradient_probe') if backend.is_gradient_probe() else 'objective'
+            with work.scope(role=kind, optimizer_call=journal.call, solve_key=journal.path.stem):
+                with work.Span('objective_call', parameters=np.asarray(x).tolist(), parameter_count=len(x)) as event:
+                    value = float(fun(x, *fargs))
+                    event.result['energy'] = value
         except BaseException as exc:
             point=np.asarray(x,dtype=float)
             journal.log('energy_evaluation_failed',seconds=time.perf_counter()-start,
@@ -150,6 +162,10 @@ def minimize(backend, fun, x0, *args, **kwargs):
             journal.save(complete=True)
         raise
     finally:
+        work.interval('optimizer_iteration_tail', journal.tick_ns, time.perf_counter_ns(),
+                      optimizer_call=journal.call, solve_key=journal.path.stem, complete=False,
+                      iteration=journal.iteration+1, parameters=journal.state['x'],
+                      parameter_count=len(journal.state['x']), energy=journal.state.get('energy'))
         journal.log('iteration_tail', seconds=time.perf_counter()-journal.tick,
                     iteration=journal.iteration+1, complete=False,
                     parameters=journal.state['x'], parameter_count=len(journal.state['x']),

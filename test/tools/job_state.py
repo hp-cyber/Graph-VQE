@@ -6,6 +6,14 @@ import os
 
 def is_complete(case):
     status = case/'job_status.json'
+    if (case/'work_events.jsonl').exists():
+        # Source markers precede postprocessing. A case is complete only once
+        # its required accounting has also been finalized and checked.
+        try:
+            report=json.loads((case/'work_summary.json').read_text())
+            return (json.loads(status.read_text()).get('status')=='complete'
+                    and not report['issues'] and not report['unclosed_current_attempt'])
+        except (FileNotFoundError,ValueError,KeyError):return False
     try:
         if json.loads(status.read_text()).get('status') == 'complete':
             return True

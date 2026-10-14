@@ -42,6 +42,7 @@ def main():
     os.chdir(case);sys.path.insert(0,str(ROOT/'sources/independent-vqe'))
     protocol=dict(job,gpu=args.gpu,target='tensornet-mps-mqpu-shots',max_iterations=int(env['GRAPH_VQE_MAX_ITER']) if 'GRAPH_VQE_MAX_ITER' in env else 1000000,
         energy_tolerance=1,patience=0,window=0,local_runs_per_partition=1,global_runs=1,
+        work_recording='vqe_work.v1',
         global_ansatz='nearest_neighbor_su2_v1',parameter_order='layer/qubit/gate',
         reps=4,max_block_qubits=12,seed=0,spsa_calibration_pairs=5,
         gradient_estimator='analytic reverse mode' if job['optimizer']=='lbfgs' else job['optimizer'],
@@ -57,6 +58,9 @@ def main():
             if previous.get(k)!=protocol[k]:raise ValueError(f'Incompatible resume setting: {k}')
     atomic(old,protocol)
     started=time.perf_counter()
+    import work_trace as work
+    work.start(case,method=job['method'],protein_id=job['protein_id'],optimizer=job['optimizer'],
+               shots=job['shots'],entanglement=job['entanglement'],gpu=args.gpu)
     try:
         import cudaq
         import numpy as np
@@ -66,11 +70,14 @@ def main():
         else:
             from sampled_execution import install
         install('independent-vqe')
+        from work_instrumentation import install as instrument, install_backend
+        install_backend()
         from Protein_Folding import Peptide
         from Protein_Folding.interactions.miyazawa_jernigan_interaction import MiyazawaJerniganInteraction
         from Protein_Folding.penalty_parameters import PenaltyParameters
         from Protein_Folding.protein_folding_problem import ProteinFoldingProblem
         from independent_campaign import CampaignVQE
+        instrument(CampaignVQE)
         problem=ProteinFoldingProblem(Peptide(job['sequence'],['']*len(job['sequence'])),MiyazawaJerniganInteraction(),PenaltyParameters(10,10,10))
         h=problem.qubit_op()
         if h.num_qubits!=job['simulation_qubits']:raise ValueError('Protein qubit count differs from job')
@@ -91,7 +98,10 @@ def main():
             energy_history=energy,parameter_count=len(params),local_results=solver.local_results,global_results=solver.global_results,
             seconds=time.perf_counter()-started))
         if job['shots']==1000:
-            counts=cudaq.sample(kernel,*params.tolist(),shots_count=1000)
+            with work.scope(stage_id='readout',role='readout',qubits=h.num_qubits,
+                            logical_qubits=list(range(h.num_qubits))):
+                with work.Span('readout',parameters=params.tolist(),parameter_count=len(params)):
+                    counts=cudaq.sample(kernel,*params.tolist(),shots_count=1000)
             counts={str(k):int(v) for k,v in counts.items()}
             if sum(counts.values())!=1000:raise RuntimeError('Incorrect final readout shot count')
             probabilities=protein_probabilities(counts)
@@ -100,10 +110,20 @@ def main():
                 protein_bit_order='q0_right'))
             structures=case/'Structures';structures.mkdir(exist_ok=True)
             problem.interpret(probabilities).save_xyz_file(name=job['protein_id'],path=str(structures))
+        work.stop('complete')
+        from work_report import write_report
+        report=write_report(case)
+        if report['issues'] or report['unclosed_current_attempt']:
+            raise RuntimeError('Work recording validation failed; see work_summary.json')
         atomic(case/'job_status.json',dict(status='complete',finished=time.time(),seconds=time.perf_counter()-started))
         print(f'Completed {job["key"]}: best energy={top[0][0]}',flush=True)
     except BaseException:
-        atomic(case/'job_status.json',dict(status='failed',finished=time.time(),traceback=traceback.format_exc()))
+        failure=traceback.format_exc()
+        work.stop('interrupted_or_failed')
+        from work_report import write_report
+        try:write_report(case)
+        except Exception as report_error:print(f'Could not summarize work ledger: {report_error}',file=sys.stderr)
+        atomic(case/'job_status.json',dict(status='failed',finished=time.time(),traceback=failure))
         raise
     finally:lock.close()
 

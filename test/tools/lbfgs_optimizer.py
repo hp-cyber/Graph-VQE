@@ -126,7 +126,11 @@ def minimize(fun, x0, args=(), method=None, jac=None, hess=None,
         count['gradient'] += 1
         t = time.perf_counter()
         if reverse is not None:
-            analytic_energy,value = reverse.value_gradient(x)
+            import work_trace as work
+            with work.Span('reverse_value_gradient',parameters=np.asarray(x).tolist(),
+                           parameter_count=len(x),engine=getattr(reverse,'engine','reverse_mps')) as event:
+                analytic_energy,value = reverse.value_gradient(x)
+                event.result.update(energy=float(analytic_energy),gradient=np.asarray(value).tolist())
             if reverse_mode == 'required' or (not reverse_checked and reverse_mode == 'auto'):
                 observed = evaluate(x, True)
                 if not np.isclose(analytic_energy, observed, rtol=1e-9, atol=1e-7):
@@ -145,6 +149,9 @@ def minimize(fun, x0, args=(), method=None, jac=None, hess=None,
                   parameters=np.asarray(x).tolist(),parameter_count=len(x),
                   norm=float(np.linalg.norm(value)), seconds=time.perf_counter()-t))
         return value
+
+    from work_instrumentation import gradient as trace_gradient
+    derivative = trace_gradient(derivative)
 
     def accepted(x):
         count['accepted_iteration'] += 1

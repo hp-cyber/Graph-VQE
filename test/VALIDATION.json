@@ -1,8 +1,8 @@
 {
   "global_ansatz": "nearest_neighbor_su2_v1",
-  "cpu_tests": 29,
+  "cpu_tests": 37,
   "smoke_cases": 12,
-  "resume_cases": 12,
+  "resume_cases": 24,
   "gradients": [
     {
       "entanglement": "linear",
@@ -577,5 +577,140 @@
         }
       }
     ]
+  },
+  "work_recording_20261014": {
+    "passed": true,
+    "date": "2026-10-14",
+    "cpu_tests": 37,
+    "matrix_cases": 12,
+    "resume_cases": 24,
+    "resume_stages": [
+      "local",
+      "global"
+    ],
+    "optimizers": [
+      "cobyla",
+      "lbfgs",
+      "spsa"
+    ],
+    "shots": [
+      -1,
+      1000
+    ],
+    "entanglements": [
+      "linear",
+      "reverse_linear"
+    ],
+    "work_record_audits": 36,
+    "completed_case_skips": 12,
+    "scheduler_worker_cleanup_checks": 11,
+    "no_configured_time_limits": {
+      "files": 83,
+      "configured_time_limits": []
+    },
+    "large_97_checks": [
+      {
+        "protein_id": "3d7z",
+        "qubits": 97,
+        "entanglement": "linear",
+        "parameters": 970,
+        "max_bond": 16,
+        "engine": "reverse_tape_mps",
+        "energy": 72704.69131485018,
+        "energy_error": 1.2514647096395493e-09,
+        "energy_seconds": 2.887289767997572,
+        "gradient_seconds": 4.1373141260119155,
+        "max_checked_gradient_error": 4.711466772278072e-10,
+        "sampled_energy": 69372.76463000009,
+        "readout_shots": 1000,
+        "passed": true
+      },
+      {
+        "protein_id": "3d7z",
+        "qubits": 97,
+        "entanglement": "reverse_linear",
+        "parameters": 970,
+        "max_bond": 16,
+        "engine": "reverse_tape_mps",
+        "energy": 2296.780954927715,
+        "energy_error": 7.8580342233181e-10,
+        "energy_seconds": 3.1424805740243755,
+        "gradient_seconds": 3.3639083039888646,
+        "max_checked_gradient_error": 1.8869572571134086e-11,
+        "sampled_energy": 2182.9371870000414,
+        "readout_shots": 1000,
+        "passed": true
+      }
+    ],
+    "local_and_global_gradient_checks": [
+      {
+        "entanglement": "linear",
+        "phase": "local",
+        "qubits": 3,
+        "parameter_count": 30,
+        "cross_edges": 0,
+        "engine": "reverse_tape_mps",
+        "energy_error": 7.105427357601002e-15,
+        "max_derivative_error": 6.875308248069367e-10,
+        "max_native_parameter_shift_error": 2.7608124120170885e-15,
+        "reverse_seconds": 1.0388481979898643,
+        "passed": true
+      },
+      {
+        "entanglement": "linear",
+        "phase": "global",
+        "qubits": 7,
+        "parameter_count": 70,
+        "cross_edges": 4,
+        "engine": "reverse_tape_mps",
+        "energy_error": 2.1316282072803006e-14,
+        "max_derivative_error": 9.584183759125953e-10,
+        "max_native_parameter_shift_error": 8.715250743307479e-15,
+        "reverse_seconds": 0.047597127995686606,
+        "passed": true
+      },
+      {
+        "entanglement": "reverse_linear",
+        "phase": "local",
+        "qubits": 3,
+        "parameter_count": 30,
+        "cross_edges": 0,
+        "engine": "reverse_tape_mps",
+        "energy_error": 8.881784197001252e-15,
+        "max_derivative_error": 6.804656005332532e-10,
+        "max_native_parameter_shift_error": 1.6306400674181987e-15,
+        "reverse_seconds": 0.022046734986361116,
+        "passed": true
+      },
+      {
+        "entanglement": "reverse_linear",
+        "phase": "global",
+        "qubits": 7,
+        "parameter_count": 70,
+        "cross_edges": 4,
+        "engine": "reverse_tape_mps",
+        "energy_error": 2.842170943040401e-14,
+        "max_derivative_error": 1.7761168091823265e-09,
+        "max_native_parameter_shift_error": 8.522696437474053e-15,
+        "reverse_seconds": 0.05198572197696194,
+        "passed": true
+      }
+    ],
+    "core_strategy_circuits_and_reverse_engines_unchanged": true,
+    "production_gpus": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "jobs_per_gpu": 5,
+    "validation_gpus": [
+      6,
+      7
+    ],
+    "validation_timing": "Shared with the active VQE campaign; these are correctness checks, not isolated timing benchmarks.",
+    "scope": "Bounded 3-iteration seven-qubit matrix and local/global interruption tests. 97-qubit energy, three gradient components, and 1000-shot readout checked in both orders. The full 660-case optimization campaign was not run.",
+    "production_result_files": []
   }
 }

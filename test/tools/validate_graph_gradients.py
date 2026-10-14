@@ -14,7 +14,7 @@ from run_case import ROOT,case_environment
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--gpu',type=int,default=0)
+    p=argparse.ArgumentParser();p.add_argument('--gpu',type=int,default=2)
     args=p.parse_args()
     output=ROOT/'validation/gradients';output.mkdir(parents=True,exist_ok=True)
     job=next(j for j in json.loads((ROOT/'campaign.json').read_text())['jobs']
