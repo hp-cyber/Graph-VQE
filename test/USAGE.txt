@@ -54,8 +54,9 @@ Run on this server (full campaign is not started by installation)
 
 Default scheduling: GRAPH_VQE_GPUS if set (this server: 2,3,4,5,6 in its local
 campaign_storage.env), otherwise every GPU nvidia-smi lists. Jobs start one at a time while the host stays
-responsive and the GPU's CPU socket has room; at 90% RAM all jobs stop and resume
-later (MEMORY.txt). A job uses one GPU for its sequential local solves and global
+responsive, the GPU's CPU socket has room and >=10% of the GPU's memory is free; at
+90% RAM all jobs stop and resume later; a GPU out-of-memory failure on a shared GPU is
+requeued and resumes (MEMORY.txt). A job uses one GPU for its sequential local solves and global
 solve. To choose GPUs:
   GRAPH_VQE_GPUS=0,1,2,3 ./run.sh        (or ./run.sh --gpus 0,1,2,3)
 

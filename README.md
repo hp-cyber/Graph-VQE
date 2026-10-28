@@ -6,9 +6,10 @@ both analytic (`shots=-1`) and 1000-shot objectives: 660 cases.
 
 Run `./test/run.sh`; use `./test/run.sh --dry-run` to preview the pool. The default
 needs no arguments: it uses `GRAPH_VQE_GPUS` if set (2,3,4,5,6 on the original server), otherwise every GPU (`--gpus` overrides). Jobs start one
-at a time while the host stays responsive and the GPU's CPU socket has room; at 90%
-RAM (or of a container's memory limit) every job stops and later resumes from its
-checkpoint. Workers run at low CPU and I/O priority on their GPU's socket. Details:
+at a time while the host stays responsive, the GPU's CPU socket has room and at least
+10% of the GPU's memory is free; at 90% RAM (or of a container's memory limit) every job
+stops and later resumes from its checkpoint, and a job that runs out of GPU memory on a
+shared GPU is requeued and resumes from its checkpoint. Workers run at low CPU and I/O priority on their GPU's socket. Details:
 `test/MEMORY.txt`. `--proteins`, `--optimizers`, `--shots` and `--entanglements`
 select cases. GPU validation tools default to GPU 2.
 

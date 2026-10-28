@@ -16,6 +16,8 @@ Responsive means, for CHECKS_TO_ACT consecutive checks:
 Two more rules:
 - A job is not started on a GPU whose CPU socket is full (>= CPU_FULL busy over
   the last CPU_WINDOW seconds); it goes to a GPU whose socket has room.
+- A job is not started on a GPU with less than GPU_MIN_FREE of its memory free
+  (nvidia-smi); if no GPU has room, no job starts until one does.
 - When RAM use reaches RAM_KILL of total, every running job of every launcher is
   stopped and requeued; they resume from their checkpoints as starts continue.
   STATE_DIR/force_ram_full triggers this by hand.
@@ -43,6 +45,8 @@ MIN_AVAILABLE = 0.05         # fraction of RAM
 CPU_FULL = float(os.environ.get('ANALYTIC_MPS_CPU_FULL', '0.95'))   # socket busy fraction counted as full
 CPU_WINDOW = 10              # seconds of CPU usage averaged
 RAM_KILL = float(os.environ.get('ANALYTIC_MPS_RAM_KILL', '0.90'))   # used RAM fraction that stops every job
+GPU_MIN_FREE = float(os.environ.get('ANALYTIC_MPS_GPU_MIN_FREE', '0.10'))  # free GPU memory fraction needed to start a job
+GPU_QUERY_SECONDS = 30       # nvidia-smi can be slow under load; a timeout means no start this round
 EVICT_GRACE_SECONDS = 10     # SIGTERM -> SIGKILL for stopped jobs (they resume from checkpoints)
 
 
@@ -94,6 +98,17 @@ def cpu_times():
             fields = list(map(int, fields))
             times[int(name[3:])] = (sum(fields)-fields[3]-fields[4], sum(fields))
     return times
+
+
+def gpu_free():
+    """GPU index (PCI bus order, as CUDA_DEVICE_ORDER=PCI_BUS_ID) -> free fraction of its memory."""
+    output = subprocess.check_output(['nvidia-smi', '--query-gpu=index,memory.total,memory.free',
+        '--format=csv,noheader,nounits'], text=True, stderr=subprocess.DEVNULL, timeout=GPU_QUERY_SECONDS)
+    free = {}
+    for line in output.splitlines():
+        index, total, available = (x.strip() for x in line.split(','))
+        free[int(index)] = int(available)/int(total)
+    return free
 
 
 def alive(pid):
@@ -240,14 +255,29 @@ class Admission:
         with self.state() as s:
             return {int(pid) for pid, j in s['jobs'].items() if j['owner'] == self.owner and j.get('evict')}
 
+    def start_due(self):
+        with self.state() as s:
+            return not s['frozen'] and time.time()-max(s['last_start'], s['last_evict']) >= START_INTERVAL
+
     def choose_gpu(self, gpu_cpus):
-        """None unless a job may start now; else, among GPUs whose CPU socket is not full,
-        the GPU with the fewest jobs. gpu_cpus: GPU -> its socket's CPUs."""
+        """None unless a job may start now; else, among GPUs whose CPU socket is not full and
+        with at least GPU_MIN_FREE memory free, the GPU with the fewest jobs.
+        gpu_cpus: GPU -> its socket's CPUs."""
         if self.bad or not self.last:
             return None
         busy = {g: self.cpu_busy(cpus) for g, cpus in gpu_cpus.items()}
         self.last = dict(self.last, cpu_busy_by_gpu={g: None if b is None else round(b, 3) for g, b in busy.items()})
         gpus = [g for g, b in busy.items() if b is not None and b < CPU_FULL]
+        # Query GPU memory only when a start is due: nvidia-smi is slow with many contexts.
+        if not gpus or not self.start_due():
+            return None
+        try:
+            free = gpu_free()
+        except (OSError, ValueError, subprocess.SubprocessError) as exc:
+            print(f'[admission] GPU memory unknown ({type(exc).__name__}); no job starts this round', flush=True)
+            return None
+        self.last = dict(self.last, gpu_free={g: round(free[g], 3) if g in free else None for g in gpu_cpus})
+        gpus = [g for g in gpus if free.get(g, 0) >= GPU_MIN_FREE]
         if not gpus:
             return None
         with self.state() as s:
@@ -268,6 +298,12 @@ class Admission:
         with self.state() as s:
             s['jobs'][str(pid)] = dict(owner=self.owner, launcher=self.name, gpu=gpu, case=str(case), started=time.time())
             s['last_start'] = time.time()
+
+    def jobs_on_gpu(self, gpu, exclude=()):
+        """Running jobs of every launcher on this GPU."""
+        with self.state() as s:
+            return sum(1 for pid, j in s['jobs'].items()
+                       if j['gpu'] == gpu and int(pid) not in exclude and alive(int(pid)))
 
     def ended(self, pid):
         """A job exited. A normal finish (not an eviction) lets new jobs start again."""

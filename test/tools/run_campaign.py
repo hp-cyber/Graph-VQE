@@ -16,7 +16,7 @@ import signal
 import subprocess
 import sys
 import time
-from admission import Admission
+from admission import Admission, GPU_MIN_FREE
 from worker_resources import MemoryGuard, cleanup_group, gpu_cpus, kill_orphans, worker_preexec
 from job_state import reserve_case, is_complete
 from optimization_trace import atomic
@@ -26,6 +26,20 @@ ROOT=Path(__file__).resolve().parents[1]
 THREAD_LIMITS=('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS')
 STOP_GRACE_SECONDS=60
 ADMISSION_NAME='graph'
+# Messages of CUDA, its libraries, PyTorch and this campaign's GPU preflight when GPU memory runs out.
+GPU_OOM_MARKERS=('out of memory','cudaErrorMemoryAllocation','CUDA_ERROR_OUT_OF_MEMORY','_STATUS_ALLOC_FAILED',
+    'STATUS_INSUFFICIENT_WORKSPACE','exceeds this job GPU budget','exceeds available GPU workspace')
+OOM_LOG_BYTES=4*1024**2
+
+
+def gpu_oom(log,offset):
+    """Whether this run's part of run.log (from byte offset) reports GPU memory exhaustion."""
+    try:
+        with open(log,'rb') as f:
+            f.seek(max(offset,f.seek(0,2)-OOM_LOG_BYTES))
+            text=f.read().decode(errors='replace')
+    except OSError:return False
+    return any(m.lower() in text.lower() for m in GPU_OOM_MARKERS)
 
 
 def select_jobs(args):
@@ -67,13 +81,14 @@ def run(jobs,gpus,output):
     output.mkdir(parents=True,exist_ok=True)
     gpu_sockets={g:gpu_cpus(g) for g in gpus}
     pending={};active=collections.Counter();queue=collections.deque(jobs)
-    done=[];skipped=[];launched=[];evicted=[];stopped=False
+    done=[];skipped=[];launched=[];evicted=[];oom_requeued=[];stopped=False
+    log_start={}  # PID -> size of its run.log when it started: its own output follows
     requeued=set()  # cases of evicted jobs; a leftover lock holder must not drop them
     admission=None;last_status=0.0
     def status():
         atomic(output/'campaign_status.json',dict(gpus=gpus,admission='host responsiveness',host=dict(admission.last) if admission else {},
             running=len(pending),running_by_gpu={str(g):active[g] for g in gpus},queued=len(queue),finished=done,skipped=skipped,
-            launched=len(launched),evicted=evicted,stopped=stopped,updated=time.time()))
+            launched=len(launched),evicted=evicted,oom_requeued=oom_requeued,stopped=stopped,updated=time.time()))
     def stop(sig,frame):raise SystemExit(128+sig)
     with ExitStack() as stack:
         lock=stack.enter_context((output/'.campaign.lock').open('a'))
@@ -98,6 +113,13 @@ def run(jobs,gpus,output):
                     code=process.poll()
                     if code is None:continue
                     members=memory.group_members(process)
+                    # GPU memory ran out while other jobs shared the GPU: requeue it like an eviction, to resume
+                    # from its checkpoint once memory is free. Alone on its GPU, the job itself is too large: failed.
+                    oom=(code!=0 and pid not in admission.evicted and gpu_oom(case/'run.log',log_start.get(pid,0))
+                         and admission.jobs_on_gpu(gpu,exclude={pid})>0)
+                    log_start.pop(pid,None)
+                    if oom:
+                        admission.evicted.add(pid)
                     if pid in admission.evicted:
                         # Requeued: its memory_usage.json is written when the resumed run ends.
                         memory.peaks.pop(pid,None);memory.members.pop(pid,None)
@@ -108,10 +130,16 @@ def run(jobs,gpus,output):
                     del pending[pid];active[gpu]-=1;changed=True
                     # Stopped by the admission watcher: requeue; it resumes from its checkpoint.
                     if pid in admission.evicted:
-                        admission.evicted.discard(pid)
-                        evicted.append(dict(case=str(case),gpu=gpu,evicted_at=time.time()))
-                        queue.appendleft(job);requeued.add(case)
-                        print(f'Evicted GPU {gpu}: {case.relative_to(output)}; requeued to resume later',flush=True)
+                        admission.evicted.discard(pid);requeued.add(case)
+                        if oom:
+                            # Last in the queue: the GPU needs time to free memory.
+                            oom_requeued.append(dict(case=str(case),gpu=gpu,exit_code=code,at=time.time()))
+                            queue.append(job)
+                            print(f'GPU {gpu} out of memory: {case.relative_to(output)}; requeued to resume later',flush=True)
+                        else:
+                            evicted.append(dict(case=str(case),gpu=gpu,evicted_at=time.time()))
+                            queue.appendleft(job)
+                            print(f'Evicted GPU {gpu}: {case.relative_to(output)}; requeued to resume later',flush=True)
                         continue
                     if code==0 and not is_complete(case):code=1
                     done.append(dict(case=str(case),gpu=gpu,exit_code=code))
@@ -132,11 +160,12 @@ def run(jobs,gpus,output):
                         atomic(path,job)
                         prepare_record_storage(case)
                         with (case/'run.log').open('a') as log:
+                            offset=log.tell()
                             p=subprocess.Popen([sys.executable,str(ROOT/'tools/run_case.py'),str(case),'--gpu',str(gpu),'--lock-fd',str(case_lock.fileno())],
                                 cwd=case,env=worker_environment(gpu),stdout=log,stderr=subprocess.STDOUT,start_new_session=True,
                                 pass_fds=(case_lock.fileno(),),preexec_fn=functools.partial(worker_preexec,gpu_sockets[gpu]))
                     finally:case_lock.close()
-                    admission.started(p.pid,gpu,case)
+                    admission.started(p.pid,gpu,case);log_start[p.pid]=offset
                     pending[p.pid]=(p,case,gpu,job);active[gpu]+=1
                     launched.append(dict(job,pid=p.pid,gpu=gpu,log=str(case/'run.log'),started=time.time()))
                     print(f'Started GPU {gpu} ({active[gpu]} on this GPU, {len(pending)} total): {job["key"]}',flush=True)
@@ -167,8 +196,9 @@ def main():
     if not gpus or len(set(gpus))!=len(gpus) or min(gpus)<0 or args.max_iter<1:raise ValueError('Invalid GPU/cap configuration')
     jobs=select_jobs(args)
     print(f'{len(jobs)} cases; shots=-1/1000; COBYLA/L-BFGS-B/SPSA; linear/reverse_linear; GPUs={gpus}; jobs start one at a time while the '
-          'host stays responsive and the GPU\'s CPU socket is not full; all jobs stop and requeue at 90% RAM; each pinned to the CPU socket '
-          'next to its GPU at low priority, no thread limit; no RAM/GPU memory limits.',flush=True)
+          f'host stays responsive, the GPU\'s CPU socket is not full and >={GPU_MIN_FREE:.0%} of its memory is free; GPU out-of-memory '
+          'failures on a shared GPU are requeued; all jobs stop and requeue at 90% RAM; each pinned to the CPU socket '
+          'next to its GPU at low priority, no thread limit; no per-job RAM/GPU memory limits.',flush=True)
     print('One local solve per partition, then one global solve. Threshold 1, no patience/window. Completed cases are skipped.',flush=True)
     if args.dry_run:return 0
     import torch,opt_einsum
