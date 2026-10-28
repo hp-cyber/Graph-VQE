@@ -34,8 +34,8 @@ def allocation_bound(width, edges, max_bond, budget=None):
 
 def check_solver(solver,case,gpu):
     from Qiskit_VQE.independent_vqe import pairs_for_pattern
-    # A direct invocation gets 80% of currently free memory; the scheduler
-    # gives every worker its own share of 80% of total GPU memory.
+    # 80% of the GPU's currently free memory (CAMPAIGN_JOB_GPU_BYTES overrides);
+    # the scheduler sets no per-job budget.
     budget=int(os.environ.get('CAMPAIGN_JOB_GPU_BYTES','0'))
     if not budget:budget=int(gpu_memory()[gpu][1]*.8)
     width=max(2,solver.num_qubits)

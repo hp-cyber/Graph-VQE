@@ -1,20 +1,29 @@
-GPU memory policy (2026-10-13)
+Scheduling and host safety (2026-10-27; same as the VQE_Docking launchers)
 
-run.sh retains five slots per GPU, GPUs 2,3,4,5,6. Slots are refilled only
-when free GPU memory and host RAM meet the admission check. Each job runs in
-its own process/session. On exit, its parent is reaped and any remaining
-process-group descendants are killed before the slot is reused. Exiting the
-process releases its CUDA context, CUDA-Q allocations, PyTorch cache and RAM.
-No server-wide GPU reset or OS cache flush is performed.
+run.sh uses GRAPH_VQE_GPUS (this server: 2,3,4,5,6) or else every GPU; --gpus overrides. There is no fixed
+number of jobs per GPU and no per-job RAM/GPU budget. tools/admission.py starts one
+job at a time (at most one every 30 s across every launcher sharing
+ANALYTIC_MPS_ADMISSION_DIR) while the host stays responsive, on the GPU with the
+fewest jobs whose CPU socket is below 95% busy over 10 s. Every 2 s a watcher checks:
+  - a normal-priority fork/exec + fsync probe finishes within 2 s;
+  - memory and I/O "full" pressure (PSI avg10) stay at or below 10% and 50%
+    (read as 0 where the kernel has no /proc/pressure);
+  - available RAM stays at or above 5%.
+After 3 failed checks the newest job is stopped (SIGTERM, SIGKILL after 10 s) and
+requeued, and no job starts until another finishes. At 90% RAM use every job is
+stopped and requeued; starts wait until RAM falls. RAM is the host's, or the
+container's cgroup limit when lower. Stopped jobs resume from their checkpoints.
+Files force_unresponsive and force_ram_full in the admission directory trigger
+these by hand.
 
-Default GPU budget per job = 80% of total VRAM / jobs-per-GPU. Launch admission
-also leaves 10% of total VRAM free. RAM budget = 80% of host/cgroup capacity /
-total slots. CAMPAIGN_JOB_GPU_GIB and CAMPAIGN_JOB_RAM_GIB override these budgets.
-The launcher polls process-group RAM/VRAM once per scheduling cycle, kills a
-worker exceeding its budget, and records resource_failure.json. memory_usage.json
-records sampled peak usage and process-group cleanup after normal termination.
-Sampling cannot prevent every OOM: a single allocation or another GPU user can
-exhaust memory between polls. This is not a hardware-enforced memory quota.
+Each worker runs in its own session at nice 10 and lowest best-effort I/O priority,
+pinned to the CPU socket next to its GPU (all allowed CPUs where that is unknown),
+with no BLAS/OpenMP thread limit. It is killed if the launcher dies; a new
+launcher first kills leftover workers of this campaign. On exit, the process group
+is killed and RAM and CUDA context release are confirmed (at most 60 s each) in a
+background thread. memory_usage.json records sampled peak RAM/VRAM (VRAM sampled
+once a minute) and the release result; evicted attempts are not recorded there.
+Ctrl+C, SIGTERM or a closed terminal stop every worker (SIGTERM, SIGKILL after 60 s).
 
 Independent graph strategy (updated global ansatz)
 Both local and global circuits now use four-layer nearest-neighbor linear or
@@ -46,8 +55,3 @@ Deploy the modified test directory to the other server. Its installed CUDA-Q
 plugin also needs the preceding stable-SVD repair; use the updated
 test/setup_local_cudaq.sh there. Changing this local checkout cannot update
 another server's installed binary automatically.
-
-No elapsed-time limits are imposed on GPU queries, worker completion/cleanup,
-or validation subprocesses. Failed monitoring commands leave existing workers
-running and pause new launches until a successful query. Ctrl+C still signals
-workers to stop; it does not use a timed force-kill deadline.

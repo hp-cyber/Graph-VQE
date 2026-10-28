@@ -333,6 +333,13 @@ else
   echo ">> smoke-test GPUs: none detected (GPU smoke test will be skipped)"
 fi
 
+# Pure-Python application packages that the documented cudaq-env recipe does not
+# install: opt_einsum (reverse gradients) and networkx (Hamiltonian graph partitions).
+if ! "$PY" -c 'import opt_einsum, networkx' >/dev/null 2>&1; then
+  echo ">> Installing opt_einsum==3.4.0 and networkx==3.6.1 into $PY"
+  "$PY" -m pip install --disable-pip-version-check 'opt_einsum==3.4.0' 'networkx==3.6.1'
+fi
+
 # Reverse differentiation is implemented by the application, using CUDA PyTorch.
 # Do not import CUDA-Q or allocate GPU memory in this dependency check.
 if "$PY" -c 'import torch, opt_einsum; assert torch.version.cuda' >/dev/null 2>&1; then

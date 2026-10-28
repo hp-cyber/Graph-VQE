@@ -5,11 +5,12 @@ proteins, both linear and reverse-linear entanglement, COBYLA/L-BFGS-B/SPSA, and
 both analytic (`shots=-1`) and 1000-shot objectives: 660 cases.
 
 Run `./test/run.sh`; use `./test/run.sh --dry-run` to preview the pool. The default
-is five workers per GPU on physical GPUs 2,3,4,5,6, with immediate refill when a
-worker finishes. `--gpus`, `--jobs-per-gpu`, `--proteins`, `--optimizers`, `--shots`
-and `--entanglements` select resources or cases. GPU validation tools default to
-GPU 2; GPUs 0 and 1 are not used by the default campaign. For isolated timing
-measurements, explicitly use `--jobs-per-gpu 1` and otherwise idle GPUs.
+needs no arguments: it uses `GRAPH_VQE_GPUS` if set (2,3,4,5,6 on the original server), otherwise every GPU (`--gpus` overrides). Jobs start one
+at a time while the host stays responsive and the GPU's CPU socket has room; at 90%
+RAM (or of a container's memory limit) every job stops and later resumes from its
+checkpoint. Workers run at low CPU and I/O priority on their GPU's socket. Details:
+`test/MEMORY.txt`. `--proteins`, `--optimizers`, `--shots` and `--entanglements`
+select cases. GPU validation tools default to GPU 2.
 
 To keep growing logs on a larger disk, export `CAMPAIGN_RECORDS_ROOT` to a
 writable directory, or copy `test/campaign_storage.env.example` to the ignored
@@ -68,15 +69,15 @@ invocations using `optimizer_solve`, not the number of stage entries.
 
 Each worker handles one case and exits. The scheduler reaps it and kills any
 surviving children in that worker's process group before refilling the slot, so
-process-owned RAM and CUDA contexts are released. Memory budgets can stop an
-oversized worker; there are no project-imposed elapsed-time limits, including
-GPU monitoring calls. Ctrl+C stops the launcher and its workers. Completed cases
+process-owned RAM and CUDA contexts are released. There are no per-job memory
+budgets or elapsed-time limits. Ctrl+C, SIGTERM or a closed terminal stop the
+launcher and its workers. Completed cases
 are skipped; cases with a work ledger require valid, complete work records before
 being considered finished. A truncated final ledger write is archived and repaired
 on restart without dropping previous complete records.
 
 Nested timings overlap: do not add iteration, energy, backend and gradient
-durations together. With five jobs per GPU, measured wall times include contention.
+durations together. Several jobs share each GPU and CPU socket, so measured wall times include contention.
 Counts can be combined with separately measured per-operation costs to estimate
 another server's runtime, but those estimates are not measured execution times.
 

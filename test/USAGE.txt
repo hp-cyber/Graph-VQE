@@ -45,18 +45,19 @@ Acceleration and exactness
   That ansatz and its memory estimates are obsolete. Existing checkpoints from
   it cannot resume into the new nearest_neighbor_su2_v1 parameter layout.
   The Hamiltonian still determines partitions; no Hamiltonian term is discarded.
-  See MEMORY.txt for per-job budgets, process cleanup and allocation checks.
+  See MEMORY.txt for scheduling, host safety, process cleanup and allocation checks.
 
 Run on this server (full campaign is not started by installation)
   cd /home/fengy46/Graph-VQE/test
   ./run.sh --dry-run
   ./run.sh
 
-Default scheduling: GPUs 2,3,4,5,6; five independent protein jobs per GPU (25 total).
-One common queue, refill a GPU slot as soon as its previous job exits. A job uses
-one GPU for its sequential local solves and global solve. Configure available
-GPUs/concurrency explicitly when sharing a server or using a different machine:
-  ./run.sh --gpus 0,1 --jobs-per-gpu 1
+Default scheduling: GRAPH_VQE_GPUS if set (this server: 2,3,4,5,6 in its local
+campaign_storage.env), otherwise every GPU nvidia-smi lists. Jobs start one at a time while the host stays
+responsive and the GPU's CPU socket has room; at 90% RAM all jobs stop and resume
+later (MEMORY.txt). A job uses one GPU for its sequential local solves and global
+solve. To choose GPUs:
+  GRAPH_VQE_GPUS=0,1,2,3 ./run.sh        (or ./run.sh --gpus 0,1,2,3)
 
 Filters (comma separated, combinable)
   ./run.sh --proteins 3ckz,1e2k --optimizers cobyla,lbfgs,spsa
@@ -97,18 +98,22 @@ Recorded per case
   run.log: optimizer progress and failures.
 
 Install on another server
-  Copy this entire test directory (runs/validation/build outputs are optional).
-  Activate a suitable Python 3.11 environment with CUDA/cuQuantum/MPI and the
-    source-build tools described at the top of setup_local_cudaq.sh.
-  python -m pip install -r requirements.txt
-  Install CUDA-enabled PyTorch compatible with that server.
-  ./setup_local_cudaq.sh
-  source ./activate_local_cudaq.sh
-  ./run.sh --dry-run
-  ./run.sh --gpus 0,1 --jobs-per-gpu 1
+  git clone the repository (or copy test/ without runs, validation, admission and
+    campaign_storage.env, which hold this server's paths).
+  Create and activate cudaq-env (Python 3.11, conda CUDA 12.x, mpi4py/openmpi,
+    compilers, m4/autoconf/automake/libtool, flex/bison, pip cudaq, numpy, scipy,
+    CUDA-enabled torch, matplotlib, pandas, qiskit, qiskit-ibm-runtime,
+    qiskit_algorithms). setup_local_cudaq.sh installs the remaining opt_einsum and
+    networkx into it.
+  cd test
+  ./setup_local_cudaq.sh          (builds CUDA-Q and the backend into test/cudaq_local; hours)
+  ./run.sh                        (inside tmux; every GPU, records under test/runs)
+  Optional: GRAPH_VQE_GPUS=0,1,2,3 to use only some GPUs; copy
+  campaign_storage.env.example to campaign_storage.env to keep records on another
+  disk or share the scheduler with other launchers.
 
-The installer is identical to the updated
-/home/fengy46/VQE_Docking_cudaq_tensornet-mps/setup_local_cudaq.sh. Either copy
+The installer matches /home/fengy46/VQE_Docking_cudaq_tensornet-mps/setup_local_cudaq.sh,
+plus the opt_einsum/networkx install step. Either copy
 builds relative to its own directory, bundles all four backend sources, checks
 gradient dependencies, installs a manifest with library checksums, and tests
 changing local/global register widths. It does not need the old server's paths.

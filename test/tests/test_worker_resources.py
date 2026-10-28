@@ -21,24 +21,13 @@ class ResourceTests(unittest.TestCase):
             resources.gpu_memory()
             self.assertNotIn('timeout',query.call_args.kwargs)
 
-    def test_monitor_errors_preserve_workers_and_recover(self):
-        gib=resources.GIB
+    def test_monitor_errors_preserve_workers(self):
         failed=subprocess.CalledProcessError(1,['nvidia-smi'])
-        with patch.dict(os.environ,{},clear=True),patch.object(resources,'gpu_memory',side_effect=[failed,{2:(40*gib,40*gib)},failed,{2:(40*gib,40*gib)}]),patch.object(resources,'host_memory',return_value=(100*gib,90*gib)):
-            guard=resources.MemoryGuard((2,),5)
-            self.assertFalse(guard.can_launch(2))
-            guard.refresh();self.assertTrue(guard.can_launch(2))
-            guard.refresh();self.assertFalse(guard.can_launch(2))
-            guard.refresh();self.assertTrue(guard.can_launch(2))
-            with tempfile.TemporaryDirectory() as d,patch.object(resources,'process_groups',return_value={123:[(123,gib)]}),patch.object(resources.subprocess,'check_output',side_effect=[failed,'123, 1000\n']) as query,patch.object(resources.os,'killpg') as kill:
-                guard.monitor({123:(None,Path(d),2)})
-                kill.assert_not_called()
-                self.assertFalse(guard.can_launch(2))
-                self.assertFalse((Path(d)/'resource_failure.json').exists())
-                guard.monitor({123:(None,Path(d),2)})
-                self.assertTrue(guard.can_launch(2))
-                kill.assert_not_called()
-                self.assertTrue(all('timeout' not in c.kwargs for c in query.call_args_list))
+        with tempfile.TemporaryDirectory() as d,patch.object(resources,'process_groups',return_value={123:[(123,resources.GIB)]}),patch.object(resources.subprocess,'check_output',side_effect=failed),patch.object(resources.os,'killpg') as kill:
+            guard=resources.MemoryGuard((2,),0)
+            guard.monitor({123:(None,Path(d),2)})
+            kill.assert_not_called()
+            self.assertEqual(guard.peaks[123],(resources.GIB,0))
 
     def test_finished_parent_descendant_memory_is_released(self):
         with tempfile.TemporaryDirectory() as d:
@@ -56,18 +45,16 @@ class ResourceTests(unittest.TestCase):
                 try:os.killpg(p.pid,9)
                 except ProcessLookupError:pass
 
-    def test_admission_and_per_job_memory_kill(self):
+    def test_memory_is_recorded_never_limited(self):
         gib=resources.GIB
-        with patch.dict(os.environ,{},clear=True),patch.object(resources,'gpu_memory',return_value={2:(40*gib,40*gib)}),patch.object(resources,'host_memory',return_value=(100*gib,90*gib)):
-            guard=resources.MemoryGuard((2,),5)
-            self.assertEqual(guard.budgets[2],int(6.4*gib))
-            self.assertTrue(guard.can_launch(2))
-            guard.gpus[2]=(40*gib,5*gib)
-            self.assertFalse(guard.can_launch(2))
-            with tempfile.TemporaryDirectory() as d,patch.object(resources,'process_groups',return_value={123:[(123,gib)]}),patch.object(resources.subprocess,'check_output',return_value='123, 8192\n'),patch.object(resources.os,'killpg') as kill:
-                guard.monitor({123:(None,Path(d),2)})
-                kill.assert_called_once_with(123,9)
-                self.assertTrue((Path(d)/'resource_failure.json').exists())
+        with tempfile.TemporaryDirectory() as d,patch.object(resources,'process_groups',return_value={123:[(123,500*gib)]}),patch.object(resources.subprocess,'check_output',return_value='123, 400000\n'),patch.object(resources.os,'killpg') as kill:
+            guard=resources.MemoryGuard((2,),0)
+            guard.monitor({123:(None,Path(d),2)})
+            kill.assert_not_called()
+            self.assertFalse((Path(d)/'resource_failure.json').exists())
+            guard.finished(unittest.mock.Mock(pid=123),Path(d),dict(ram_released=True,gpu_released=True))
+            record=json.loads((Path(d)/'memory_usage.json').read_text())
+            self.assertEqual((record['peak_sampled_ram_bytes'],record['peak_sampled_gpu_bytes']),(500*gib,400000*1024**2))
 
     def test_clean_preserves_completed_and_locked_cases(self):
         with tempfile.TemporaryDirectory() as d:

@@ -12,59 +12,81 @@ import run_campaign
 from optimization_trace import atomic
 
 
+class FakeAdmission:
+    """Admits one job per call on the GPU with the fewest jobs; evicts the PIDs in `evict`."""
+    def __init__(self,gpus):
+        self.gpus=gpus;self.last={};self.evicted=set();self.evict=set();self.jobs={}
+    def choose_gpu(self,sockets):
+        load={g:sum(j==g for j in self.jobs.values()) for g in sockets}
+        return min(sockets,key=lambda g:(load[g],g))
+    def started(self,pid,gpu,case):self.jobs[pid]=gpu
+    def ended(self,pid):self.jobs.pop(pid,None)
+    def start_watch(self):pass
+    def close(self):pass
+
+
 class SchedulerTests(unittest.TestCase):
     def setUp(self):
-        guard=patch.object(run_campaign, 'MemoryGuard').start()
-        guard.return_value.can_launch.return_value=True
-        guard.return_value.environment.return_value={}
-        patch.object(run_campaign, 'cleanup_group').start()
+        guard=patch.object(run_campaign,'MemoryGuard').start()
+        guard.return_value.group_members.return_value=set()
+        patch.object(run_campaign,'cleanup_group').start()
+        patch.object(run_campaign,'kill_orphans').start()
+        patch.object(run_campaign,'gpu_cpus',side_effect=lambda g:frozenset({0})).start()
+        patch.object(run_campaign.os,'sched_getaffinity',return_value={0}).start()
+        self.admission=FakeAdmission((2,3))
+        patch.object(run_campaign,'Admission',return_value=self.admission).start()
         self.addCleanup(patch.stopall)
 
-    def test_finished_record_error_survives_failed_shutdown_status(self):
-        primary=OSError(errno.ENOSPC,'finished record is full')
-        run_campaign.MemoryGuard.return_value.finished.side_effect=primary
+    def test_failed_records_do_not_stop_the_launcher(self):
+        # memory_usage.json is written by a cleanup thread; a full disk there or in the
+        # final status must not stop other jobs or hide the worker's own exit status.
+        run_campaign.MemoryGuard.return_value.finished.side_effect=OSError(errno.ENOSPC,'finished record is full')
         original=run_campaign.atomic
         def save(path,data):
             if isinstance(data,dict) and data.get('stopped'):raise OSError(errno.ENOSPC,'final status is full')
             return original(path,data)
         worker=unittest.mock.Mock(pid=543210);worker.poll.return_value=0
         with tempfile.TemporaryDirectory() as d, patch.object(run_campaign,'atomic',side_effect=save), patch.object(run_campaign.subprocess,'Popen',return_value=worker):
-            with self.assertRaises(OSError) as caught:run_campaign.run([dict(key='case0')],(2,),5,Path(d))
-            self.assertIs(caught.exception,primary)
+            code=run_campaign.run([dict(key='case0')],(2,),Path(d))
+            self.assertEqual(code,1)  # no job_status.json: not complete
             self.assertTrue(run_campaign.cleanup_group.called)
+            self.assertTrue(run_campaign.MemoryGuard.return_value.finished.called)
 
-    def test_refill_limits_skip_complete_and_continue_after_failure(self):
+    def test_refill_skip_complete_continue_after_failure_and_requeue_evicted(self):
         with tempfile.TemporaryDirectory() as d:
             output=Path(d)
-            jobs=[dict(key=f'case{i}',protein_id=str(i)) for i in range(22)]
+            jobs=[dict(key=f'case{i}',protein_id=str(i)) for i in range(12)]
             atomic(output/'case0/job_status.json',dict(status='complete'))
-            instances=[];peak={2:0,3:0};events=[]
+            instances=[];events=[];admission=self.admission
             class Process:
                 def __init__(self,command,**kwargs):
                     self.case=Path(command[2]);self.gpu=int(command[4]);self.pid=len(instances)+10000
-                    self.remaining=2 if self.gpu==2 else 5;self.done=False
+                    self.remaining=3;self.done=False;self.code=None
                     instances.append(self);events.append(('start',self.case.name,self.gpu))
-                    active=sum(not p.done and p.gpu==self.gpu for p in instances)
-                    peak[self.gpu]=max(peak[self.gpu],active)
-                    if active>5:raise AssertionError('Scheduler exceeded per-GPU limit')
+                    if self.case.name=='case2' and not any(e==('evicted','case2') for e in events):
+                        admission.evicted.add(self.pid);events.append(('evicted','case2'))  # watcher stops it
                 def poll(self):
                     if not self.done:
                         self.remaining-=1
                         if self.remaining>0:return None
                         self.done=True;events.append(('finish',self.case.name,self.gpu))
-                        atomic(self.case/'job_status.json',dict(status='failed' if self.case.name=='case1' else 'complete'))
-                    return 1 if self.case.name=='case1' else 0
-            with patch.object(run_campaign.subprocess,'Popen',Process),patch.object(run_campaign.time,'sleep'):
-                code=run_campaign.run(jobs,(2,3),5,output)
+                        if self.pid in admission.evicted:self.code=-15
+                        else:
+                            self.code=1 if self.case.name=='case1' else 0
+                            atomic(self.case/'job_status.json',dict(status='failed' if self.code else 'complete'))
+                    return self.code
+            with patch.object(run_campaign.subprocess,'Popen',Process),patch.object(run_campaign.time,'sleep'), \
+                 patch.object(run_campaign,'is_complete',side_effect=lambda c:json.loads((c/'job_status.json').read_text())['status']=='complete' if (c/'job_status.json').exists() else False):
+                code=run_campaign.run(jobs,(2,3),output)
             self.assertEqual(code,1)
-            self.assertEqual(len(instances),21)
-            self.assertEqual(peak,{2:5,3:5})
-            first_finish=next(i for i,event in enumerate(events) if event[0]=='finish')
-            self.assertTrue(any(e[0]=='start' for e in events[first_finish+1:]))
+            self.assertEqual(len(instances),12)  # 11 jobs, case2 twice
+            self.assertEqual(sum(p.case.name=='case2' for p in instances),2)
+            self.assertEqual({p.gpu for p in instances},{2,3})
             status=json.loads((output/'campaign_status.json').read_text())
             self.assertEqual(status['running'],0)
-            self.assertEqual(len(status['finished']),21)
+            self.assertEqual(len(status['finished']),11)
             self.assertEqual(len(status['skipped']),1)
+            self.assertEqual(len(status['evicted']),1)
 
 
 if __name__=='__main__':unittest.main()
