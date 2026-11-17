@@ -94,3 +94,16 @@ After `source test/environment.sh`, CPU checks run with
 `python test/tools/validate_resume.py --gpu 2 --shots -1 --phase local --output OUTPUT`
 (also `--shots 1000` and `--phase global`). Choose a fresh output directory for each
 validation batch. Validation artifacts are separate from campaign results.
+
+## Archived experiments and VQE variants
+
+`test-archive/` contains a complete compressed snapshot of the local `test/`
+directory, including experiment records, checkpoints, validation outputs, and
+comparison plots. The archive is split into Git LFS parts. See
+[the archive instructions](test-archive/README.md) for checksums and extraction
+commands. Extract it into a separate directory to preserve the current tracked
+`test/` sources.
+
+The `VQE_Docking_cudaq_tensornet-mps_*` directories contain the ADAPT-VQE,
+baseline, CVaR-VQE, EQC-VQE, graph ADAPT-VQE, graph VQE, and graph VQE without
+refinement variants, together with their backend code and dependency files.
