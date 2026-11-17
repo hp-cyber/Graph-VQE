@@ -1,0 +1,80 @@
+REMARK  Name = 4cig_ligand
+REMARK  13 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C11_11  and  C19_19
+REMARK    2  A    between atoms: C12_12  and  C20_20
+REMARK    3  A    between atoms: C13_13  and  C25_24
+REMARK    4  A    between atoms: C14_14  and  C26_25
+REMARK    5  A    between atoms: C15_15  and  C27_26
+REMARK    6  A    between atoms: C17_17  and  O6_36
+REMARK    7  A    between atoms: C18_18  and  O8_37
+REMARK    8  A    between atoms: C22_22  and  O6_36
+REMARK    9  A    between atoms: C24_23  and  O8_37
+REMARK   10  A    between atoms: C25_24  and  N1_29
+REMARK   11  A    between atoms: C26_25  and  N2_30
+REMARK   12  A    between atoms: C27_26  and  N2_30
+REMARK   13  A    between atoms: C28_27  and  N2_30
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C1  X0P A   1       2.026  -1.092  -4.301  0.00  0.00    -0.039 A 
+ATOM      2  C2  X0P A   1       2.246  -2.249  -3.581  0.00  0.00    -0.044 A 
+ATOM      3  C3  X0P A   1       2.026   0.132  -3.666  0.00  0.00    +0.080 A 
+ATOM      4  C4  X0P A   1       2.465  -2.186  -2.222  0.00  0.00    +0.038 A 
+ATOM      5  C11 X0P A   1       2.247   0.180  -2.306  0.00  0.00    +0.049 A 
+ATOM      6  C14 X0P A   1       2.465  -0.970  -1.573  0.00  0.00    -0.024 A 
+ATOM      7  C21 X0P A   1       1.802  -2.377  -6.296  0.00  0.00    +0.003 A 
+ATOM      8  C29 X0P A   1       2.023  -3.533  -5.581  0.00  0.00    +0.004 A 
+ATOM      9  C40 X0P A   1       1.806  -1.156  -5.659  0.00  0.00    +0.021 A 
+ATOM     10  C50 X0P A   1       2.247  -3.469  -4.223  0.00  0.00    +0.016 A 
+ENDROOT
+BRANCH   5  11
+ATOM     11  C19 X0P A   1       2.245   1.495  -1.650  0.00  0.00    +0.144 C 
+ATOM     12  N1  X0P A   1       1.183   2.283  -2.005  0.00  0.00    -0.306 N 
+ATOM     13  O3  X0P A   1       3.136   1.795  -0.866  0.00  0.00    -0.439 OA
+ATOM     14  H   X0P A   1       0.542   1.956  -2.700  0.00  0.00    +0.226 HD
+BRANCH  12  15
+ATOM     15  C25 X0P A   1       0.968   3.573  -1.400  0.00  0.00    +0.234 C 
+BRANCH  15  20
+ATOM     16  C6  X0P A   1      -1.218   2.978  -0.341  0.00  0.00    +0.012 A 
+ATOM     17  C7  X0P A   1       0.486   3.966   1.000  0.00  0.00    +0.012 A 
+ATOM     18  C9  X0P A   1      -2.061   2.916   0.748  0.00  0.00    +0.057 A 
+ATOM     19  C10 X0P A   1      -0.349   3.907   2.094  0.00  0.00    +0.057 A 
+ATOM     20  C13 X0P A   1       0.054   3.499  -0.222  0.00  0.00    -0.057 A 
+ATOM     21  C18 X0P A   1      -1.619   3.387   1.967  0.00  0.00    +0.054 A 
+BRANCH  21  23
+ATOM     22  C24 X0P A   1      -3.743   3.016   2.800  0.00  0.00    +0.370 C 
+ATOM     23  O8  X0P A   1      -2.398   3.358   3.116  0.00  0.00    -0.552 OA
+ENDBRANCH  21  23
+ENDBRANCH  15  20
+ENDBRANCH  12  15
+ENDBRANCH   5  11
+BRANCH   6  24
+ATOM     24  C26 X0P A   1       2.706  -0.924  -0.101  0.00  0.00    +0.208 C 
+BRANCH  24  26
+ATOM     25  C28 X0P A   1       1.981  -1.547   2.113  0.00  0.00    +0.167 C 
+ATOM     26  N2  X0P A   1       1.508  -1.185   0.746  0.00  0.00    +0.435 N 
+ATOM     27  H   X0P A   1       1.081  -2.016   0.368  0.00  0.00    +0.144 HD
+BRANCH  26  28
+ATOM     28  C27 X0P A   1       0.416  -0.149   0.704  0.00  0.00    +0.201 C 
+BRANCH  28  32
+ATOM     29  C5  X0P A   1      -0.644   0.243   2.894  0.00  0.00    +0.006 A 
+ATOM     30  C8  X0P A   1      -1.571  -0.027   3.877  0.00  0.00    +0.008 A 
+ATOM     31  C12 X0P A   1      -1.539  -1.512   1.523  0.00  0.00    +0.049 A 
+ATOM     32  C15 X0P A   1      -0.625  -0.487   1.720  0.00  0.00    -0.035 A 
+ATOM     33  C16 X0P A   1      -2.483  -1.042   3.692  0.00  0.00    +0.062 A 
+ATOM     34  C17 X0P A   1      -2.463  -1.775   2.521  0.00  0.00    +0.085 A 
+BRANCH  31  35
+ATOM     35  C20 X0P A   1      -1.553  -2.308   0.260  0.00  0.00    +0.058 C 
+ATOM     36  O1  X0P A   1      -2.699  -2.630  -0.167  0.00  0.00    -0.570 OA
+ATOM     37  O4  X0P A   1      -0.469  -2.569  -0.340  0.00  0.00    -0.570 OA
+ENDBRANCH  31  35
+BRANCH  34  39
+ATOM     38  C22 X0P A   1      -4.110  -3.049   3.511  0.00  0.00    +0.378 C 
+ATOM     39  O6  X0P A   1      -3.366  -2.807   2.322  0.00  0.00    -0.543 OA
+ENDBRANCH  34  39
+ENDBRANCH  28  32
+ENDBRANCH  26  28
+ENDBRANCH  24  26
+ENDBRANCH   6  24
+TORSDOF 10

@@ -1,0 +1,22 @@
+# ============================================================================ #
+# Target config for the multi-GPU memory-pooled MPS backend.                   #
+# Drop into runtime/nvqir/cutensornet/ alongside tensornet-mps.yml.            #
+# ============================================================================ #
+
+name: tensornet-mps-mgpu
+description: "Multi-GPU memory-pooled matrix product state simulator (sharded chain + distributed truncated SVD)"
+gpu-requirements: true
+
+target-arguments:
+  - key: option
+    required: false
+    type: option-flags
+    help-string: "Comma-separated options. Supported: 'fp64' (default)."
+
+configuration-matrix:
+  - name: multi-gpu-fp64
+    option-flags: [fp64]
+    default: true
+    config:
+      nvqir-simulation-backend: tensornet-mps-mgpu
+      preprocessor-defines: ["-D CUDAQ_SIMULATION_SCALAR_FP64"]

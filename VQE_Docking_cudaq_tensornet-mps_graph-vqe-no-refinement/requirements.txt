@@ -1,0 +1,12 @@
+# Python deps for the CORE VQE run (Main.py on tensornet-mps-mgpu).
+# cudaq itself is NOT here -- it is built from source by setup_local_cudaq.sh.
+# modeller / vina / biopython are NOT here -- they are only used by the
+# post-processing & docking-validation scripts, not by the VQE itself, and
+# need special channels (modeller: salilab conda; vina: bioconda/pip).
+numpy
+scipy
+networkx
+matplotlib
+qiskit
+qiskit-ibm-runtime
+qiskit-algorithms
